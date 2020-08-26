@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pulleys Calculator</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <a href="./forces.html">Back to Forces Main Page</a>
+        <h1>Pulleys Calculator</h1>
+        <p style="color: blue;">Welocme to the Pulleys Calculator! Enter 'n' for unkown values and enter the angle of inclination (90 degrees for two hanging masses and 0 degrees for a pulley in a horizontal plane). The m1 quantity refers to the larger mass and the m2 quantity is the smaller mass. To calculate for tension you must know the acceleration of the system.</p>
+        <h2>Solve for Acceleration</h2>
+        <form action="" id="pulleys_a">
+            <label for="m_one">m1 (kg)</label>
+            <input type="text" id="m_one"><br>
+            <label for="m_two">m2 (kg)</label>
+            <input type="text" id='m_two'><br>
+            <label for="ff">Force of Friction (N)</label>
+            <input type="text" id="ff"><br>
+            <label for="k">Coefficient of Friction</label>
+            <input type="text" id="k"><br>
+            <label for="fw">Applied Force (N)</label>
+            <input type="text" id="fw"><br>
+            <label for="angle">Angle of Inclination</label>
+            <input type="text" id="angle"><br><br>
+        </form>
+        <button onclick="extract_a()">Calculate</button>
+        <p id="print"></p>
+        <script>
+            function extract_a () {
+                var g = 9.81;
+                var pi = 3.14159 / 180;
+                var data = document.getElementById('pulleys_a');
+                var a = 'Error: Not Enough Variables';
+                if (data.elements[0].value != 'n') {
+                    var m1 = parseFloat(data.elements[0].value);
+                } else {
+                    var m1 = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m2 = parseFloat(data.elements[1].value);
+                } else {
+                    var m2 = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var ff = parseFloat(data.elements[2].value);
+                } else {
+                    var ff = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var k = parseFloat(data.elements[3].value);
+                } else {
+                    var k = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var fw = parseFloat(data.elements[4].value);
+                } else {
+                    var fw = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var angle = parseFloat(data.elements[5].value);
+                } else {
+                    var angle = 'n';
+                }
+                //Actual Calculation Begins
+                if (m1 != 'n' && m2 != 'n' && ff != 'n' && angle != 'n') {
+                    a = m1*g - m2*g*Math.sin(pi*angle) - ff;
+                    a = a / (m1 + m2);
+                    document.getElementById('print').innerHTML = a.toString() + ' m/s^2';
+                    return;
+                }
+                if (m1 != 'n' && m2 != 'n' && k != 'n' && angle != 'n') {
+                    a = m1*g - m2*g*Math.sin(pi*angle) - m2*k*g*Math.cos(pi*angle);
+                    a = a / (m1 + m2);
+                    document.getElementById('print').innerHTML = a.toString() + ' m/s^2';
+                    return;
+                }
+                if (fw != 'n' && m2 != 'n' && k != 'n' && angle != 'n') {
+                    a = fw - m2*g*Math.sin(pi*angle) - m2*k*g*Math.cos(pi*angle);
+                    a = a / m2;
+                    document.getElementById('print').innerHTML = a.toString() + ' m/s^2';
+                    return;
+                }
+                if (fw != 'n' && m2 != 'n' && ff != 'n' && angle != 'n') {
+                    a = fw - m2*g*Math.sin(pi*angle) - ff;
+                    a = a / m2;
+                    document.getElementById('print').innerHTML = a.toString() + ' m/s^2';
+                    return;
+                }
+                document.getElementById('print').innerHTML = a;
+            }
+        </script>
+        <h2>Solve for First Mass</h2>
+        <form action="" id="pulleys_m1">
+            <label for="a">Acceleration (m/s^2)</label>
+            <input type="text" id="a"><br>
+            <label for="m_two2">m2 (kg)</label>
+            <input type="text" id='m_two2'><br>
+            <label for="ff2">Force of Friction (N)</label>
+            <input type="text" id="ff2"><br>
+            <label for="k2">Coefficient of Friction</label>
+            <input type="text" id="k2"><br>
+            <label for="fw2">Applied Force (N)</label>
+            <input type="text" id="fw2"><br>
+            <label for="angle2">Angle of Inclination</label>
+            <input type="text" id="angle2"><br><br>
+        </form>
+        <button onclick="extract_m1()">Calculate</button>
+        <p id="print2"></p>
+        <script>
+            function extract_m1 () {
+                var g = 9.81;
+                var pi = 3.14159 / 180;
+                var data = document.getElementById('pulleys_m1');
+                var m1 = 'Error: Not Enough Variables';
+                if (data.elements[0].value != 'n') {
+                    var a = parseFloat(data.elements[0].value);
+                } else {
+                    var a = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m2 = parseFloat(data.elements[1].value);
+                } else {
+                    var m2 = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var ff = parseFloat(data.elements[2].value);
+                } else {
+                    var ff = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var k = parseFloat(data.elements[3].value);
+                } else {
+                    var k = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var fw = parseFloat(data.elements[4].value);
+                } else {
+                    var fw = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var angle = parseFloat(data.elements[5].value);
+                } else {
+                    var angle = 'n';
+                }
+                //Actual Calculation Begins
+                if (a != 'n' && m2 != 'n' && ff != 'n' && angle != 'n') {
+                    m1 = (m2*(g/a * Math.sin(pi*angle) + 1 ) + ff/a) / (g/a - 1);
+                    document.getElementById('print2').innerHTML = m1.toString() + ' kg';
+                    return;
+                }
+                if (a != 'n' && m2 != 'n' && k != 'n' && angle != 'n') {
+                    ff = k*m2*g*Math.cos(pi*angle);
+                    m1 = (m2*(g/a * Math.sin(pi*angle) + 1 ) + ff/a) / (g/a - 1);
+                    document.getElementById('print2').innerHTML = m1.toString() + ' kg';
+                    return;
+                }
+                document.getElementById('print2').innerHTML = m1;
+            }
+        </script>
+        <h2>Solve for Second Mass</h2>
+        <form action="" id="pulleys_m2">
+            <label for="a2">Acceleration (m/s^2)</label>
+            <input type="text" id="a2"><br>
+            <label for="m_one2">m1 (kg)</label>
+            <input type="text" id='m_one2'><br>
+            <label for="ff3">Force of Friction (N)</label>
+            <input type="text" id="ff3"><br>
+            <label for="k3">Coefficient of Friction</label>
+            <input type="text" id="k3"><br>
+            <label for="fw3">Applied Force (N)</label>
+            <input type="text" id="fw3"><br>
+            <label for="angle3">Angle of Inclination</label>
+            <input type="text" id="angle3"><br><br>
+        </form>
+        <button onclick="extract_m2()">Calculate</button>
+        <p id="print3"></p>
+        <script>
+            function extract_m2 () {
+                var g = 9.81;
+                var pi = 3.14159 / 180;
+                var data = document.getElementById('pulleys_m2');
+                var m2 = 'Error: Not Enough Variables';
+                if (data.elements[0].value != 'n') {
+                    var a = parseFloat(data.elements[0].value);
+                } else {
+                    var a = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m1 = parseFloat(data.elements[1].value);
+                } else {
+                    var m1 = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var ff = parseFloat(data.elements[2].value);
+                } else {
+                    var ff = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var k = parseFloat(data.elements[3].value);
+                } else {
+                    var k = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var fw = parseFloat(data.elements[4].value);
+                } else {
+                    var fw = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var angle = parseFloat(data.elements[5].value);
+                } else {
+                    var angle = 'n';
+                }
+                //Actual Calculation Begins
+                if (a != 'n' && m1 != 'n' && ff != 'n' && angle != 'n') {
+                    m2 = (m1*(g/a  - 1 ) - ff/a) / (g/a * Math.sin(pi*angle) + 1);
+                    document.getElementById('print3').innerHTML = m2.toString() + ' kg';
+                    return;
+                }
+                if (a != 'n' && m1 != 'n' && k != 'n' && angle != 'n') {
+                    m2 = (m1*(g/a - 1 )) / (g/a * Math.sin(pi*angle) + g/a * k * Math.cos(pi*angle) + 1);
+                    document.getElementById('print3').innerHTML = m2.toString() + ' kg';
+                    return;
+                }
+                if (a != 'n' && fw != 'n' && ff != 'n' && angle != 'n') {
+                    m2 = (fw -ff) / (a + g*Math.sin(pi*angle));
+                    document.getElementById('print3').innerHTML = m2.toString() + ' kg';
+                    return;
+                }
+                if (a != 'n' && fw != 'n' && k != 'n' && angle != 'n') {
+                    m2 = fw / (a + g*Math.sin(pi*angle) + k*g*Math.cos(pi*angle));
+                    document.getElementById('print3').innerHTML = m2.toString() + ' kg';
+                    return;
+                }
+                document.getElementById('print3').innerHTML = m2;
+            }
+        </script>
+        <h2>Solve for Force of Friction</h2>
+        <form action="" id="pulleys_ff">
+            <label for="a3">Acceleration (m/s^2)</label>
+            <input type="text" id="a3"><br>
+            <label for="m_one3">m1 (kg)</label>
+            <input type="text" id='m_one3'><br>
+            <label for="m_two3">m2 (kg)</label>
+            <input type="text" id="m_two3"><br>
+            <label for="k4">Coefficient of Friction</label>
+            <input type="text" id="k4"><br>
+            <label for="fw4">Applied Force (N)</label>
+            <input type="text" id="fw4"><br>
+            <label for="angle4">Angle of Inclination</label>
+            <input type="text" id="angle4"><br><br>
+        </form>
+        <button onclick="extract_ff()">Calculate</button>
+        <p id="print4"></p>
+        <script>
+            function extract_ff () {
+                var g = 9.81;
+                var pi = 3.14159 / 180;
+                var data = document.getElementById('pulleys_ff');
+                var ff = 'Error: Not Enough Variables';
+                if (data.elements[0].value != 'n') {
+                    var a = parseFloat(data.elements[0].value);
+                } else {
+                    var a = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m1 = parseFloat(data.elements[1].value);
+                } else {
+                    var m1 = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var m2 = parseFloat(data.elements[2].value);
+                } else {
+                    var m2 = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var k = parseFloat(data.elements[3].value);
+                } else {
+                    var k = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var fw = parseFloat(data.elements[4].value);
+                } else {
+                    var fw = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var angle = parseFloat(data.elements[5].value);
+                } else {
+                    var angle = 'n';
+                }
+                //Actual Calculation Begins
+                if (a != 'n' && m1 != 'n' && m2 != 'n' && angle != 'n') {
+                    ff = m1*g - m2*g*Math.sin(pi*angle) - a*(m1 + m2);
+                    document.getElementById('print4').innerHTML = ff.toString() + ' N';
+                    return;
+                }
+                if (a != 'n' && fw != 'n' && m2 != 'n' && angle != 'n') {
+                    ff = fw - m2*g*Math.sin(pi*angle) - a*(m1 + m2);
+                    document.getElementById('print4').innerHTML = ff.toString() + ' N';
+                    return;
+                }
+                if (m2 != 'n' && k != 'n' && angle != 'n') {
+                    ff = m2*k*g*Math.cos(pi*angle);
+                    document.getElementById('print4').innerHTML = ff.toString() + ' N';
+                    return;
+                }
+                document.getElementById('print4').innerHTML = ff;
+            }
+        </script>
+        <h2>Solve for Coefficient of Friction</h2>
+        <form action="" id="pulleys_k">
+            <label for="a4">Acceleration (m/s^2)</label>
+            <input type="text" id="a4"><br>
+            <label for="m_one4">m1 (kg)</label>
+            <input type="text" id='m_one4'><br>
+            <label for="m_two4">m2 (kg)</label>
+            <input type="text" id="m_two4"><br>
+            <label for="ff4">Force of Friction</label>
+            <input type="text" id="ff4"><br>
+            <label for="fw5">Applied Force (N)</label>
+            <input type="text" id="fw5"><br>
+            <label for="angle5">Angle of Inclination</label>
+            <input type="text" id="angle5"><br><br>
+        </form>
+        <button onclick="extract_k()">Calculate</button>
+        <p id="print5"></p>
+        <script>
+            function extract_k() {
+                var g = 9.81;
+                var pi = 3.14159 / 180;
+                var data = document.getElementById('pulleys_k');
+                var k = 'Error: Not Enough Variables';
+                if (data.elements[0].value != 'n') {
+                    var a = parseFloat(data.elements[0].value);
+                } else {
+                    var a = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m1 = parseFloat(data.elements[1].value);
+                } else {
+                    var m1 = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var m2 = parseFloat(data.elements[2].value);
+                } else {
+                    var m2 = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var ff = parseFloat(data.elements[3].value);
+                } else {
+                    var ff = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var fw = parseFloat(data.elements[4].value);
+                } else {
+                    var fw = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var angle = parseFloat(data.elements[5].value);
+                } else {
+                    var angle = 'n';
+                }
+                //Actual Calculation Begins
+                if (a != 'n' && m1 != 'n' && m2 != 'n' && angle != 'n') {
+                    k = (a*(m1 + m2) - m1*g + m2*g*Math.sin(pi*angle)) / (m2*g*Math.cos(pi*angle));
+                    document.getElementById('print5').innerHTML = k;
+                    return;
+                }
+                if (a != 'n' && fw != 'n' && m2 != 'n' && angle != 'n') {
+                    k = (a*(m1 + m2) - fw + m2*g*Math.sin(pi*angle)) / (m2*g*Math.cos(pi*angle));
+                    document.getElementById('print5').innerHTML = k;
+                    return;
+                }
+                if (m2 != 'n' && ff != 'n' && angle != 'n') {
+                    k = ff / (m2*g*Math.cos(pi*angle));
+                    document.getElementById('print5').innerHTML = k;
+                    return;
+                }
+                document.getElementById('print5').innerHTML = k;
+            }
+        </script>
+        <h2>Solve for Applied Force</h2>
+        <form action="" id="pulleys_fw">
+            <label for="a5">Acceleration (m/s^2)</label>
+            <input type="text" id="a5"><br>
+            <label for="m_one5">m1 (kg)</label>
+            <input type="text" id='m_one5'><br>
+            <label for="m_two5">m2 (kg)</label>
+            <input type="text" id="m_two5"><br>
+            <label for="ff5">Force of Friction</label>
+            <input type="text" id="ff5"><br>
+            <label for="k5">Coefficient of Friction</label>
+            <input type="text" id="k5"><br>
+            <label for="angle6">Angle of Inclination</label>
+            <input type="text" id="angle6"><br><br>
+        </form>
+        <button onclick="extract_fw()">Calculate</button>
+        <p id="print6"></p>
+        <script>
+            function extract_fw () {
+                var g = 9.81;
+                var pi = 3.14159 / 180;
+                var data = document.getElementById('pulleys_fw');
+                var fw = 'Error: Not Enough Variables';
+                if (data.elements[0].value != 'n') {
+                    var a = parseFloat(data.elements[0].value);
+                } else {
+                    var a = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m1 = parseFloat(data.elements[1].value);
+                } else {
+                    var m1 = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var m2 = parseFloat(data.elements[2].value);
+                } else {
+                    var m2 = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var ff = parseFloat(data.elements[3].value);
+                } else {
+                    var ff = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var k = parseFloat(data.elements[4].value);
+                } else {
+                    var k = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var angle = parseFloat(data.elements[5].value);
+                } else {
+                    var angle = 'n';
+                }
+                //Actual Calculation Begins
+                if (a != 'n' && m2 != 'n' && ff != 'n' && angle != 'n') {
+                    fw = a*(m1 + m2) + m2*g*Math.sin(pi*angle) + ff;
+                    document.getElementById('print6').innerHTML = fw.toString() + ' N';
+                    return;
+                }
+                if (a != 'n' && m2 != 'n' && k != 'n' && angle != 'n') {
+                    ff = m2*g*k*Math.cos(pi*angle);
+                    fw = a*(m1 + m2) + m2*g*Math.sin(pi*angle) + ff;
+                    document.getElementById('print6').innerHTML = fw.toString() + ' N';
+                    return;
+                }
+                document.getElementById('print6').innerHTML = fw;
+            }
+        </script>
+        <h2>Solve for Tension</h2>
+        <form action="" id="pulleys_ft">
+            <label for="a1">Acceleration (m/s^2)</label>
+            <input type="text" id="a1"><br>
+            <label for="m">Mass (kg)</label>
+            <input type="text" id='m'><br>
+            <label for="fw1">Applied Force</label>
+            <input type="text" id="fw1"><br>
+            <label for="as1">Supposed Acceleration (m/s^2)</label>
+            <input type="text" id="as1"><br><br>
+        </form>
+        <button onclick="extract_ft()">Calculate</button>
+        <p id="print7"></p>
+        <script>
+            function extract_ft () {
+                var g = 9.81;
+                var pi = 3.14159 / 180;
+                var data = document.getElementById('pulleys_ft');
+                var ft = 'Error: Not Enough Variables';
+                if (data.elements[0].value != 'n') {
+                    var a = parseFloat(data.elements[0].value);
+                } else {
+                    var a = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m = parseFloat(data.elements[1].value);
+                } else {
+                    var m = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var fw = parseFloat(data.elements[2].value);
+                } else {
+                    var fw = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var as1 = parseFloat(data.elements[3].value);
+                } else {
+                    var as1 = 'n';
+                }
+                //Actual Calculation Begins
+                if (a != 'n' && m != 'n' && as1 != 'n') {
+                    ft = m*as1 - m*a;
+                    document.getElementById('print7').innerHTML = ft.toString() + ' N';
+                    return;
+                }
+                if (a != 'n' && m != 'n' && fw != 'n') {
+                    ft = fw - m*a;
+                    document.getElementById('print7').innerHTML = ft.toString() + ' N';
+                    return;
+                }
+                document.getElementById('print7').innerHTML = ft;
+            }
+        </script>
+    </body>
+</html>

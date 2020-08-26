@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Power Calculator</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <a href="./work_main.html">Back to Work Main Page</a>
+        <h1>Power Calculator</h1>
+        <p style="color: blue;">Simple Power Calculator. Enter 'n' for unkown values.</p>
+        <h2>Solve for Power</h2>
+        <form action="" id="power_p">
+            <label for="w">Work (J)</label>
+            <input type="text" id="w"><br>
+            <label for="f">Force (N)</label>
+            <input type="text" id="f"><br>
+            <label for="v">Velocity (m/s)</label>
+            <input type="text" id="v"><br>
+            <label for="t">Time (s)</label>
+            <input type="text" id="t"><br><br>
+        </form>
+        <button onclick="extract_p()">Calculate</button>
+        <p id="print"></p>
+        <script>
+            function extract_p () {
+                var data = document.getElementById('power_p');
+                var p = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var w = parseFloat(data.elements[0].value);
+                } else {
+                    var w = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var f = parseFloat(data.elements[1].value);
+                } else {
+                    var f = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var v = parseFloat(data.elements[2].value);
+                } else {
+                    var v = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var t = parseFloat(data.elements[3].value);
+                } else {
+                    var t = 'n';
+                }
+                //Actual Calculation Begins
+                if (w != 'n' && t != 'n') {
+                    p = w / t;
+                    document.getElementById('print').innerHTML = p.toString() + ' W';
+                    return;
+                }
+                if (f != 'n' && v != 'n') {
+                    p = f*v;
+                    document.getElementById('print').innerHTML = p.toString() + ' W';
+                    return;
+                }
+                document.getElementById('print').innerHTML = p;
+            }
+        </script>
+        <h2>Solve for Work</h2>
+        <form action="" id="power_w">
+            <label for="p">Power (W)</label>
+            <input type="text" id="p"><br>
+            <label for="f2">Force (N)</label>
+            <input type="text" id="f2"><br>
+            <label for="v2">Velocity (m/s)</label>
+            <input type="text" id="v2"><br>
+            <label for="t2">Time (s)</label>
+            <input type="text" id="t2"><br><br>
+        </form>
+        <button onclick="extract_w()">Calculate</button>
+        <p id="print2"></p>
+        <script>
+            function extract_w () {
+                var data = document.getElementById('power_w');
+                var w = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var p = parseFloat(data.elements[0].value);
+                } else {
+                    var p = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var f = parseFloat(data.elements[1].value);
+                } else {
+                    var f = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var v = parseFloat(data.elements[2].value);
+                } else {
+                    var v = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var t = parseFloat(data.elements[3].value);
+                } else {
+                    var t = 'n';
+                }
+                //Actual Calculation Begins
+                if (p != 'n' && t != 'n') {
+                    w = p*t;
+                    document.getElementById('print2').innerHTML = w.toString() + ' J';
+                    return;
+                }
+                if (f != 'n' && v != 'n' && t != 'n') {
+                    w = f*v*t;
+                    document.getElementById('print2').innerHTML = w.toString() + ' J';
+                    return;
+                }
+                document.getElementById('print2').innerHTML = w;
+            }
+        </script>
+        <h2>Solve for Force</h2>
+        <form action="" id="power_f">
+            <label for="p2">Power (W)</label>
+            <input type="text" id="p2"><br>
+            <label for="w2">Work (J)</label>
+            <input type="text" id="w2"><br>
+            <label for="v3">Velocity (m/s)</label>
+            <input type="text" id="v3"><br>
+            <label for="t3">Time (s)</label>
+            <input type="text" id="t3"><br><br>
+        </form>
+        <button onclick="extract_f()">Calculate</button>
+        <p id="print3"></p>
+        <script>
+            function extract_f () {
+                var data = document.getElementById('power_f');
+                var f = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var p = parseFloat(data.elements[0].value);
+                } else {
+                    var p = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var w = parseFloat(data.elements[1].value);
+                } else {
+                    var w = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var v = parseFloat(data.elements[2].value);
+                } else {
+                    var v = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var t = parseFloat(data.elements[3].value);
+                } else {
+                    var t = 'n';
+                }
+                //Actual Calculation Begins
+                if (p != 'n' && v != 'n') {
+                    f = p/v;
+                    document.getElementById('print3').innerHTML = f.toString() + ' N';
+                    return;
+                }
+                if (w != 'n' && v != 'n' && t != 'n') {
+                    f = w/(v*t);
+                    document.getElementById('print3').innerHTML = f.toString() + ' N';
+                    return;
+                }
+                document.getElementById('print3').innerHTML = f;
+            }
+        </script>
+        <h2>Solve for Velocity</h2>
+        <form action="" id="power_v">
+            <label for="p3">Power (W)</label>
+            <input type="text" id="p3"><br>
+            <label for="w3">Work (J)</label>
+            <input type="text" id="w3"><br>
+            <label for="f3">Force (N)</label>
+            <input type="text" id="f3"><br>
+            <label for="t4">Time (s)</label>
+            <input type="text" id="t4"><br><br>
+        </form>
+        <button onclick="extract_v()">Calculate</button>
+        <p id="print4"></p>
+        <script>
+            function extract_v () {
+                var data = document.getElementById('power_v');
+                var v = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var p = parseFloat(data.elements[0].value);
+                } else {
+                    var p = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var w = parseFloat(data.elements[1].value);
+                } else {
+                    var w = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var f = parseFloat(data.elements[2].value);
+                } else {
+                    var f = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var t = parseFloat(data.elements[3].value);
+                } else {
+                    var t = 'n';
+                }
+                //Actual Calculation Begins
+                if (p != 'n' && f != 'n') {
+                    v = p/f;
+                    document.getElementById('print4').innerHTML = v.toString() + ' m/s';
+                    return;
+                }
+                if (w != 'n' && f != 'n' && t != 'n') {
+                    v = w/(f*t);
+                    document.getElementById('print4').innerHTML = v.toString() + ' m/s';
+                    return;
+                }
+                document.getElementById('print4').innerHTML = v;
+            }
+        </script>
+        <h2>Solve for Time</h2>
+        <form action="" id="power_t">
+            <label for="p4">Power (W)</label>
+            <input type="text" id="p4"><br>
+            <label for="w4">Work (J)</label>
+            <input type="text" id="w4"><br>
+            <label for="f4">Force (N)</label>
+            <input type="text" id="f4"><br>
+            <label for="v4">Velocity (m/s)</label>
+            <input type="text" id="v4"><br><br>
+        </form>
+        <button onclick="extract_t()">Calculate</button>
+        <p id="print5"></p>
+        <script>
+            function extract_t () {
+                var data = document.getElementById('power_t');
+                var t = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var p = parseFloat(data.elements[0].value);
+                } else {
+                    var p = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var w = parseFloat(data.elements[1].value);
+                } else {
+                    var w = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var f = parseFloat(data.elements[2].value);
+                } else {
+                    var f = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var v = parseFloat(data.elements[3].value);
+                } else {
+                    var v = 'n';
+                }
+                //Actual Calculation Begins
+                if (p != 'n' && w != 'n') {
+                    t = w/p;
+                    document.getElementById('print5').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                if (w != 'n' && f != 'n' && v != 'n') {
+                    t = w/(f*v);
+                    document.getElementById('print5').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                document.getElementById('print5').innerHTML = t;
+            }
+        </script>
+    </body>
+</html>

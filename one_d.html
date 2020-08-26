@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>1D Motion Calculator</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <a href="./kinematics.html">Back to Kinematics</a>
+        <h1>1 Dimensional Motion Calculator</h1>
+        <p style="color: blue;">Welcome to the 1D Motion Calculator! Make sure to enter an 'n' for any values that you dont know.</p>
+        <h2>Solve for Final Velocity</h2>
+        <form action="" id="one_d_final_v">
+            <label for="vi">Initial Velocity (m/s)</label>
+            <input type="text" id="vi"><br>
+            <label for="a">Acceleration (m/s^2)</label>
+            <input type="text" id='a'><br>
+            <label for="t">Time (s)</label>
+            <input type="text" id="t"><br>
+            <label for="d">Distance (m)</label>
+            <input type="text" id="d"><br><br>
+        </form>
+        <button onclick="extract_vf()">Calculate</button>
+        <p id='print'></p>
+        <script>
+            function extract_vf(){
+                var data = document.getElementById('one_d_final_v');
+                var vf = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var vi = parseFloat(data.elements[0].value);
+                } else {
+                    var vi = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var a = parseFloat(data.elements[1].value);
+                } else {
+                    var a = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var t = parseFloat(data.elements[2].value);
+                } else {
+                    var t = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var d = parseFloat(data.elements[3].value);
+                } else {
+                    var d = 'n';
+                }
+                //Actual Calculation Begins
+                if (vi != 'n' && a != 'n' && t != 'n') {
+                    vf = vi + a*t;
+                    document.getElementById('print').innerHTML = vf.toString() + ' m/s';
+                    return;
+                }
+                if (vi != 'n' && a != 'n' && d != 'n') {
+                    vf = Math.sqrt(vi*vi + 2*a*d);
+                    document.getElementById('print').innerHTML = vf.toString() + ' m/s';
+                    return;
+                }
+                if (vi != 'n' && t != 'n' && d != 'n') {
+                    vf = 2*d/t - vi;
+                    document.getElementById('print').innerHTML = vf.toString() + ' m/s';
+                    return;
+                }
+                if (d != 'n' && a != 'n' && t != 'n') {
+                    vf = (d + 0.5*a*t*t)/t;
+                    document.getElementById('print').innerHTML = vf.toString() + ' m/s';
+                    return;
+                }
+                document.getElementById('print').innerHTML = vf;
+            }
+        </script>
+        <h2>Solve for Initial Velocity</h2>
+        <form action="" id="one_d_initial_v">
+            <label for="vf">Final Velocity (m/s)</label>
+            <input type="text" id="vf"><br>
+            <label for="a2">Acceleration (m/s^2)</label>
+            <input type="text" id='a2'><br>
+            <label for="t2">Time (s)</label>
+            <input type="text" id="t2"><br>
+            <label for="d2">Distance (m)</label>
+            <input type="text" id="d2"><br><br>
+        </form>
+        <button onclick="extract_vi()">Calculate</button>
+        <p id='print2'></p>
+        <script>
+            function extract_vi(){
+                var data = document.getElementById('one_d_initial_v');
+                var vi = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var vf = parseFloat(data.elements[0].value);
+                } else {
+                    var vf = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var a = parseFloat(data.elements[1].value);
+                } else {
+                    var a = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var t = parseFloat(data.elements[2].value);
+                } else {
+                    var t = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var d = parseFloat(data.elements[3].value);
+                } else {
+                    var d = 'n';
+                }
+                //Actual Calculation Begins
+                if (vf != 'n' && a != 'n' && t != 'n'){
+                    vi = vf - a*t;
+                    document.getElementById('print2').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
+                if (vf != 'n' && a != 'n' && d != 'n') {
+                    vi = Math.sqrt(vf*vf - 2*a*d);
+                    document.getElementById('print2').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
+                if (vf != 'n' && t != 'n' && d != 'n') {
+                    vi = 2*d/t - vf;
+                    document.getElementById('print2').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
+                if (a != 'n' && t != 'n' && d != 'n') {
+                    vi = (d - 0.5*a*t*t)/t;
+                    document.getElementById('print2').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
+                document.getElementById('print2').innerHTML = vi;
+            }
+        </script>
+        <h2>Solve for Acceleration</h2>
+        <form action="" id="one_d_a">
+            <label for="vf2">Final Velocity (m/s)</label>
+            <input type="text" id="vf2"><br>
+            <label for="vi2">Initial Velocity (m/s)</label>
+            <input type="text" id='vi2'><br>
+            <label for="t3">Time (s)</label>
+            <input type="text" id="t3"><br>
+            <label for="d3">Distance (m)</label>
+            <input type="text" id="d3"><br><br>
+        </form>
+        <button onclick="extract_a()">Calculate</button>
+        <p id='print3'></p>
+        <script>
+            function extract_a() {
+                var data = document.getElementById('one_d_a');
+                var a = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var vf = parseFloat(data.elements[0].value);
+                } else {
+                    var vf = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var vi = parseFloat(data.elements[1].value);
+                } else {
+                    var vi = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var t = parseFloat(data.elements[2].value);
+                } else {
+                    var t = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var d = parseFloat(data.elements[3].value);
+                } else {
+                    var d = 'n';
+                }
+                //Actual Calculation Begins
+                if (vf != 'n' && vi != 'n' && t != 'n') {
+                    a = (vf - vi)/t;
+                    document.getElementById('print3').innerHTML = a.toString() + ' m/s^2';
+                    return;
+                }
+                if (vf != 'n' && vi != 'n' && d != 'n') {
+                    a = (vf*vf - vi*vi)/(2*d);
+                    document.getElementById('print3').innerHTML = a.toString() + ' m/s^2';
+                    return;
+                }
+                if (vi != 'n' && t != 'n' && d != 'n') {
+                    a = (d - vi*t)/(2*t*t);
+                    document.getElementById('print3').innerHTML = a.toString() + ' m/s^2';
+                    return;
+                }
+                if (vf != 'n' && d != 'n' && t != 'n') {
+                    a = 2*(vf*t - d)/(t*t);
+                    document.getElementById('print3').innerHTML = a.toString() + ' m/s^2';
+                    return;
+                }
+                document.getElementById('print3').innerHTML = a;
+            }
+        </script>
+        <h2>Solve for Time</h2>
+        <form action="" id="one_d_t">
+            <label for="vf3">Final Velocity (m/s)</label>
+            <input type="text" id="vf3"><br>
+            <label for="vi3">Initial Velocity (m/s)</label>
+            <input type="text" id='vi3'><br>
+            <label for="a3">Acceleration (m/s^2)</label>
+            <input type="text" id="a3"><br>
+            <label for="d4">Distance (m)</label>
+            <input type="text" id="d4"><br><br>
+        </form>
+        <button onclick="extract_t()">Calculate</button>
+        <p id='print4'></p>
+        <script>
+            function extract_t() {
+                var data = document.getElementById('one_d_t');
+                var t = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var vf = parseFloat(data.elements[0].value);
+                } else {
+                    var vf = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var vi = parseFloat(data.elements[1].value);
+                } else {
+                    var vi = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var a = parseFloat(data.elements[2].value);
+                } else {
+                    var a = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var d = parseFloat(data.elements[3].value);
+                } else {
+                    var d = 'n';
+                }
+                //Actual Calculation Begins
+                if (vf != 'n' && vi != 'n' && a != 'n') {
+                    t = (vf - vi)/a;
+                    document.getElementById('print4').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                if (vf != 'n' && vi != 'n' && d != 'n') {
+                    t = (2*d)/(vf + vi);
+                    document.getElementById('print4').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                if (vi != 'n' && a != 'n' && d != 'n') {
+                    t = (-vi + Math.sqrt(vi*vi + 2*a*d))/a;
+                    if (t < 0) {
+                        t = (-vi - Math.sqrt(vi*vi + 2*a*d))/a;
+                    }
+                    document.getElementById('print4').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                if (vf != 'n' && a != 'n' && d != 'n') {
+                    t = (-vf + Math.sqrt(vf*vf - 2*a*d))/a;
+                    if (t < 0) {
+                        t = (-vf - Math.sqrt(vf*vf - 2*a*d))/a;
+                    }
+                    document.getElementById('print4').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                document.getElementById('print4').innerHTML = t;
+            }
+        </script>
+        <h2>Solve for Distance</h2>
+        <form action="" id="one_d_d">
+            <label for="vf4">Final Velocity (m/s)</label>
+            <input type="text" id="vf4"><br>
+            <label for="vi4">Initial Velocity (m/s)</label>
+            <input type="text" id='vi4'><br>
+            <label for="a4">Acceleration (m/s^2)</label>
+            <input type="text" id="a4"><br>
+            <label for="t4">Time (s)</label>
+            <input type="text" id="t4"><br><br>
+        </form>
+        <button onclick="extract_d()">Calculate</button>
+        <p id='print5'></p>
+        <script>
+            function extract_d() {
+                var data = document.getElementById('one_d_d');
+                var d = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var vf = parseFloat(data.elements[0].value);
+                } else {
+                    var vf = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var vi = parseFloat(data.elements[1].value);
+                } else {
+                    var vi = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var a = parseFloat(data.elements[2].value);
+                } else {
+                    var a = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var t = parseFloat(data.elements[3].value);
+                } else {
+                    var t = 'n';
+                }
+                //Actual Calculation Begins
+                if (vf != 'n' && vi != 'n' && a != 'n') {
+                    d = (vf*vf - vi*vi)/(2*a);
+                    document.getElementById('print5').innerHTML = d.toString() + ' m';
+                    return;
+                }
+                if (vf != 'n' && vi != 'n' && t != 'n') {
+                    d = ((vf + vi)/2)*t;
+                    document.getElementById('print5').innerHTML = d.toString() + ' m';
+                    return;
+                }
+                if (vi != 'n' && a != 'n' && t != 'n') {
+                    d = vi*t + 0.5*a*t*t;
+                    document.getElementById('print5').innerHTML = d.toString() + ' m';
+                    return;
+                }
+                if (vf != 'n' && a != 'n' && t != 'n') {
+                    d = vf*t - 0.5*a*t*t;
+                    document.getElementById('print5').innerHTML = d.toString() + ' m';
+                    return;
+                }
+                document.getElementById('print5').innerHTML = d;
+            }
+        </script>
+    </body>
+</html>

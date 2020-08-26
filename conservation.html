@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Conservation of Energy Calculator</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <a href="./work_main.html">Back to Work Main Page</a>
+        <h1>Conservation of Energy Calculator</h1>
+        <p style="color: blue;">Well, you already know the drill.</p>
+        <h2>Solve for Initial Kinetic Energy</h2>
+        <form action="" id="conservative_ki">
+            <label for="vi">Initial Velocity (m/s)</label>
+            <input type="text" id="vi"><br>
+            <label for="m">Mass (kg)</label>
+            <input type="text" id="m"><br>
+            <label for="ui">Initial Potential Energy (J)</label>
+            <input type="text" id="ui"><br>
+            <label for="hi">Initial Height (m)</label>
+            <input type="text" id="hi"><br>
+            <label for="f">Nonconservative Force (N)</label>
+            <input type="text" id="f"><br>
+            <label for="d">Distance (m)</label>
+            <input type="text" id="d"><br>
+            <label for="kf">Final Kinetic Energy (J)</label>
+            <input type="text" id="kf"><br>
+            <label for="vf">Final Velocity (m/s)</label>
+            <input type="text" id="vf"><br>
+            <label for="uf">Final Potential Energy (J)</label>
+            <input type="text" id="uf"><br>
+            <label for="hf">Final Height (m)</label>
+            <input type="text" id="hf"><br><br>
+        </form>
+        <button onclick="extract_ki()">Calculate</button>
+        <p id="print"></p>
+        <script>
+            function extract_ki () {
+                var g = 9.81;
+                var data = document.getElementById('conservative_ki');
+                var ki = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var vi = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var vi = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var ui = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var ui = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var hi = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var hi = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var f = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var f = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var d = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var kf = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var kf = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var vf = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var vf = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var uf = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var uf = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var hf = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var hf = 'n';
+                }
+                //Actual Calculation Begins
+                if (ui != 'n' && hi != 'n' && f != 0 && d != 0) {
+                    m = ui / (g*hi);
+                }
+                if (ui != 'n' && m != 'n') {
+                    hi = ui / (g*m);
+                }
+                if (m != 'n' && hi != 'n') {
+                    ui = m*g*hi;
+                }
+                if (kf != 'n' && vf != n && f != 0 && d != 0) {
+                    m = 2*kf / (vf*vf);
+                }
+                if (kf != 'n' && m != 'n') {
+                    vf = Math.sqrt(2*kf / m);
+                }
+                if (m != 'n' && vf != 'n') {
+                    kf = 0.5*m*vf*vf;
+                }
+                if (uf != 'n' && m != 'n') {
+                    hf = uf / (m*g);
+                }
+                if (uf != 'n' && hf != 'n' && f != 0 && d != 0) {
+                    m = uf / (g*hf);
+                }
+                if (m != 'n' && hf != 'n') {
+                    uf = m*g*hf;
+                }
+                if (vi != 'n' && m != 'n') {
+                    ki = 0.5*m*vi*vi;
+                    document.getElementById('print').innerHTML = ki.toString() + ' J';
+                    return;
+                }
+                if (ui != 'n' && f != 'n' && d != 'n' && kf != 'n' && uf != 'n') {
+                    ki = kf + uf + f*d - ui;
+                    document.getElementById('print').innerHTML = ki.toString() + ' J';
+                    return;
+                }
+                if (m != 'n' && vf != 'n' && hi != 'n' && hf != 'n' && f != 'n' && d != 'n') {
+                    ki = 0.5*m*vf*vf + m*g*hf + f*d - m*g*hi;
+                    document.getElementById('print').innerHTML = ki.toString() + ' J';
+                    return;
+                }
+                document.getElementById('print').innerHTML = ki;
+            }
+        </script>
+        <h2>Solve for Initial Velocity</h2>
+        <form action="" id="conservative_vi">
+            <label for="ki">Initial Kinetic Energy (J)</label>
+            <input type="text" id="ki"><br>
+            <label for="m2">Mass (kg)</label>
+            <input type="text" id="m2"><br>
+            <label for="ui2">Initial Potential Energy (J)</label>
+            <input type="text" id="ui2"><br>
+            <label for="hi2">Initial Height (m)</label>
+            <input type="text" id="hi2"><br>
+            <label for="f2">Nonconservative Force (N)</label>
+            <input type="text" id="f2"><br>
+            <label for="d2">Distance (m)</label>
+            <input type="text" id="d2"><br>
+            <label for="kf2">Final Kinetic Energy (J)</label>
+            <input type="text" id="kf2"><br>
+            <label for="vf2">Final Velocity (m/s)</label>
+            <input type="text" id="vf2"><br>
+            <label for="uf2">Final Potential Energy (J)</label>
+            <input type="text" id="uf2"><br>
+            <label for="hf2">Final Height (m)</label>
+            <input type="text" id="hf2"><br><br>
+        </form>
+        <button onclick="extract_vi()">Calculate</button>
+        <p id="print2"></p>
+        <script>
+            function extract_vi () {
+                var g = 9.81;
+                var data = document.getElementById('conservative_vi');
+                var vi = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var ki = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var ki = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var ui = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var ui = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var hi = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var hi = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var f = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var f = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var d = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var kf = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var kf = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var vf = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var vf = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var uf = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var uf = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var hf = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var hf = 'n';
+                }
+                //Actual Calculation Begins
+                if (ui != 'n' && hi != 'n' && f != 0 && d != 0) {
+                    m = ui / (g*hi);
+                }
+                if (ui != 'n' && m != 'n') {
+                    hi = ui / (g*m);
+                }
+                if (m != 'n' && hi != 'n') {
+                    ui = m*g*hi;
+                }
+                if (kf != 'n' && vf != n && f != 0 && d != 0) {
+                    m = 2*kf / (vf*vf);
+                }
+                if (kf != 'n' && m != 'n') {
+                    vf = Math.sqrt(2*kf / m);
+                }
+                if (m != 'n' && vf != 'n') {
+                    kf = 0.5*m*vf*vf;
+                }
+                if (uf != 'n' && m != 'n') {
+                    hf = uf / (m*g);
+                }
+                if (uf != 'n' && hf != 'n' && f != 0 && d != 0) {
+                    m = uf / (g*hf);
+                }
+                if (m != 'n' && hf != 'n') {
+                    uf = m*g*hf
+                }
+                if (m != 'n' && ki != 'n') {
+                    vi = Math.sqrt(2*ki / m);
+                    document.getElementById('print2').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
+                if (m != 'n' && ui != 'n' && f != 'n' && d != 'n' && kf != 'n' && uf != 'n') {
+                    ki = kf + uf + f*d - ui;
+                    vi = Math.sqrt(2*ki / m);
+                    document.getElementById('print2').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
+                if (m != 'n' && hi != 'n' && vf != 'n' && hf != 'n' && f != 'n' && d != 'n') {
+                    ki = 0.5*m*vf*vf + m*g*hf + f*d - m*g*hi;
+                    vi = Math.sqrt(2*ki / m);
+                    document.getElementById('print2').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
+                if (hi != 'n' && vf != 'n' && hf != 'n' && f == 0 && d == 0) {
+                    vi = Math.sqrt(2 * (0.5*vf*vf + g*hf - h*hi));
+                    document.getElementById('print2').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
+                document.getElementById('print2').innerHTML = vi;
+            }
+        </script>
+        <h2>Solve for Initial Potential Energy</h2>
+        <form action="" id="conservative_ui">
+            <label for="ki2">Initial Kinetic Energy (J)</label>
+            <input type="text" id="ki2"><br>
+            <label for="m3">Mass (kg)</label>
+            <input type="text" id="m3"><br>
+            <label for="ui2">Initial Velocity (m/s)</label>
+            <input type="text" id="ui2"><br>
+            <label for="hi3">Initial Height (m)</label>
+            <input type="text" id="hi3"><br>
+            <label for="f3">Nonconservative Force (N)</label>
+            <input type="text" id="f3"><br>
+            <label for="d3">Distance (m)</label>
+            <input type="text" id="d3"><br>
+            <label for="kf3">Final Kinetic Energy (J)</label>
+            <input type="text" id="kf3"><br>
+            <label for="vf3">Final Velocity (m/s)</label>
+            <input type="text" id="vf3"><br>
+            <label for="uf3">Final Potential Energy (J)</label>
+            <input type="text" id="uf3"><br>
+            <label for="hf3">Final Height (m)</label>
+            <input type="text" id="hf3"><br><br>
+        </form>
+        <button onclick="extract_ui()">Calculate</button>
+        <p id="print3"></p>
+        <script>
+            function extract_ui () {
+                var g = 9.81;
+                var data = document.getElementById('conservative_ui');
+                var ui = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var ki = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var ki = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var vi = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var vi = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var hi = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var hi = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var f = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var f = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var d = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var kf = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var kf = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var vf = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var vf = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var uf = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var uf = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var hf = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var hf = 'n';
+                }
+                //Actual Calculation Begins
+                if (ki != 'n' && vi != 'n' && f != 0 && d != 0) {
+                    m = 2 * ki / (vi*vi);
+                }
+                if (ki != 'n' && m != 'n') {
+                    vi = Math.sqrt(2 * ki / m);
+                }
+                if (m != 'n' && vi != 'n') {
+                    ki = 0.5*m*vi*vi;
+                }
+                if (kf != 'n' && vf != n && f != 0 && d != 0) {
+                    m = 2*kf / (vf*vf);
+                }
+                if (kf != 'n' && m != 'n') {
+                    vf = Math.sqrt(2*kf / m);
+                }
+                if (m != 'n' && vf != 'n') {
+                    kf = 0.5*m*vf*vf;
+                }
+                if (uf != 'n' && m != 'n') {
+                    hf = uf / (m*g);
+                }
+                if (uf != 'n' && hf != 'n') {
+                    m = uf / (g*hf);
+                }
+                if (m != 'n' && hf != 'n' && f != 0 && d != 0) {
+                    uf = m*g*hf
+                }
+                if (m != 'n' && hi != 'n') {
+                    ui = m*g*hi;
+                    document.getElementById('print3').innerHTML = ui.toString() + ' J';
+                    return;
+                }
+                if (ki != 'n' && f != 'n' && d != 'n' && kf != 'n' && uf != 'n') {
+                    ui = kf + uf + f*d - ki;
+                    document.getElementById('print3').innerHTML = ui.toString() + ' J';
+                    return;
+                }
+                if (m != 'n' && vi != 'n' && f != 'n' && d != 'n' && vf != 'n' && hf != 'n') {
+                    ui = 0.5*m*vf*vf + m*g*hf + f*d - 0.5*m*vi*vi;
+                    document.getElementById('print3').innerHTML = ui.toString() + ' J';
+                    return;
+                }
+                document.getElementById('print3').innerHTML = ui;
+            }
+        </script>
+        <h2>Solve for Initial Height</h2>
+        <form action="" id="conservative_hi">
+            <label for="ki3">Initial Kinetic Energy (J)</label>
+            <input type="text" id="ki3"><br>
+            <label for="m4">Mass (kg)</label>
+            <input type="text" id="m4"><br>
+            <label for="vi3">Initial Velocity (m/s)</label>
+            <input type="text" id="vi3"><br>
+            <label for="ui3">Initial Potential Energy (J)</label>
+            <input type="text" id="ui3"><br>
+            <label for="f4">Nonconservative Force (N)</label>
+            <input type="text" id="f4"><br>
+            <label for="d4">Distance (m)</label>
+            <input type="text" id="d4"><br>
+            <label for="kf4">Final Kinetic Energy (J)</label>
+            <input type="text" id="kf4"><br>
+            <label for="vf4">Final Velocity (m/s)</label>
+            <input type="text" id="vf4"><br>
+            <label for="uf4">Final Potential Energy (J)</label>
+            <input type="text" id="uf4"><br>
+            <label for="hf4">Final Height (m)</label>
+            <input type="text" id="hf4"><br><br>
+         </form>
+         <button onclick="extract_hi()">Calculate</button>
+         <p id="print4"></p>
+         <script>
+             function extract_hi () {
+                 var g = 9.81;
+                 var data = document.getElementById('conservative_hi');
+                 var hi = 'Error: Not Enough Variables Defined';
+                 if (data.elements[0].value != 'n') {
+                     var ki = parseFloat(data.elements[0].value);
+                 }
+                 else {
+                     var ki = 'n';
+                 }
+                 if (data.elements[1].value != 'n') {
+                     var m = parseFloat(data.elements[1].value);
+                 }
+                 else {
+                     var m = 'n';
+                 }
+                 if (data.elements[2].value != 'n') {
+                     var vi = parseFloat(data.elements[2].value);
+                 }
+                 else {
+                     var vi = 'n';
+                 }
+                 if (data.elements[3].value != 'n') {
+                     var ui = parseFloat(data.elements[3].value);
+                 }
+                 else {
+                     var ui = 'n';
+                 }
+                 if (data.elements[4].value != 'n') {
+                     var f = parseFloat(data.elements[4].value);
+                 }
+                 else {
+                     var f = 'n';
+                 }
+                 if (data.elements[5].value != 'n') {
+                     var d = parseFloat(data.elements[5].value);
+                 }
+                 else {
+                     var d = 'n';
+                 }
+                 if (data.elements[6].value != 'n') {
+                     var kf = parseFloat(data.elements[6].value);
+                 }
+                 else {
+                     var kf = 'n';
+                 }
+                 if (data.elements[7].value != 'n') {
+                     var vf = parseFloat(data.elements[7].value);
+                 }
+                 else {
+                     var vf = 'n';
+                 }
+                 if (data.elements[8].value != 'n') {
+                     var uf = parseFloat(data.elements[8].value);
+                 }
+                 else {
+                     var uf = 'n';
+                 }
+                 if (data.elements[9].value != 'n') {
+                     var hf = parseFloat(data.elements[9].value);
+                 }
+                 else {
+                     var hf = 'n';
+                 }
+                 //Actual Calculation Begins
+                 if (ki != 'n' && vi != 'n' && f != 0 && d != 0) {
+                     m = 2 * ki / (vi*vi);
+                 }
+                 if (ki != 'n' && m != 'n') {
+                     vi = Math.sqrt(2 * ki / m);
+                 }
+                 if (m != 'n' && vi != 'n') {
+                     ki = 0.5*m*vi*vi;
+                 }
+                 if (kf != 'n' && vf != n && f != 0 && d != 0) {
+                     m = 2*kf / (vf*vf);
+                 }
+                 if (kf != 'n' && m != 'n') {
+                     vf = Math.sqrt(2*kf / m);
+                 }
+                 if (m != 'n' && vf != 'n') {
+                     kf = 0.5*m*vf*vf;
+                 }
+                 if (uf != 'n' && m != 'n') {
+                     hf = uf / (m*g);
+                 }
+                 if (uf != 'n' && hf != 'n' && f != 0 && d != 0) {
+                     m = uf / (g*hf);
+                 }
+                 if (m != 'n' && hf != 'n') {
+                     uf = m*g*hf
+                 }
+                 if (m != 'n' && ui != 'n') {
+                     hi = ui / (m*g);
+                     document.getElementById('print4').innerHTML = hi.toString() + ' m';
+                     return;
+                 }
+                 if (m != 'n' && ki != 'n' && f != 'n' && d != 'n' && kf != 'n' && uf != 'n') {
+                     ui = kf + uf + f*d - ki;
+                     hi = ui / (m*g);
+                     document.getElementById('print4').innerHTML = hi.toString() + ' m';
+                     return;
+                 }
+                 if (m != 'n' && vi != 'n' && f != 'n' && d != 'n' && vf != 'n' && hf != 'n') {
+                     ui = 0.5*m*vf*vf + m*g*hf + f*d - 0.5*m*vi*vi;
+                     hi = ui / (m*g);
+                     document.getElementById('print4').innerHTML = hi.toString() + ' m';
+                     return;
+                 }
+                 if (vi != 'n' && f == 0 && d == 0 && vf != 'n' && hf != 'n') {
+                     ui = (0.5*vf*vf + g*hf -0.5*vi*vi)/g;
+                     document.getElementById('print4').innerHTML = hi.toString() + ' m';
+                     return;
+                 }
+                 document.getElementById('print4').innerHTML = hi;
+             }
+        </script> 
+        <h2>Solve for Nonconservative Force</h2>
+        <form action="" id="conservative_f">
+            <label for="ki4">Initial Kinetic Energy (J)</label>
+            <input type="text" id="ki4"><br>
+            <label for="m5">Mass (kg)</label>
+            <input type="text" id="m5"><br>
+            <label for="vi4">Initial Velocity (m/s)</label>
+            <input type="text" id="vi4"><br>
+            <label for="ui4">Initial Potential Energy (J)</label>
+            <input type="text" id="ui4"><br>
+            <label for="hi4">Initial Height (m)</label>
+            <input type="text" id="hi4"><br>
+            <label for="d5">Distance (m)</label>
+            <input type="text" id="d5"><br>
+            <label for="kf5">Final Kinetic Energy (J)</label>
+            <input type="text" id="kf5"><br>
+            <label for="vf5">Final Velocity (m/s)</label>
+            <input type="text" id="vf5"><br>
+            <label for="uf5">Final Potential Energy (J)</label>
+            <input type="text" id="uf5"><br>
+            <label for="hf5">Final Height (m)</label>
+            <input type="text" id="hf5"><br><br>
+        </form>
+        <button onclick="extract_f()">Calculate</button>
+        <p id="print5"></p>
+        <script>
+            function extract_f () {
+                var g = 9.81;
+                var data = document.getElementById('conservative_f');
+                var f = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var ki = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var ki = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var vi = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var vi = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var ui = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var ui = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var hi = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var hi = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var d = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var kf = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var kf = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var vf = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var vf = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var uf = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var uf = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var hf = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var hf = 'n';
+                }
+                 //Actual Calculation Begins
+                if (ki != 'n' && vi != 'n' && f != 0 && d != 0) {
+                    m = 2 * ki / (vi*vi);
+                }
+                if (ki != 'n' && m != 'n') {
+                    vi = Math.sqrt(2 * ki / m);
+                }
+                if (m != 'n' && vi != 'n') {
+                    ki = 0.5*m*vi*vi;
+                }
+                if (ui != 'n' && hi != 'n' && f != 0 && d != 0) {
+                    m = ui / (g*hi);
+                }
+                if (ui != 'n' && m != 'n') {
+                    hi = ui / (g*m);
+                }
+                if (m != 'n' && hi != 'n') {
+                    ui = m*g*hi;
+                }
+                if (kf != 'n' && vf != n && f != 0 && d != 0) {
+                    m = 2*kf / (vf*vf);
+                }
+                if (kf != 'n' && m != 'n') {
+                    vf = Math.sqrt(2*kf / m);
+                }
+                if (m != 'n' && vf != 'n') {
+                    kf = 0.5*m*vf*vf;
+                }
+                if (uf != 'n' && m != 'n') {
+                    hf = uf / (m*g);
+                }
+                if (uf != 'n' && hf != 'n' && f != 0 && d != 0) {
+                    m = uf / (g*hf);
+                }
+                if (m != 'n' && hf != 'n') {
+                    uf = m*g*hf;
+                }
+                if (ki != 'n' && ui != 'n' && d != 'n' && kf != 'n' && uf != 'n') {
+                    f = ki + ui - kf - uf;
+                    f = f / d;
+                    document.getElementById('print5').innerHTML = f.toString() + ' N';
+                    return;
+                }
+                if (m != 'n' && vi != 'n' && hi != 'n' && d != 'n' && vf != 'n' && hf != 'n') {
+                    f = 0.5*m*vi*vi + m*g*hi - 0.5*m*vf*vf - m*g*hf;
+                    f = f / d;
+                    document.getElementById('print5').innerHTML = f.toString() + ' N';
+                    return;
+                }
+                document.getElementById('print5').innerHTML = f;
+            }
+        </script>
+        <h2>Solve for Distance</h2>
+        <form action="" id="conservative_d">
+            <label for="ki5">Initial Kinetic Energy (J)</label>
+            <input type="text" id="ki5"><br>
+            <label for="m6">Mass (kg)</label>
+            <input type="text" id="m6"><br>
+            <label for="vi5">Initial Velocity (m/s)</label>
+            <input type="text" id="vi5"><br>
+            <label for="ui5">Initial Potential Energy (J)</label>
+            <input type="text" id="ui5"><br>
+            <label for="hi5">Initial Height (m)</label>
+            <input type="text" id="hi5"><br>
+            <label for="f5">Nonconservative Force (J)</label>
+            <input type="text" id="f5"><br>
+            <label for="kf6">Final Kinetic Energy (J)</label>
+            <input type="text" id="kf6"><br>
+            <label for="vf6">Final Velocity (m/s)</label>
+            <input type="text" id="vf6"><br>
+            <label for="uf6">Final Potential Energy (J)</label>
+            <input type="text" id="uf6"><br>
+            <label for="hf6">Final Height (m)</label>
+            <input type="text" id="hf6"><br><br>
+        </form>
+        <button onclick="extract_d()">Calculate</button>
+        <p id="print6"></p>
+        <script>
+            function extract_d () {
+                var g = 9.81;
+                var data = document.getElementById('conservative_d');
+                var d = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var ki = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var ki = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var vi = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var vi = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var ui = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var ui = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var hi = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var hi = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var f = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var f = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var kf = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var kf = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var vf = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var vf = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var uf = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var uf = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var hf = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var hf = 'n';
+                }
+                 //Actual Calculation Begins
+                if (ki != 'n' && vi != 'n' && f != 0 && d != 0) {
+                    m = 2 * ki / (vi*vi);
+                }
+                if (ki != 'n' && m != 'n') {
+                    vi = Math.sqrt(2 * ki / m);
+                }
+                if (m != 'n' && vi != 'n') {
+                    ki = 0.5*m*vi*vi;
+                }
+                if (ui != 'n' && hi != 'n' && f != 0 && d != 0) {
+                    m = ui / (g*hi);
+                }
+                if (ui != 'n' && m != 'n') {
+                    hi = ui / (g*m);
+                }
+                if (m != 'n' && hi != 'n') {
+                    ui = m*g*hi;
+                }
+                if (kf != 'n' && vf != n && f != 0 && d != 0) {
+                    m = 2*kf / (vf*vf);
+                }
+                if (kf != 'n' && m != 'n') {
+                    vf = Math.sqrt(2*kf / m);
+                }
+                if (m != 'n' && vf != 'n') {
+                    kf = 0.5*m*vf*vf;
+                }
+                if (uf != 'n' && m != 'n') {
+                    hf = uf / (m*g);
+                }
+                if (uf != 'n' && hf != 'n') {
+                    m = uf / (g*hf);
+                }
+                if (m != 'n' && hf != 'n') {
+                    uf = m*g*hf;
+                }
+                if (ki != 'n' && ui != 'n' && f != 'n' && kf != 'n' && uf != 'n') {
+                    d = ki + ui - kf - uf;
+                    d = d / f;
+                    document.getElementById('print6').innerHTML = d.toString() + ' m';
+                    return;
+                }
+                if (m != 'n' && vi != 'n' && hi != 'n' && f != 'n' && vf != 'n' && hf != 'n') {
+                    d = 0.5*m*vi*vi + m*g*hi - 0.5*m*vf*vf - m*g*hf;
+                    d = d / f;
+                    document.getElementById('print6').innerHTML = d.toString() + ' m';
+                    return;
+                }
+                document.getElementById('print6').innerHTML = d;
+            }
+        </script>
+        <h2>Solve for Final Kinetic Energy</h2>
+        <form action="" id="conservative_kf">
+            <label for="ki6">Initial Kinetic Energy (J)</label>
+            <input type="text" id="ki6"><br>
+            <label for="m7">Mass (kg)</label>
+            <input type="text" id="m7"><br>
+            <label for="vi6">Initial Velocity (m/s)</label>
+            <input type="text" id="vi6"><br>
+            <label for="ui6">Initial Potential Energy (J)</label>
+            <input type="text" id="ui6"><br>
+            <label for="hi6">Initial Height (m)</label>
+            <input type="text" id="hi6"><br>
+            <label for="f6">Nonconservative Force (J)</label>
+            <input type="text" id="f6"><br>
+            <label for="d6">Distance (m)</label>
+            <input type="text" id="d6"><br>
+            <label for="vf7">Final Velocity (m/s)</label>
+            <input type="text" id="vf7"><br>
+            <label for="uf7">Final Potential Energy (J)</label>
+            <input type="text" id="uf7"><br>
+            <label for="hf7">Final Height (m)</label>
+            <input type="text" id="hf7"><br><br>
+        </form>
+        <button onclick="extract_kf()">Calculate</button>
+        <p id="print7"></p>
+        <script>
+            function extract_kf () {
+                var g = 9.81;
+                var data = document.getElementById('conservative_kf');
+                var kf = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var ki = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var ki = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var vi = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var vi = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var ui = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var ui = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var hi = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var hi = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var f = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var f = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var d = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var vf = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var vf = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var uf = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var uf = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var hf = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var hf = 'n';
+                }
+                 //Actual Calculation Begins
+                if (ki != 'n' && vi != 'n' && f != 0 && d != 0) {
+                    m = 2 * ki / (vi*vi);
+                }
+                if (ki != 'n' && m != 'n') {
+                    vi = Math.sqrt(2 * ki / m);
+                }
+                if (m != 'n' && vi != 'n') {
+                    ki = 0.5*m*vi*vi;
+                }
+                if (ui != 'n' && hi != 'n' && f != 0 && d != 0) {
+                    m = ui / (g*hi);
+                }
+                if (ui != 'n' && m != 'n') {
+                    hi = ui / (g*m);
+                }
+                if (m != 'n' && hi != 'n') {
+                    ui = m*g*hi;
+                }
+                if (uf != 'n' && m != 'n') {
+                    hf = uf / (m*g);
+                }
+                if (uf != 'n' && hf != 'n' && f != 0 && d != 0) {
+                    m = uf / (g*hf);
+                }
+                if (m != 'n' && hf != 'n') {
+                    uf = m*g*hf;
+                }
+                if (vf != 'n' && m != 'n') {
+                    kf = 0.5*m*vf*vf;
+                    document.getElementById('print7').innerHTML = kf.toString() + ' J';
+                    return;
+                }
+                if (ki != 'n' && ui != 'n' && f != 'n' && d != 'n' && uf != 'n') {
+                    kf = ki + ui - f*d - uf;
+                    document.getElementById('print7').innerHTML = kf.toString() + ' J';
+                    return;
+                }
+                if (m != 'n' && vi != 'n' && hi != 'n' && f != 'n' && d != 'n' && hf != 'n') {
+                    kf = 0.5*m*vi*vi + m*g*hi - f*d - m*g*hf;
+                    document.getElementById('print7').innerHTML = kf.toString() + ' J';
+                    return;
+                }
+                document.getElementById('print7').innerHTML = kf;
+            }
+        </script>
+        <h2>Solve for Final Velocity</h2>
+        <form action="" id="conservative_vf">
+            <label for="ki7">Initial Kinetic Energy (J)</label>
+            <input type="text" id="ki7"><br>
+            <label for="m8">Mass (kg)</label>
+            <input type="text" id="m8"><br>
+            <label for="vi7">Initial Velocity (m/s)</label>
+            <input type="text" id="vi7"><br>
+            <label for="ui7">Initial Potential Energy (J)</label>
+            <input type="text" id="ui7"><br>
+            <label for="hi7">Initial Height (m)</label>
+            <input type="text" id="hi7"><br>
+            <label for="f7">Nonconservative Force (J)</label>
+            <input type="text" id="f7"><br>
+            <label for="d7">Distance (m)</label>
+            <input type="text" id="d7"><br>
+            <label for="kf7">Final Kinetic Energy (J)</label>
+            <input type="text" id="kf7"><br>
+            <label for="uf8">Final Potential Energy (J)</label>
+            <input type="text" id="uf8"><br>
+            <label for="hf8">Final Height (m)</label>
+            <input type="text" id="hf8"><br><br>
+        </form>
+        <button onclick="extract_vf()">Calculate</button>
+        <p id="print8"></p>
+        <script>
+            function extract_vf () {
+                var g = 9.81;
+                var data = document.getElementById('conservative_vf');
+                var vf = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var ki = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var ki = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var vi = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var vi = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var ui = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var ui = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var hi = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var hi = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var f = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var f = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var d = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var kf = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var kf = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var uf = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var uf = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var hf = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var hf = 'n';
+                }
+                 //Actual Calculation Begins
+                if (ki != 'n' && vi != 'n' && f != 0 && d != 0) {
+                    m = 2 * ki / (vi*vi);
+                }
+                if (ki != 'n' && m != 'n') {
+                    vi = Math.sqrt(2 * ki / m);
+                }
+                if (m != 'n' && vi != 'n') {
+                    ki = 0.5*m*vi*vi;
+                }
+                if (ui != 'n' && hi != 'n' && f != 0 && d != 0) {
+                    m = ui / (g*hi);
+                }
+                if (ui != 'n' && m != 'n') {
+                    hi = ui / (g*m);
+                }
+                if (m != 'n' && hi != 'n') {
+                    ui = m*g*hi;
+                }
+                if (uf != 'n' && m != 'n') {
+                    hf = uf / (m*g);
+                }
+                if (uf != 'n' && hf != 'n' && f != 0 && d != 0) {
+                    m = uf / (g*hf);
+                }
+                if (m != 'n' && hf != 'n') {
+                    uf = m*g*hf;
+                }
+                if (kf != 'n' && m != 'n') {
+                    vf = Math.sqrt(2*kf / m);
+                    document.getElementById('print8').innerHTML = vf.toString() + ' m/s';
+                    return;
+                }
+                if (m != 'n' && ki != 'n' && ui != 'n' && f != 'n' && d != 'n' && uf != 'n') {
+                    kf = ki + ui - f*d - uf;
+                    vf = Math.sqrt(2*kf / m);
+                    document.getElementById('print8').innerHTML = vf.toString() + ' m/s';
+                    return;
+                }
+                if (m != 'n' && vi != 'n' && hi != 'n' && f != 'n' && d != 'n' && hf != 'n') {
+                    kf = 0.5*m*vi*vi + m*g*hi - f*d - m*g*hf;
+                    vf = Math.sqrt(2*kf / m);
+                    document.getElementById('print8').innerHTML = vf.toString() + ' m/s';
+                    return;
+                }
+                if (vi != 'n' && hi != 'n' && f == 0 && d == 0 && hf != 'n') {
+                    vf = 2*(0.5*vi*vi + g*hi - g*hf);
+                    if (vf < 0) {
+                        vf = -1*vf;
+                    }
+                    vf = Math.sqrt(vf);
+                    document.getElementById('print8').innerHTML = vf.toString() + ' m/s';
+                    return;
+                }
+                document.getElementById('print8').innerHTML = vf;
+            } 
+        </script>
+        <h2>Solve for Final Potential Energy</h2>
+        <form action="" id="conservative_uf">
+            <label for="ki8">Initial Kinetic Energy (J)</label>
+            <input type="text" id="ki8"><br>
+            <label for="m9">Mass (kg)</label>
+            <input type="text" id="m9"><br>
+            <label for="vi8">Initial Velocity (m/s)</label>
+            <input type="text" id="vi8"><br>
+            <label for="ui8">Initial Potential Energy (J)</label>
+            <input type="text" id="ui8"><br>
+            <label for="hi8">Initial Height (m)</label>
+            <input type="text" id="hi8"><br>
+            <label for="f8">Nonconservative Force (J)</label>
+            <input type="text" id="f8"><br>
+            <label for="d8">Distance (m)</label>
+            <input type="text" id="d8"><br>
+            <label for="kf8">Final Kinetic Energy (J)</label>
+            <input type="text" id="kf8"><br>
+            <label for="vf8">Final Velocity (m/s)</label>
+            <input type="text" id="vf8"><br>
+            <label for="hf9">Final Height (m)</label>
+            <input type="text" id="hf9"><br><br>
+        </form>
+        <button onclick="extract_uf()">Calculate</button>
+        <p id="print9"></p>
+        <script>
+            function extract_uf () {
+                var g = 9.81;
+                var data = document.getElementById('conservative_uf');
+                var uf = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var ki = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var ki = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var vi = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var vi = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var ui = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var ui = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var hi = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var hi = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var f = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var f = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var d = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var kf = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var kf = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var vf = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var vf = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var hf = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var hf = 'n';
+                }
+                 //Actual Calculation Begins
+                if (ki != 'n' && vi != 'n' && f != 0 && d != 0) {
+                    m = 2 * ki / (vi*vi);
+                }
+                if (ki != 'n' && m != 'n') {
+                    vi = Math.sqrt(2 * ki / m);
+                }
+                if (m != 'n' && vi != 'n') {
+                    ki = 0.5*m*vi*vi;
+                }
+                if (ui != 'n' && hi != 'n' && f != 0 && d != 0) {
+                    m = ui / (g*hi);
+                }
+                if (ui != 'n' && m != 'n') {
+                    hi = ui / (g*m);
+                }
+                if (m != 'n' && hi != 'n') {
+                    ui = m*g*hi;
+                }
+                if (kf != 'n' && m != 'n') {
+                    vf = Math.sqrt(2*kf/m);
+                }
+                if (kf != 'n' && vf != 'n' && f != 0 && d != 0) {
+                    m = 2*kf / (vf*vf);
+                }
+                if (m != 'n' && vf != 'n') {
+                    kf = 0.5*m*vf*vf;
+                }
+                if (hf != 'n' && m != 'n') {
+                    uf = m*g*hf;
+                    document.getElementById('print9').innerHTML = uf.toString() + ' J';
+                    return;
+                }
+                if (ki != 'n' && ui != 'n' && f != 'n' && d != 'n' && kf != 'n') {
+                    uf = ki + ui - f*d - kf;
+                    document.getElementById('print9').innerHTML = uf.toString() + ' J';
+                    return;
+                }
+                if (m != 'n' && vi != 'n' && hi != 'n' && f != 'n' && d != 'n' && vf != 'n') {
+                    uf = 0.5*m*vi*vi + m*g*hi - f*d - 0.5*m*vf*vf;
+                    document.getElementById('print9').innerHTML = uf.toString() + ' J';
+                    return;
+                }
+                document.getElementById('print9').innerHTML = uf;
+            } 
+        </script>
+        <h2>Solve for Final Height</h2>
+        <form action="" id="conservative_hf">
+            <label for="ki9">Initial Kinetic Energy (J)</label>
+            <input type="text" id="ki9"><br>
+            <label for="m10">Mass (kg)</label>
+            <input type="text" id="m10"><br>
+            <label for="vi9">Initial Velocity (m/s)</label>
+            <input type="text" id="vi9"><br>
+            <label for="ui9">Initial Potential Energy (J)</label>
+            <input type="text" id="ui9"><br>
+            <label for="hi9">Initial Height (m)</label>
+            <input type="text" id="hi9"><br>
+            <label for="f9">Nonconservative Force (J)</label>
+            <input type="text" id="f9"><br>
+            <label for="d9">Distance (m)</label>
+            <input type="text" id="d9"><br>
+            <label for="kf9">Final Kinetic Energy (J)</label>
+            <input type="text" id="kf9"><br>
+            <label for="vf9">Final Velocity (m/s)</label>
+            <input type="text" id="vf9"><br>
+            <label for="uf9">Final Potential Energy (J)</label>
+            <input type="text" id="uf9"><br><br>
+        </form>
+        <button onclick="extract_hf()">Calculate</button>
+        <p id="print10"></p>
+        <script>
+            function extract_hf () {
+                var g = 9.81;
+                var data = document.getElementById('conservative_hf');
+                var hf = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var ki = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var ki = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var vi = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var vi = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var ui = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var ui = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var hi = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var hi = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var f = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var f = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var d = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var kf = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var kf = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var vf = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var vf = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var uf = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var uf = 'n';
+                }
+                 //Actual Calculation Begins
+                if (ki != 'n' && vi != 'n' && f != 0 && d != 0) {
+                    m = 2 * ki / (vi*vi);
+                }
+                if (ki != 'n' && m != 'n') {
+                    vi = Math.sqrt(2 * ki / m);
+                }
+                if (m != 'n' && vi != 'n') {
+                    ki = 0.5*m*vi*vi;
+                }
+                if (ui != 'n' && hi != 'n' && f != 0 && d != 0) {
+                    m = ui / (g*hi);
+                }
+                if (ui != 'n' && m != 'n') {
+                    hi = ui / (g*m);
+                }
+                if (m != 'n' && hi != 'n') {
+                    ui = m*g*hi;
+                }
+                if (kf != 'n' && m != 'n') {
+                    vf = Math.sqrt(2*kf/m);
+                }
+                if (kf != 'n' && vf != 'n' && f != 0 && d != 0) {
+                    m = 2*kf / (vf*vf);
+                }
+                if (m != 'n' && vf != 'n') {
+                    kf = 0.5*m*vf*vf;
+                }
+                if (uf != 'n' && m != 'n') {
+                    hf = uf / (g*m);
+                    document.getElementById('print10').innerHTML = hf.toString() + ' m';
+                    return;
+                }
+                if (m != 'n' && ki != 'n' && ui != 'n' && f != 'n' && d != 'n' && kf != 'n') {
+                    uf = ki + ui - f*d - kf;
+                    hf = uf / (m*g);
+                    document.getElementById('print10').innerHTML = hf.toString() + ' m';
+                    return;
+                }
+                if (m != 'n' && vi != 'n' && hi != 'n' && f != 'n' && d != 'n' && vf != 'n') {
+                    uf = 0.5*m*vi*vi + m*g*hi - f*d - 0.5*m*vf*vf;
+                    hf = uf / (m*g);
+                    document.getElementById('print10').innerHTML = hf.toString() + ' m';
+                    return;
+                }
+                if (vi != 'n' && hi != 'n' && f == 0 && d == 0 && vf != 'n') {
+                    hf = (0.5*vi*vi + g*hi - 0.5*vf*vf)/g;
+                    document.getElementById('print10').innerHTML = hf.toString() + ' m';
+                    return;
+                }
+                document.getElementById('print10').innerHTML = hf;
+            } 
+        </script>
+    </body>
+</html>

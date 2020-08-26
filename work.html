@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Work Calculator</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <a href="./work_main.html">Back to Work/Energy/Power Main Page</a>
+        <h1>Work Calculator</h1>
+        <p style="color: blue;">Welcome to the Work Calculator! As usual, enter 'n' for unkown values and make sure to include the angle.</p>
+        <h2>Solve for Work</h2>
+        <form action="" id="work_w">
+            <label for="f">Force (N)</label>
+            <input type="text" id="f"><br>
+            <label for="d">Distance (m)</label>
+            <input type="text" id="d"><br>
+            <label for="m">Mass (kg)</label>
+            <input type="text" id="m"><br>
+            <label for="a">Acceleration (m/s^2)</label>
+            <input type="text" id="a"><br>
+            <label for="ki">Initial Kinetic Energy (J)</label>
+            <input type="text" id="ki"><br>
+            <label for="kf">Final Kinetic Energy (J)</label>
+            <input type="text" id="kf"><br>
+            <label for="angle">Angle of Force (degrees)</label>
+            <input type="text" id="angle"><br><br>
+        </form>
+        <button onclick="extract_w()">Calculate</button>
+        <p id="print"></p>
+        <script>
+            function extract_w () {
+                var pi = 3.14159 / 180;
+                var data = document.getElementById('work_w');
+                var w = 'Error: Not Enough Variables';
+                if (data.elements[0].value != 'n') {
+                    var f = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var f = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var d = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var m = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var a = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var a = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var ki = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var ki = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var kf = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var kf = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var angle = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var angle = 'n';
+                }
+                //Actual Calculation Begins
+                if (f != 'n' && d != 'n' && angle != 'n') {
+                    w = f*d*Math.cos(pi*angle);
+                    document.getElementById('print').innerHTML = w.toString() + ' J';
+                    return;
+                }
+                if (m != 'n' && a != 'n' && d != 'n' && angle != 'n') {
+                    w = m*a*d*Math.cos(pi*angle);
+                    document.getElementById('print').innerHTML = w.toString() + ' J';
+                    return
+                }
+                if (ki != 'n' && kf != 'n') {
+                    w = kf - ki;
+                    document.getElementById('print').innerHTML = w.toString() + ' J';
+                    return;
+                }
+                document.getElementById('print').innerHTML = w;
+            }
+        </script>
+        <h2>Solve for Force</h2>
+        <form action="" id="work_f">
+            <label for="w">Work (J)</label>
+            <input type="text" id="w"><br>
+            <label for="d2">Distance (m)</label>
+            <input type="text" id="d2"><br>
+            <label for="m2">Mass (kg)</label>
+            <input type="text" id="m2"><br>
+            <label for="a2">Acceleration (m/s^2)</label>
+            <input type="text" id="a2"><br>
+            <label for="ki2">Initial Kinetic Energy (J)</label>
+            <input type="text" id="ki2"><br>
+            <label for="kf2">Final Kinetic Energy (J)</label>
+            <input type="text" id="kf2"><br>
+            <label for="angle2">Angle of Force (degrees)</label>
+            <input type="text" id="angle2"><br><br>
+        </form>
+        <button onclick="extract_f()">Calculate</button>
+        <p id="print2"></p>
+        <script>
+            function extract_f () {
+                var pi = 3.14159 / 180;
+                var data = document.getElementById('work_f');
+                var f = 'Error: Not Enough Variables';
+                if (data.elements[0].value != 'n') {
+                    var w = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var w = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var d = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var m = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var a = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var a = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var ki = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var ki = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var kf = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var kf = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var angle = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var angle = 'n';
+                }
+                //Actual Calculation Begins
+                if (w != 'n' && d != 'n' && angle != 'n') {
+                    f = w / (d*Math.cos*pi*angle);
+                    document.getElementById('print2').innerHTML = f.toString() + ' N';
+                    return;
+                }
+                if (m != 'n' && a != 'n') {
+                    f = m*a;
+                    document.getElementById('print2').innerHTML = f.toString() + ' N';
+                    return;
+                }
+                if (d != 'n' && kf != 'n' && ki != 'n' && angle != 'n') {
+                    f = (kf - ki) / (d*Math.cos(pi*angle));
+                    document.getElementById('print2').innerHTML = f.toString() + ' N';
+                    return;
+                }
+                document.getElementById('print2').innerHTML = f;
+            }
+        </script>
+        <h2>Solve for Distance</h2>
+        <form action="" id="work_d">
+            <label for="w2">Work (J)</label>
+            <input type="text" id="w2"><br>
+            <label for="f2">Force (N)</label>
+            <input type="text" id="f2"><br>
+            <label for="m3">Mass (kg)</label>
+            <input type="text" id="m3"><br>
+            <label for="a3">Acceleration (m/s^2)</label>
+            <input type="text" id="a3"><br>
+            <label for="ki3">Initial Kinetic Energy (J)</label>
+            <input type="text" id="ki3"><br>
+            <label for="kf3">Final Kinetic Energy (J)</label>
+            <input type="text" id="kf3"><br>
+            <label for="angle3">Angle of Force (degrees)</label>
+            <input type="text" id="angle3"><br><br>
+        </form>
+        <button onclick="extract_d()">Calculate</button>
+        <p id="print3"></p>
+        <script>
+            function extract_d () {
+                var pi = 3.14159 / 180;
+                var data = document.getElementById('work_d');
+                var d = 'Error: Not Enough Variables';
+                if (data.elements[0].value != 'n') {
+                    var w = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var w = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var f = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var f = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var m = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var a = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var a = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var ki = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var ki = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var kf = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var kf = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var angle = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var angle = 'n';
+                }
+                //Actual Calculation Begins
+                if (w != 'n' && f != 'n' && angle != 'n') {
+                    d = w / (f*Math.cos(pi*angle));
+                    document.getElementById('print3').innerHTML = d.toString() + ' m';
+                    return;
+                }
+                if (w != 'n' && m != 'n' && a != 'n' && angle != 'n') {
+                    d = w / (m*a*Math.cos(pi*angle));
+                    document.getElementById('print3').innerHTML = d.toString() + ' m';
+                    return;
+                }
+                if (kf != 'n' && ki != 'n' && f != 'n' && angle != 'n') {
+                    d = (kf - ki) / (f*Math.cos(pi*angle));
+                    document.getElementById('print3').innerHTML = d.toString() + ' m';
+                    return;
+                }
+                document.getElementById('print3').innerHTML = d;
+            }
+        </script>
+        <h2>Solve for Mass</h2>
+        <form action="" id="work_m">
+            <label for="w3">Work (J)</label>
+            <input type="text" id="w3"><br>
+            <label for="f3">Force (N)</label>
+            <input type="text" id="f3"><br>
+            <label for="d3">Distance (m)</label>
+            <input type="text" id="d3"><br>
+            <label for="a4">Acceleration (m/s^2)</label>
+            <input type="text" id="a4"><br>
+            <label for="ki4">Initial Kinetic Energy (J)</label>
+            <input type="text" id="ki4"><br>
+            <label for="kf4">Final Kinetic Energy (J)</label>
+            <input type="text" id="kf4"><br>
+            <label for="angle4">Angle of Force (degrees)</label>
+            <input type="text" id="angle4"><br><br>
+        </form>
+        <button onclick="extract_m()">Calculate</button>
+        <p id="print4"></p>
+        <script>
+            function extract_m () {
+                var pi = 3.14159 / 180;
+                var data = document.getElementById('work_m');
+                var m = 'Error: Not Enough Variables';
+                if (data.elements[0].value != 'n') {
+                    var w = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var w = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var f = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var f = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var d = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var a = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var a = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var ki = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var ki = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var kf = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var kf = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var angle = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var angle = 'n';
+                }
+                //Actual Calculation Begins
+                if (f != 'n' && a != 'n') {
+                    m = f / a;
+                    document.getElementById('print4').innerHTML = m.toString() + ' kg';
+                    return;
+                }
+                if (w != 'n' && d != 'n' && angle != 'n' && a != 'n') {
+                    f = w / (d*Math.cos(pi*angle));
+                    m = f / a;
+                    document.getElementById('print4').innerHTML = m.toString() + ' kg';
+                    return;
+                }
+                if (ki != 'n' && kf != 'n' && a != 'n' && d != 'n' && angle != 'n') {
+                    w = kf - ki;
+                    f = w / (d*Math.cos(pi*angle));
+                    m = f / a;
+                    document.getElementById('print4').innerHTML = m.toString() + ' kg';
+                    return;
+                }
+                document.getElementById('print4').innerHTML = m;
+            }
+        </script>
+        <h2>Solve for Acceleration</h2>
+        <form action="" id="work_a">
+            <label for="w4">Work (J)</label>
+            <input type="text" id="w4"><br>
+            <label for="f4">Force (N)</label>
+            <input type="text" id="f4"><br>
+            <label for="d4">Distance (m)</label>
+            <input type="text" id="d4"><br>
+            <label for="m4">Mass (kg)</label>
+            <input type="text" id="m4"><br>
+            <label for="ki5">Initial Kinetic Energy (J)</label>
+            <input type="text" id="ki5"><br>
+            <label for="kf5">Final Kinetic Energy (J)</label>
+            <input type="text" id="kf5"><br>
+            <label for="angle5">Angle of Force (degrees)</label>
+            <input type="text" id="angle5"><br><br>
+        </form>
+        <button onclick="extract_a()">Calculate</button>
+        <p id="print5"></p>
+        <script>
+            function extract_a () {
+                var pi = 3.14159 / 180;
+                var data = document.getElementById('work_a');
+                var a = 'Error: Not Enough Variables';
+                if (data.elements[0].value != 'n') {
+                    var w = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var w = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var f = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var f = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var d = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var m = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var ki = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var ki = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var kf = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var kf = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var angle = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var angle = 'n';
+                }
+                //Actual Calculation Begins
+                if (f != 'n' && m != 'n') {
+                    a = f / m;
+                    document.getElementById('print5').innerHTML = a.toString() + ' m/s^2';
+                    return;
+                }
+                if (w != 'n' && d != 'n' && angle != 'n' && m != 'n') {
+                    f = w / (d*Math.cos(pi*angle));
+                    a = f / m;
+                    document.getElementById('print5').innerHTML = a.toString() + ' m/s^2';
+                    return;
+                }
+                if (ki != 'n' && kf != 'n' && d != 'n' && m != 'n' && angle != 'n') {
+                    w = kf - ki;
+                    f = w / (d*Math.cos(pi*angle));
+                    a = f / m;
+                    document.getElementById('print5').innerHTML = a.toString() + ' m/s^2';
+                    return;
+                }
+                document.getElementById('print5').innerHTML = a;
+            }
+        </script>
+        <h2>Solve for Initial Kinetic Energy</h2>
+        <form action="" id="work_ki">
+            <label for="w5">Work (J)</label>
+            <input type="text" id="w5"><br>
+            <label for="f5">Force (N)</label>
+            <input type="text" id="f5"><br>
+            <label for="d5">Distance (m)</label>
+            <input type="text" id="d5"><br>
+            <label for="m5">Mass (kg)</label>
+            <input type="text" id="m5"><br>
+            <label for="a5">Acceleration (m/s^2)</label>
+            <input type="text" id="a5"><br>
+            <label for="kf6">Final Kinetic Energy (J)</label>
+            <input type="text" id="kf6"><br>
+            <label for="angle6">Angle of Force (degrees)</label>
+            <input type="text" id="angle6"><br><br>
+        </form>
+        <button onclick="extract_ki()">Calculate</button>
+        <p id="print6"></p>
+        <script>
+            function extract_ki () {
+                var pi = 3.14159 / 180;
+                var data = document.getElementById('work_ki');
+                var ki = 'Error: Not Enough Variables';
+                if (data.elements[0].value != 'n') {
+                    var w = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var w = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var f = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var f = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var d = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var m = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var a = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var a = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var kf = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var kf = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var angle = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var angle = 'n';
+                }
+                //Actual Calculation Begins
+                if (w != 'n' && kf != 'n') {
+                    ki = kf - w;
+                    document.getElementById('print6').innerHTML = ki.toString() + ' J';
+                    return;
+                }
+                if (f != 'n' && d != 'n' && angle != 'n' && kf != 'n') {
+                    w = f*d*Math.cos(pi*angle);
+                    ki = kf - w;
+                    document.getElementById('print6').innerHTML = ki.toString() + ' J';
+                    return;
+                }
+                if (m != 'n' && a != 'n' && d != 'n' && angle != 'n' && kf != 'n') {
+                    f = m*a;
+                    w = f*d*Math.cos(pi*angle);
+                    ki = kf - w;
+                    document.getElementById('print6').innerHTML = ki.toString() + ' J';
+                    return;
+                }
+                document.getElementById('print6').innerHTML = ki;
+            }
+        </script>
+        <h2>Solve for Final Kinetic Energy</h2>
+        <form action="" id="work_kf">
+            <label for="w6">Work (J)</label>
+            <input type="text" id="w6"><br>
+            <label for="f6">Force (N)</label>
+            <input type="text" id="f6"><br>
+            <label for="d6">Distance (m)</label>
+            <input type="text" id="d6"><br>
+            <label for="m6">Mass (kg)</label>
+            <input type="text" id="m6"><br>
+            <label for="a6">Acceleration (m/s^2)</label>
+            <input type="text" id="a6"><br>
+            <label for="ki6">Initial Kinetic Energy (J)</label>
+            <input type="text" id="ki6"><br>
+            <label for="angle7">Angle of Force (degrees)</label>
+            <input type="text" id="angle7"><br><br>
+        </form>
+        <button onclick="extract_kf()">Calculate</button>
+        <p id="print7"></p>
+        <script>
+            function extract_kf () {
+                var pi = 3.14159 / 180;
+                var data = document.getElementById('work_kf');
+                var kf = 'Error: Not Enough Variables';
+                if (data.elements[0].value != 'n') {
+                    var w = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var w = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var f = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var f = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var d = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var m = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var a = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var a = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var ki = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var ki = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var angle = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var angle = 'n';
+                }
+                //Actual Calculation Begins
+                if (w != 'n' && ki != 'n') {
+                    kf = w + ki;
+                    document.getElementById('print7').innerHTML = kf.toString() + ' J';
+                    return;
+                }
+                if (f != 'n' && d != 'n' && angle != 'n' && kf != 'n') {
+                    w = f*d*Math.cos(pi*angle);
+                    kf = w + ki;
+                    document.getElementById('print7').innerHTML = kf.toString() + ' J';
+                    return;
+                }
+                if (m != 'n' && a != 'n' && d != 'n' && angle != 'n' && kf != 'n') {
+                    f = m*a;
+                    w = f*d*Math.cos(pi*angle);
+                    kf = w + ki;
+                    document.getElementById('print7').innerHTML = kf.toString() + ' J';
+                    return;
+                }
+                document.getElementById('print7').innerHTML = kf;
+            }
+        </script>
+    </body>
+</html>

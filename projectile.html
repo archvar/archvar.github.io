@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Projectile Motion Calculator</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <a href="./kinematics.html">Back to Kinematics Main Page</a>
+        <h1>Projectile Motion Calculator</h1>
+        <p style="color: blue;">Welcome to the Projectile Motion Calculator! Enter 'n' for values you don't know. Also note that you must enter the launch angle.</p>
+        <h3>Horizontal Motion</h3>
+        <h2>Solve for Horizontal Distance</h2>
+        <form action="" id="proj_h_dist">
+            <label for="launch_angle">Launch Angle (degrees)</label>
+            <input type="text" id="launch_angle"><br>
+            <label for="init_velocity">Initial Velocity (m/s)</label>
+            <input type="text" id="init_velocity"><br>
+            <label for="h_vel">Horizontal Velocity (m/s)</label>
+            <input type="text" id="h_vel"><br>
+            <label for="time">Time (s)</label>
+            <input type="text" id="time"><br><br>
+        </form>
+        <button onclick="extract_dx()">Calculate</button>
+        <p id='printh'></p>
+        <script>
+            function extract_dx() {
+                var data = document.getElementById('proj_h_dist');
+                var dx = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var theta = parseFloat(data.elements[0].value);
+                } else {
+                    var theta = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var vi = parseFloat(data.elements[1].value);
+                } else {
+                    var vi = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var vix = parseFloat(data.elements[2].value);
+                } else {
+                    var vix = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var t = parseFloat(data.elements[3].value);
+                } else {
+                    var t = 'n';
+                }
+                //Actual Calculation Begins
+                if (theta != 'n' && vi != 'n' && t != 'n') {
+                    dx = vi*t*Math.cos(theta*(3.14159/180));
+                    document.getElementById('printh').innerHTML = dx.toString() + ' m';
+                    return;
+                }
+                if (vix != 'n' && t != 'n') {
+                    dx = vix*t;
+                    document.getElementById('printh').innerHTML = dx.toString() + ' m';
+                    return;
+                }
+                document.getElementById('printh').innerHTML = dx;
+            }
+        </script>
+        <h2>Solve for Initial Velocity</h2>
+        <form action="" id="proj_h_v">
+            <label for="launch_angle2">Launch Angle (degrees)</label>
+            <input type="text" id="launch_angle2"><br>
+            <label for="dist_h">Horizontal Distance (m)</label>
+            <input type="text" id="dist_h"><br>
+            <label for="h_vel2">Horizontal Velocity (m/s)</label>
+            <input type="text" id="h_vel2"><br>
+            <label for="time2">Time (s)</label>
+            <input type="text" id="time2"><br><br>
+        </form>
+        <button onclick="extract_vi0()">Calculate</button>
+        <p id='printh2'></p>
+        <script>
+            function extract_vi0() {
+                var data = document.getElementById('proj_h_v');
+                var vi = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var theta = parseFloat(data.elements[0].value);
+                } else {
+                    var theta = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var dx = parseFloat(data.elements[1].value);
+                } else {
+                    var dx = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var vix = parseFloat(data.elements[2].value);
+                } else {
+                    var vix = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var t = parseFloat(data.elements[3].value);
+                } else {
+                    var t = 'n';
+                }
+                //Actual Calculation Begins
+                if (theta != 'n' && dx != 'n' && t != 'n') {
+                    vi = dx / (t*Math.cos(theta*(3.14159/180)));
+                    document.getElementById('printh2').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
+                if (vix != 'n' && theta != 'n') {
+                    vi = vix / Math.cos(theta*(3.14159/180))
+                    document.getElementById('printh2').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
+                document.getElementById('printh2').innerHTML = vi;
+            }
+        </script>
+        <h2>Solve for Horizontal Velocity</h2>
+        <form action="" id="proj_h_vix">
+            <label for="launch_anglen">Launch Angle (degrees)</label>
+            <input type="text" id="launch_anglen"><br>
+            <label for="dist_hn">Horizontal Distance (m)</label>
+            <input type="text" id="dist_hn"><br>
+            <label for="h_vel2n">Initial Velocity (m/s)</label>
+            <input type="text" id="h_vel2n"><br>
+            <label for="time2n">Time (s)</label>
+            <input type="text" id="time2n"><br><br>
+        </form>
+        <button onclick="extract_vix()">Calculate</button>
+        <p id="printh5"></p>
+        <script>
+            function extract_vix() {
+                var data = document.getElementById('proj_h_vix');
+                var vix = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var theta = parseFloat(data.elements[0].value);
+                } else {
+                    var theta = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var dx = parseFloat(data.elements[1].value);
+                } else {
+                    var dx = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var vi = parseFloat(data.elements[2].value);
+                } else {
+                    var vi = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var t = parseFloat(data.elements[3].value);
+                } else {
+                    var t = 'n';
+                }
+                //Actual Calculation begins
+                if (dx != 'n' && t != 'n') {
+                    vix = dx / t;
+                    document.getElementById('printh5').innerHTML = vix.toString() + ' m/s';
+                    return;
+                }
+                if (vi != 'n' && theta != 'n') {
+                    vix = vi * Math.cos(theta*(3.14159/180));
+                    document.getElementById('printh5').innerHTML = vix.toString() + ' m/s';
+                    return;
+                }
+                document.getElementById('printh5').innerHTML = vix;
+            }
+        </script>
+        <h2>Solve for Time</h2>
+        <form action="" id="proj_h_t">
+            <label for="launch_angle3">Launch Angle (degrees)</label>
+            <input type="text" id="launch_angle3"><br>
+            <label for="dist_h2">Horizontal Distance (m)</label>
+            <input type="text" id="dist_h2"><br>
+            <label for="h_vel2">Horizontal Velocity (m/s)</label>
+            <input type="text" id="h_vel2"><br>
+            <label for="vix2">Inital Velocity (m/s)</label>
+            <input type="text" id="vix2"><br><br>
+        </form>
+        <button onclick="extract_t()">Calculate</button>
+        <p id='printh3'></p>
+        <script>
+            function extract_t() {
+                var data = document.getElementById('proj_h_t');
+                var t = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var theta = parseFloat(data.elements[0].value);
+                } else {
+                    var theta = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var dx = parseFloat(data.elements[1].value);
+                } else {
+                    var dx = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var vix = parseFloat(data.elements[2].value);
+                } else {
+                    var vix = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var vi = parseFloat(data.elements[3].value);
+                } else {
+                    var vi = 'n';
+                }
+                //Actual Calculation Begins
+                if (theta != 'n' && dx != 'n' && vi != 'n') {
+                    t = dx / (vi*Math.cos(theta*(3.14159/180)));
+                    document.getElementById('printh3').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                if (dx != 'n' && vix != 'n') {
+                    t = dx/vix;
+                    document.getElementById('printh3').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                document.getElementById('printh3').innerHTML = t;
+            }
+        </script>
+        <h2>Solve for Angle</h2>
+        <form action="" id="proj_h_theta">
+            <label for="t3">Time (s)</label>
+            <input type="text" id="t3"><br>
+            <label for="dist_h3">Horizontal Distance (m)</label>
+            <input type="text" id="dist_h3"><br>
+            <label for="iv">Initial Velocity (m/s)</label>
+            <input type="text" id="iv"><br>
+            <label for="vix3">Horizontal Velocity (m/s)</label>
+            <input type="text" id="vix3"><br>
+            <label for="viy0">Vertical Velocity (m/s)</label>
+            <input type="text" id="viy0"><br><br>
+        </form>
+        <button onclick="extract_theta()">Calculate</button>
+        <p id='printh4'></p>
+        <script>
+            function extract_theta() {
+                var data = document.getElementById('proj_h_theta');
+                var theta = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var t = parseFloat(data.elements[0].value);
+                } else {
+                    var t = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var dx = parseFloat(data.elements[1].value);
+                } else {
+                    var dx = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var vi = parseFloat(data.elements[2].value);
+                } else {
+                    var vi = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var vix = parseFloat(data.elements[3].value);
+                } else {
+                    var vix = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var viy = parseFloat(data.elements[4].value);
+                } else {
+                    var viy = 'n';
+                }
+                //Actual Calculation Begins
+                if (t != 'n' && dx != 'n' && vi != 'n') {
+                    theta = (180/3.14159) * Math.acos(dx / (vi*t));
+                    document.getElementById('printh4').innerHTML = theta.toString() + ' degrees';
+                    return;
+                }
+                if (vix != 'n' && viy != 'n') {
+                    theta = (180/3.14159) * Math.atan(viy/vix);
+                    document.getElementById('printh4').innerHTML = theta.toString() + ' degrees';
+                    return;
+                }
+                if (vi != 'n' && vix != 'n') {
+                    theta = (180/3.14159) * Math.acos(vix/vi);
+                    document.getElementById('printh4').innerHTML = theta.toString() + ' degrees';
+                    return;
+                }
+                document.getElementById('printh4').innerHTML = theta;
+            }
+        </script>
+        <h3>Vertical Motion</h3>
+        <h2>Solve for Final Height</h2>
+        <form action="" id="proj_v_h">
+            <label for="hi">Initial Height (m)</label>
+            <input type="text" id='hi'><br>
+            <label for="theta_v">Launch Angle (degrees)</label>
+            <input type="text" id="theta_v"><br>
+            <label for="vi">Intial Velocity (m/s)</label>
+            <input type="text" id="vi"><br>
+            <label for="viy">Initial Vertical Velocity (m/s)</label>
+            <input type="text" id="viy"><br>
+            <label for="vfy">Final Vertical Velocity (m/s)</label>
+            <input type="text" id="vfy"><br>
+            <label for="g">g (m/s^2)</label>
+            <input type="text" id="g"><br>
+            <label for="tv">Time (s)</label>
+            <input type="text" id="tv"><br><br>
+        </form>
+        <button onclick="extract_hf()">Calculate</button>
+        <p id ='printv'></p>
+        <script>
+            function extract_hf() {
+                var pi = 180/3.14159;
+                var data = document.getElementById('proj_v_h');
+                var hf = 'Error: Not Enough Variables Defined'
+                if (data.elements[0].value != 'n') {
+                    var hi = parseFloat(data.elements[0].value);
+                } else {
+                    var hi = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var theta = parseFloat(data.elements[1].value);
+                } else {
+                    var theta = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var vi = parseFloat(data.elements[2].value);
+                } else {
+                    var vi = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var viy = parseFloat(data.elements[3].value);
+                } else {
+                    var viy = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var vfy = parseFloat(data.elements[4].value);
+                } else {
+                    var vfy = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var g = parseFloat(data.elements[5].value);
+                } else {
+                    var g = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var t = parseFloat(data.elements[6].value);
+                } else {
+                    var t = 'n';
+                }
+                //Actual Calculation Begins
+                if (g != 'n' && hi != 'n' && theta != 'n' && vi != 'n' && t != 'n') {
+                    hf = hi + vi*Math.sin(pi*theta)*t - 0.5*g*t*t;
+                    document.getElementById('printv').innerHTML = hf.toString() + ' m';
+                    return;
+                }
+                if (g != 'n' && hi != 'n' && viy != 'n' && t != 'n') {
+                    hf = hi + viy*t - 0.5*g*t*t;
+                    document.getElementById('printv').innerHTML = hf.toString() + ' m';
+                    return;
+                }
+                if (g != 'n' && hi != 'n' && vfy != 'n' && t != 'n') {
+                    viy = vfy + g*t;
+                    hf = hi + viy*t - 0.5*g*t*t;
+                    document.getElementById('printv').innerHTML = hf.toString() + ' m';
+                    return;
+                }
+                document.getElementById('printv').innerHTML = hf;
+            }
+        </script>
+        <h2>Solve for Inital Height</h2>
+        <form action="" id="proj_v_hi">
+            <label for="hf">Final Height (m)</label>
+            <input type="text" id='hf'><br>
+            <label for="theta_v2">Launch Angle (degrees)</label>
+            <input type="text" id="theta_v2"><br>
+            <label for="vi2">Intial Velocity (m/s)</label>
+            <input type="text" id="vi2"><br>
+            <label for="viy2">Initial Vertical Velocity (m/s)</label>
+            <input type="text" id="viy2"><br>
+            <label for="vfy2">Final Vertical Velocity (m/s)</label>
+            <input type="text" id="vfy2"><br>
+            <label for="g2">g (m/s^2)</label>
+            <input type="text" id="g2"><br>
+            <label for="tv2">Time (s)</label>
+            <input type="text" id="tv2"><br><br>
+        </form>
+        <button onclick="extract_hi()">Calculate</button>
+        <p id ='printv2'></p>
+        <script>
+            function extract_hi() {
+                var pi = 180/3.14159;
+                var data = document.getElementById('proj_v_hi');
+                var hi = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var hf = parseFloat(data.elements[0].value);
+                } else {
+                    var hf = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var theta = parseFloat(data.elements[1].value);
+                } else {
+                    var theta = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var vi = parseFloat(data.elements[2].value);
+                } else {
+                    var vi = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var viy = parseFloat(data.elements[3].value);
+                } else {
+                    var viy = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var vfy = parseFloat(data.elements[4].value);
+                } else {
+                    var vfy = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var g = parseFloat(data.elements[5].value);
+                } else {
+                    var g = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var t = parseFloat(data.elements[5].value);
+                } else {
+                    var t = 'n';
+                }
+                //Actual Calculation Begins
+                if (g != 'n' && hf != 'n' && theta != 'n' && vi != 'n' && t != 'n') {
+                    hi = hf - vi*Math.sin(pi*theta)*t + 0.5*g*t*t;
+                    document.getElementById('printv2').innerHTML = hi.toString() + ' m';
+                    return;
+                }
+                if (g != 'n' && hf != 'n' && viy != 'n' && t != 'n') {
+                    hi = hf - viy*t + 0.5*g*t*t;
+                    document.getElementById('printv2').innerHTML = hi.toString() + ' m';
+                    return;
+                }
+                if (g != 'n' && vfy != 'n' && hf != 'n' && t != 'n') {
+                    viy = vfy + g*t;
+                    hi = hf - viy*t + 0.5*g*t*t;
+                    document.getElementById('printv2').innerHTML = hi.toString() + ' m';
+                    return;
+                }
+                document.getElementById('printv2').innerHTML = hi;
+            }
+        </script>
+        <h2>Solve for Inital Velocity</h2>
+        <form action="" id="proj_v_vi">
+            <label for="hf2">Final Height (m)</label>
+            <input type="text" id='hf2'><br>
+            <label for="theta_v3">Launch Angle (degrees)</label>
+            <input type="text" id="theta_v3"><br>
+            <label for="hi2">Intial Height (m)</label>
+            <input type="text" id="hi2"><br>
+            <label for="viy3">Initial Vertical Velocity (m/s)</label>
+            <input type="text" id="viy3"><br>
+            <label for="vfy3">Final Vertical Velocity (m/s)</label>
+            <input type="text" id="vfy3"><br>
+            <label for="g3">g (m/s^2)</label>
+            <input type="text" id="g3"><br>
+            <label for="tv3">Time (s)</label>
+            <input type="text" id="tv3"><br><br>
+        </form>
+        <button onclick="extract_vi()">Calculate</button>
+        <p id ='printv3'></p>
+        <script>
+            function extract_vi() {
+                var pi = 180/3.14159;
+                var data = document.getElementById('proj_v_vi');
+                var vi = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var hf = parseFloat(data.elements[0].value);
+                } else {
+                    var hf = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var theta = parseFloat(data.elements[1].value);
+                } else {
+                    var theta = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var hi = parseFloat(data.elements[2].value);
+                } else {
+                    var hi = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var viy = parseFloat(data.elements[3].value);
+                } else {
+                    var viy = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var vfy = parseFloat(data.elements[4].value);
+                } else {
+                    var vfy = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var g = parseFloat(data.elements[5].value);
+                } else {
+                    var g = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var t = parseFloat(data.elements[6].value);
+                } else {
+                    var t = 'n';
+                }
+                //Actual Calculation Begins
+                if (theta != 'n' && viy != 'n') {
+                    vi = viy / Math.sin(pi*theta);
+                    document.getElementById('printv3').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
+                if (g != 'n' && theta != 'n' && t != 'n' && vfy != 'n') {
+                    vi = (vfy + g*t)/Math.sin(pi*theta);
+                    document.getElementById('printv3').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
+                if (g != 'n' && theta != 'n' && hi != 'n' && hf != 'n' && t != 'n') {
+                    vi = (hf - hi + 0.5*g*t*t)/(t*Math.sin(pi*theta));
+                    document.getElementById('printv3').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
+                document.getElementById('printv3').innerHTML = vi;
+            }
+        </script>
+        <h2>Solve for Inital Vertical Velocity</h2>
+        <form action="" id="proj_v_viy">
+            <label for="hf3">Final Height (m)</label>
+            <input type="text" id='hf3'><br>
+            <label for="theta_v4">Launch Angle (degrees)</label>
+            <input type="text" id="theta_v4"><br>
+            <label for="hi3">Intial Height (m)</label>
+            <input type="text" id="hi3"><br>
+            <label for="vi3">Initial Velocity (m/s)</label>
+            <input type="text" id="vi3"><br>
+            <label for="vfy4">Final Vertical Velocity (m/s)</label>
+            <input type="text" id="vfy4"><br>
+            <label for="g4">g (m/s^2)</label>
+            <input type="text" id="g4"><br>
+            <label for="tv4">Time (s)</label>
+            <input type="text" id="tv4"><br><br>
+        </form>
+        <button onclick="extract_viy()">Calculate</button>
+        <p id ='printv4'></p>
+        <script>
+            function extract_viy() {
+                var pi = 180/3.14159;
+                var data = document.getElementById('proj_v_viy');
+                var viy = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var hf = parseFloat(data.elements[0].value);
+                } else {
+                    var hf = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var theta = parseFloat(data.elements[1].value);
+                } else {
+                    var theta = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var hi = parseFloat(data.elements[2].value);
+                } else {
+                    var hi = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var vi = parseFloat(data.elements[3].value);
+                } else {
+                    var vi = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var vfy = parseFloat(data.elements[4].value);
+                } else {
+                    var vfy = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var g = parseFloat(data.elements[5].value);
+                } else {
+                    var g = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var t = parseFloat(data.elements[6].value);
+                } else {
+                    var t = 'n';
+                }
+                //Actual Calculation Begins
+                if (theta != 'n' && vi != 'n') {
+                    viy = vi*Math.sin(pi*theta);
+                    document.getElementById('printv4').innerHTML = viy.toString() + ' m/s';
+                    return;
+                }
+                if (g != 'n' && vfy != 'n' && t != 'n') {
+                    viy = vfy + g*t;
+                    document.getElementById('printv4').innerHTML = viy.toString() + ' m/s';
+                    return;
+                }
+                if (g != 'n' && hf != 'n' && hi != 'n' && t != 'n') {
+                    viy = (hf - hi + 0.5*g*t*t)/t;;
+                    document.getElementById('printv4').innerHTML = viy.toString() + ' m/s';
+                    return;
+                }
+                document.getElementById('printv4').innerHTML = viy;
+            }
+        </script>
+        <h2>Solve For Final Vertical Velocity</h2>
+        <form action="" id="proj_v_vfy">
+            <label for="hf4">Final Height (m)</label>
+            <input type="text" id='hf4'><br>
+            <label for="theta_v5">Launch Angle (degrees)</label>
+            <input type="text" id="theta_v5"><br>
+            <label for="hi4">Intial Height (m)</label>
+            <input type="text" id="hi4"><br>
+            <label for="vi4">Initial Velocity (m/s)</label>
+            <input type="text" id="vi4"><br>
+            <label for="viy4">Initial Vertical Velocity (m/s)</label>
+            <input type="text" id="viy4"><br>
+            <label for="g5">g (m/s^2)</label>
+            <input type="text" id="g5"><br>
+            <label for="tv5">Time (s)</label>
+            <input type="text" id="tv5"><br><br>
+        </form>
+        <button onclick="extract_vfy()">Calculate</button>
+        <p id ='printv5'></p>
+        <script>
+            function extract_vfy() {
+                var pi = 180/3.14159;
+                var data = document.getElementById('proj_v_vfy');
+                var vfy = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var hf = parseFloat(data.elements[0].value);
+                } else {
+                    var hf = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var theta = parseFloat(data.elements[1].value);
+                } else {
+                    var theta = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var hi = parseFloat(data.elements[2].value);
+                } else {
+                    var hi = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var vi = parseFloat(data.elements[3].value);
+                } else {
+                    var vi = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var viy = parseFloat(data.elements[4].value);
+                } else {
+                    var viy = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var g = parseFloat(data.elements[5].value);
+                } else {
+                    var g = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var t = parseFloat(data.elements[6].value);
+                } else {
+                    var t = 'n';
+                }
+                //Actual Calculation Begins
+                if (g != 'n' && viy != 'n' && t != 'n') {
+                    vfy = viy - g*t;
+                    document.getElementById('printv5').innerHTML = vfy.toString() + ' m/s';
+                    return;
+                }
+                if (g != 'n' && theta != 'n' && vi != 'n' && t != 'n') {
+                    vfy = vi*Math.sin(theta*pi) - g*t;
+                    document.getElementById('printv5').innerHTML = vfy.toString() + ' m/s';
+                    return;
+                }
+                if (g != 'n' && hf != 'n' && hi != 'n' && t != 'n') {
+                    viy = (hf - hi + 0.5*g*t*t)/t;
+                    vf = viy - g*t;
+                    document.getElementById('printv5').innerHTML = vfy.toString() + ' m/s';
+                    return;
+                }
+                document.getElementById('printv5').innerHTML = vfy;
+            }
+        </script>
+        <h2>Solve For Time</h2>
+        <form action="" id="proj_v_t">
+            <label for="hf5">Final Height (m)</label>
+            <input type="text" id='hf5'><br>
+            <label for="theta_v6">Launch Angle (degrees)</label>
+            <input type="text" id="theta_v6"><br>
+            <label for="hi5">Intial Height (m)</label>
+            <input type="text" id="hi5"><br>
+            <label for="vi5">Initial Velocity (m/s)</label>
+            <input type="text" id="vi5"><br>
+            <label for="viy5">Initial Vertical Velocity (m/s)</label>
+            <input type="text" id="viy5"><br>
+            <label for="g6">g (m/s^2)</label>
+            <input type="text" id="g6"><br>
+            <label for="vfy5">Final Vertical Velocity (m/s)</label>
+            <input type="text" id="vfy5"><br><br>
+        </form>
+        <button onclick="extract_tv()">Calculate</button>
+        <p id ='printv6'></p>
+        <script>
+            function extract_tv() {
+                var pi = 180/3.14159;
+                var data = document.getElementById('proj_v_t');
+                var tv = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var hf = parseFloat(data.elements[0].value);
+                } else {
+                    var hf = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var theta = parseFloat(data.elements[1].value);
+                } else {
+                    var theta = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var hi = parseFloat(data.elements[2].value);
+                } else {
+                    var hi = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var vi = parseFloat(data.elements[3].value);
+                } else {
+                    var vi = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var viy = parseFloat(data.elements[4].value);
+                } else {
+                    var viy = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var g = parseFloat(data.elements[5].value);
+                } else {
+                    var g = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var vfy = parseFloat(data.elements[6].value);
+                } else {
+                    var vfy = 'n';
+                }
+                //Actual Calculation Begins
+                if(theta != 'n' && vi != 'n') {
+                    viy = vi*Math.sin(pi*theta);
+                }
+                if (viy != 'n' && vfy != 'n') {
+                    tv = (viy - vfy)/g;
+                    document.getElementById('printv6').innerHTML = tv.toString() + ' s';
+                    return;
+                }
+                if (hf != 'n' && hi != 'n' && viy == 0) {
+                    hf = hf - hi;
+                    tv = Math.sqrt(2*hf/g);
+                    document.getElementById('printv6').innerHTML = tv.toString() + ' s';
+                    return;
+
+                }
+                document.getElementById('printv6').innerHTML = tv;
+            }
+        </script>
+        <h2>Solve For Angle</h2>
+        <form action="" id="proj_v_theta">
+            <label for="hf6">Final Height (m)</label>
+            <input type="text" id='hf6'><br>
+            <label for="tv6">Time (s)</label>
+            <input type="text" id="tv6"><br>
+            <label for="hi6">Intial Height (m)</label>
+            <input type="text" id="hi6"><br>
+            <label for="vi6">Initial Velocity (m/s)</label>
+            <input type="text" id="vi6"><br>
+            <label for="viy6">Initial Vertical Velocity (m/s)</label>
+            <input type="text" id="viy6"><br>
+            <label for="g6">g (m/s^2)</label>
+            <input type="text" id="g6"><br>
+            <label for="vfy6">Final Vertical Velocity (m/s)</label>
+            <input type="text" id="vfy6"><br><br>
+        </form>
+        <button onclick="extract_theta_v()">Calculate</button>
+        <p id ='printv7'></p>
+        <script>
+            function extract_theta_v() {
+                var pi = 180/3.14159;
+                var data = document.getElementById('proj_v_t');
+                var theta = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var hf = parseFloat(data.elements[0].value);
+                } else {
+                    var hf = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var t = parseFloat(data.elements[1].value);
+                } else {
+                    var t = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var hi = parseFloat(data.elements[2].value);
+                } else {
+                    var hi = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var vi = parseFloat(data.elements[3].value);
+                } else {
+                    var vi = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var viy = parseFloat(data.elements[4].value);
+                } else {
+                    var viy = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var g = parseFloat(data.elements[5].value);
+                } else {
+                    var g = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var vfy = parseFloat(data.elements[6].value);
+                } else {
+                    var vfy = 'n';
+                }
+                //Actual Calculation Begins
+                if (viy != 'n' && vi != 'n') {
+                    theta = (180/3.14159) * Math.asin(viy / vi);
+                    document.getElementById('printv7').innerHTML = theta.toString() + ' degrees';
+                    return;
+                }
+                if (vfy != 'n' && vi != 'n' && t != 'n') {
+                    theta = (180/3.14159) * Math.asin((vfy + g*t) / vi);
+                    document.getElementById('printv7').innerHTML = theta.toString() + ' degrees';
+                    return;
+                }
+                if (hf != 'n' && hi != 'n' && t != 'n' && vi != 'n') {
+                    theta = (180/3.14159) * Math.sin((hf - hi + 0.5*g*t*t)/(vi*t));
+                    document.getElementById('printv7').innerHTML = theta.toString() + ' degrees';
+                    return;
+                }
+                document.getElementById('printv7').innerHTML = theta;
+            }
+        </script>
+    </body>
+</html>

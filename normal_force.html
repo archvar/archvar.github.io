@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Normal Force Calculator</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <a href="./forces.html">Back to Forces Main Page</a>
+        <h1>Normal Force Calculator</h1>
+        <p>Welcome to the Normal Force Calculator! Use this to calculate basic normal force, weight, or tension. As usual, enter 'n' for values you don't know.</p>
+        <h2>Solve For Normal Force</h2>
+        <form action="" id='fnx'>
+            <label for="mass">Mass (kg)</label>
+            <input type="text" id='mass'><br>
+            <label for="f1">Upward Force (N)</label>
+            <input type="text" id='f1'><br>
+            <label for="ay">Upward Acceleration (m/s^2)</label>
+            <input type="text" id="ay"><br>
+            <label for="theta">Angle of Force (degrees)</label>
+            <input type="text" id="theta"><br><br>
+        </form>
+        <button onclick="extract_fn()">Calculate</button>
+        <p id="print"></p>
+        <script>
+            function extract_fn() {
+                var g = 9.81;
+                var pi = 3.14159/180;
+                var data = document.getElementById('fnx');
+                var fn = "Error: Not Enough Variables Defined";
+                if (data.elements[0].value != 'n') {
+                    var m = parseFloat(data.elements[0].value);
+                } else {
+                    var m = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var f1 = parseFloat(data.elements[1].value);
+                } else {
+                    var f1 = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var ay = parseFloat(data.elements[2].value);
+                } else {
+                    var ay = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var theta = parseFloat(data.elements[3].value);
+                } else {
+                    var theta = 'n';
+                }
+                //Actual Calculation Begins
+                if (m != 'n' && f1 == 0 && ay == 0) {
+                    fn = m*g;
+                    document.getElementById('print').innerHTML = fn.toString() + ' N';
+                    return;
+                }
+                if (m != 'n' && f1 != 'n' && theta != 'n') {
+                    fn = m*g + f1*Math.sin(pi*theta);
+                    document.getElementById('print').innerHTML = fn.toString() + ' N';
+                    return;
+                }
+                if (m != 'n' && ay != 'n' && theta != 'n') {
+                    f1 = m*ay;
+                    fn = m*g + f1*Math.sin(pi*theta);
+                    document.getElementById('print').innerHTML = fn.toString() + ' N';
+                    return;
+                }
+                if (f1 != 'n' && ay != 'n' && theta != 'n') {
+                    m = f1/(ay*Math.sin(pi*theta));
+                    fn = m*g + f1*Math.sin(pi*theta);
+                    document.getElementById('print').innerHTML = fn.toString() + ' N';
+                    return;
+                }
+                document.getElementById('print').innerHTML = fn;
+            }
+        </script>
+        <h2>Solve For Mass</h2>
+        <form action="" id='mx'>
+            <label for="fn"> Normal Force (N)</label>
+            <input type="text" id='fn'><br>
+            <label for="f12">Upward Force (N)</label>
+            <input type="text" id='f12'><br>
+            <label for="ay2">Upward Acceleration (m/s^2)</label>
+            <input type="text" id="ay2"><br>
+            <label for="theta2">Angle of Force (degrees)</label>
+            <input type="text" id="theta2"><br><br>
+        </form>
+        <button onclick="extract_m()">Calculate</button>
+        <p id="print2"></p>
+        <script>
+            function extract_m() {
+                var g = 9.81;
+                var pi = 3.14159/180;
+                var data = document.getElementById('mx');
+                var m = "Error: Not Enough Variables Defined";
+                if (data.elements[0].value != 'n') {
+                    var fn = parseFloat(data.elements[0].value);
+                } else {
+                    var fn = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var f1 = parseFloat(data.elements[1].value);
+                } else {
+                    var f1 = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var ay = parseFloat(data.elements[2].value);
+                } else {
+                    var ay = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var theta = parseFloat(data.elements[3].value);
+                } else {
+                    var theta = 'n';
+                }
+                //Actual Calculation Begins
+                if (fn != 'n' && f1 == '0' && ay == '0') {
+                    m = fn/g;
+                    document.getElementById('print2').innerHTML = m.toString() + ' kg';
+                    return;
+                }
+                if (fn != 'n' && f1 != 'n' && theta != 'n') {
+                    m = (fn - f1*Math.sin(pi*theta))/g;
+                    document.getElementById('print2').innerHTML = m.toString() + ' kg';
+                    return;
+                }
+                if (f1 != 'n' && ay != 'n' && theta != 'n') {
+                    m = f1/(ay*Math.sin(pi*theta));
+                    document.getElementById('print2').innerHTML = m.toString() + ' kg';
+                    return;
+                }
+                document.getElementById('print2').innerHTML = m;
+            }
+        </script>
+        <h2>Solve For Upward Force</h2>
+        <form action="" id='f1x'>
+            <label for="fn2"> Normal Force (N)</label>
+            <input type="text" id='fn2'><br>
+            <label for="m2">Mass (kg)</label>
+            <input type="text" id='m2'><br>
+            <label for="ay3">Upward Acceleration (m/s^2)</label>
+            <input type="text" id="ay3"><br>
+            <label for="theta3">Angle of Force (degrees)</label>
+            <input type="text" id="theta3"><br><br>
+        </form>
+        <button onclick="extract_f1()">Calculate</button>
+        <p id="print3"></p>
+        <script>
+            function extract_f1() {
+                var g = 9.81;
+                var pi = 3.14159/180;
+                var data = document.getElementById('f1x');
+                var f1 = "Error: Not Enough Variables Defined";
+                if (data.elements[0].value != 'n') {
+                    var fn = parseFloat(data.elements[0].value);
+                } else {
+                    var fn = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m = parseFloat(data.elements[1].value);
+                } else {
+                    var m = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var ay = parseFloat(data.elements[2].value);
+                } else {
+                    var ay = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var theta = parseFloat(data.elements[3].value);
+                } else {
+                    var theta = 'n';
+                }
+                //Actual Calculation Begins
+                if (fn != 'n' && m != 'n' && theta != 'n') {
+                    f1 = (fn - m*g) / Math.sin(pi*theta);
+                    document.getElementById('print3').innerHTML = f1.toString() + ' N';
+                    return;
+                }
+                if (fn != 'n' && ay != 'n' && theta != 'n') {
+                    m = fn / (g + ay*Math.sin(pi*theta));
+                    f1 = m*ay
+                    document.getElementById('print3').innerHTML = f1.toString() + ' N';
+                    return;
+                }
+                if (m != 'n' && ay != 'n' && theta != 'n') {
+                    f1 = m*ay;
+                    document.getElementById('print3').innerHTML = f1.toString() + ' N';
+                    return;
+                }
+                document.getElementById('print3').innerHTML = f1;
+            }
+        </script>
+        <h2>Solve For Upward Acceleration</h2>
+        <form action="" id='ayx'>
+            <label for="fn3"> Normal Force (N)</label>
+            <input type="text" id='fn3'><br>
+            <label for="m3">Mass (kg)</label>
+            <input type="text" id='m3'><br>
+            <label for="f13">Upward Force (N)</label>
+            <input type="text" id="f13"><br>
+            <label for="theta4">Angle of Force (degrees)</label>
+            <input type="text" id="theta4"><br><br>
+        </form>
+        <button onclick="extract_ay()">Calculate</button>
+        <p id="print4"></p>
+        <script>
+            function extract_ay() {
+                var g = 9.81;
+                var pi = 3.14159/180;
+                var data = document.getElementById('ayx');
+                var ay = "Error: Not Enough Variables Defined";
+                if (data.elements[0].value != 'n') {
+                    var fn = parseFloat(data.elements[0].value);
+                    alert(fn);
+                } else {
+                    var fn = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m = parseFloat(data.elements[1].value);
+                } else {
+                    var m = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var f1 = parseFloat(data.elements[2].value);
+                } else {
+                    var f1 = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var theta = parseFloat(data.elements[3].value);
+                } else {
+                    var theta = 'n';
+                }
+                //Actual Calculation Begins
+                if (fn != 'n' && m != 'n' && theta != 'n') {
+                    ay = (fn / m - g) / Math.sin(pi*theta);
+                    document.getElementById('print4').innerHTML = ay.toString() + ' m/s^2';
+                    return;
+                }
+                if (fn != 'n' && f1 != 'n' && theta != 'n') {
+                    m = (fn - f1*Math.sin(pi*theta)) / g;
+                    ay = f1 / m;
+                    document.getElementById('print4').innerHTML = ay.toString() + ' m/s^2';
+                    return;
+                }
+                if (f1 != 'n' && m != 'n') {
+                    ay = f1 / m;
+                    document.getElementById('print4').innerHTML = ay.toString() + ' m/s^2';
+                    return;
+                }
+                document.getElementById('print4').innerHTML = ay;
+            }
+        </script>
+    </body>
+</html>

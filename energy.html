@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kinetic Energy/Potential Energy Calculator </title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <a href="./work_main.html">Back to Work Main Page</a>
+        <h1>Kinetic Energy/Potential Energy Calculator</h1>
+        <p style="color: blue;">This is a simple energy calculator. Enter 'n' for unkown values.</p>
+        <h3>Kinetic Energy</h3>
+        <h2>Solve for Kinetic Energy</h2>
+        <form action="" id="kinetic_ke">
+            <label for="m">Mass (kg)</label>
+            <input type="text" id="m"><br>
+            <label for="v">Velocity (m/s)</label>
+            <input type="text" id="v"><br><br>
+        </form>
+        <button onclick="extract_ke()">Calculate</button>
+        <p id="print"></p>
+        <script>
+            function extract_ke () {
+                var data = document.getElementById('kinetic_ke');
+                var ke = 'Error: Not Enough Variables';
+                if (data.elements[0].value != 'n') {
+                    var m = parseFloat(data.elements[0].value); 
+                } else {
+                    var m = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var v = parseFloat(data.elements[1].value); 
+                } else {
+                    var v = 'n';
+                }
+                //Actual Calculation Begins
+                if (m != 'n' && v != 'n') {
+                    ke = 0.5*m*v*v;
+                    document.getElementById('print').innerHTML = ke.toString() + ' J';
+                    return;
+                }
+                document.getElementById('print').innerHTML = ke;
+            }
+        </script>
+        <h2>Solve for Mass</h2>
+        <form action="" id="kinetic_m">
+            <label for="ke">Kinetic Energy (J)</label>
+            <input type="text" id="ke"><br>
+            <label for="v2">Velocity (m/s)</label>
+            <input type="text" id="v2"><br><br>
+        </form>
+        <button onclick="extract_m()">Calculate</button>
+        <p id="print2"></p>
+        <script>
+            function extract_m () {
+                var data = document.getElementById('kinetic_m');
+                var m = 'Error: Not Enough Variables';
+                if (data.elements[0].value != 'n') {
+                    var ke = parseFloat(data.elements[0].value); 
+                } else {
+                    var ke = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var v = parseFloat(data.elements[1].value); 
+                } else {
+                    var v = 'n';
+                }
+                //Actual Calculation Begins
+                if (ke != 'n' && v != 'n') {
+                    m = 2*ke / (v*v);
+                    document.getElementById('print2').innerHTML = m.toString() + ' kg';
+                    return;
+                }
+                document.getElementById('print2').innerHTML = m;
+            }
+        </script>
+        <h2>Solve for Velocity</h2>
+        <form action="" id="kinetic_v">
+            <label for="ke2">Kinetic Energy (J)</label>
+            <input type="text" id="ke2"><br>
+            <label for="m2">Mass (kg)</label>
+            <input type="text" id="m2"><br><br>
+        </form>
+        <button onclick="extract_v()">Calculate</button>
+        <p id="print3"></p>
+        <script>
+            function extract_v () {
+                var data = document.getElementById('kinetic_v');
+                var v = 'Error: Not Enough Variables';
+                if (data.elements[0].value != 'n') {
+                    var ke = parseFloat(data.elements[0].value); 
+                } else {
+                    var ke = 'n'
+                }
+                if (data.elements[1].value != 'n') {
+                    var m = parseFloat(data.elements[1].value); 
+                } else {
+                    var m = 'n'
+                }
+                //Actual Calculation Begins
+                if (ke != 'n' && m != 'n') {
+                    v = Math.sqrt(2*ke / m);
+                    document.getElementById('print3').innerHTML = v.toString() + ' m/s';
+                    return;
+                }
+                document.getElementById('print3').innerHTML = v;
+            }
+        </script>
+        <h3>Potential Energy</h3>
+        <h2>Solve for Potential Energy</h2>
+        <form action="" id="potential_u">
+            <label for="m">Mass (kg)</label>
+            <input type="text" id="m"><br>
+            <label for="g">Gravitational Acceleration (m/s^2)</label>
+            <input type="text" id="g"><br>
+            <label for="h">Height (m)</label>
+            <input type="text" id="h"><br><br>
+        </form>
+        <button onclick="extract_u()">Calculate</button>
+        <p id="printu"></p>
+        <script>
+            function extract_u () {
+                var data = document.getElementById('potential_u');
+                var u = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var m = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var g = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var g = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var h = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var h = 'n';
+                }
+                //Actual Calculation Begins
+                if (m != 'n' && g != 'n' && h != 'n') {
+                    u = m*g*h;
+                    document.getElementById('printu').innerHTML = u.toString() + ' J';
+                    return;
+                }
+                document.getElementById('printu').innerHTML = u;
+            }
+        </script>
+        <h2>Solve for Mass</h2>
+        <form action="" id="potential_m">
+            <label for="u">Potential Energy (J)</label>
+            <input type="text" id="u"><br>
+            <label for="g2">Gravitational Acceleration (m/s^2)</label>
+            <input type="text" id="g2"><br>
+            <label for="h2">Height (m)</label>
+            <input type="text" id="h2"><br><br>
+        </form>
+        <button onclick="extract_mu()">Calculate</button>
+        <p id="printu2"></p>
+        <script>
+            function extract_mu () {
+                var data = document.getElementById('potential_m');
+                var m = 'Error: Not Enough Variables Defined'
+                if (data.elements[0].value != 'n') {
+                    var u = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var u = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var g = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var g = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var h = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var h = 'n';
+                }
+                //Actual Calculation Begins
+                if (u != 'n' && g != 'n' && h != 'n') {
+                    m = u/(g*h);
+                    document.getElementById('printu2').innerHTML = m.toString() + ' kg';
+                    return;
+                }
+                document.getElementById('printu2').innerHTML = m;
+            }
+        </script>
+        <h2>Solve for Gravitational Acceleration</h2>
+        <form action="" id="potential_g">
+            <label for="m2">Mass (kg)</label>
+            <input type="text" id="m2"><br>
+            <label for="u2">Potential Energy (J)</label>
+            <input type="text" id="u2"><br>
+            <label for="h3">Height (m)</label>
+            <input type="text" id="h3"><br><br>
+        </form>
+        <button onclick="extract_g()">Calculate</button>
+        <p id="printu3"></p>
+        <script>
+            function extract_g () {
+                var data = document.getElementById('potential_g');
+                var g = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var m = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var u = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var u = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var h = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var h = 'n';
+                }
+                //Actual Calculation Begins
+                if (m != 'n' && u != 'n' && h != 'n') {
+                    g = u/(m*h);
+                    document.getElementById('printu3').innerHTML = g.toString() + ' m/s^2';
+                    return;
+                }
+                document.getElementById('printu3').innerHTML = g;
+            }
+        </script>
+        <h2>Solve for Height</h2>
+        <form action="" id="potential_h">
+            <label for="m3">Mass (kg)</label>
+            <input type="text" id="m"><br>
+            <label for="g3">Gravitational Acceleration (m/s^2)</label>
+            <input type="text" id="g"><br>
+            <label for="u3">Potential Energy (J)</label>
+            <input type="text" id="u3"><br><br>
+        </form>
+        <button onclick="extract_h()">Calculate</button>
+        <p id="printu4"></p>
+        <script>
+            function extract_h () {
+                var data = document.getElementById('potential_h');
+                var h = 'Error: Not Enoguh Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var m = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var g = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var g = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var u = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var u = 'n';
+                }
+                //Actual Calculation Begins
+                if (m != 'n' && g != 'n' && u != 'n') {
+                    h = u/(g*m);
+                    document.getElementById('printu4').innerHTML = h.toString() + ' m';
+                    return;
+                }
+                document.getElementById('printu4').innerHTML = h;
+            }
+        </script>
+    </body>
+</html>
