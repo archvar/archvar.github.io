@@ -344,10 +344,10 @@
                 }
                 //Actual Calculation Begins
                 if (theta != 'n' && vi != 'n') {
-                    viy = vi*Math.sin(pi*theta)
+                    viy = vi*Math.sin(pi*theta);
                 }
                 if (vfy != 'n' && viy != 'n' && g != 'n') {
-                    t = vfy - viy / g;
+                    t = (viy - vfy) / g;
                 }
                 if (g != 'n' && hi != 'n' && theta != 'n' && vi != 'n' && t != 'n') {
                     hf = hi + vi*Math.sin(pi*theta)*t - 0.5*g*t*t;
