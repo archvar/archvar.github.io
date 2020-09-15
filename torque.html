@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Torque Calculator</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <a href="./circ_grav_rot.html">Back to Circular Motion Main Page</a>
+        <h1>Torque Calculator</h1>
+        <p style="color: blue;">Basic Torque Calculator. Enter 'n' for unknown values.</p>
+        <h2>Solve For Torque</h2>
+        <form action="" id="torque_t">
+            <label for="f">Force (N)</label>
+            <input type="text" id="f"><br>
+            <label for="r">Radius (m)</label>
+            <input type="text" id="r"><br>
+            <label for="angle">Angle (degrees)</label>
+            <input type="text" id="angle"><br><br>
+        </form>
+        <button onclick="extract_torque()">Calculate</button>
+        <p id="print"></p>
+        <script>
+            function extract_torque () {
+                var p = 3.14159/180;
+                var data = document.getElementById('torque_t');
+                var torque = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var f = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var f = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var r = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var r = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var angle = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var angle = 'n';
+                }
+                //Actual Calculation Begins
+                if (f != 'n' && r != 'n' && angle != 'n') {
+                    torque = f*r*Math.sin(p*angle);
+                    document.getElementById('print').innerHTML = torque.toString() + ' Nm';
+                    returnl
+                }
+                document.getElementById('print').innerHTML = torque;
+            }
+        </script>
+        <h2>Solve For Force</h2>
+        <form action="" id="torque_f">
+            <label for="t">Torque (Nm)</label>
+            <input type="text" id="t"><br>
+            <label for="r2">Radius (m)</label>
+            <input type="text" id="r2"><br>
+            <label for="angle2">Angle (degrees)</label>
+            <input type="text" id="angle2"><br><br>
+        </form>
+        <button onclick="extract_f()">Calculate</button>
+        <p id="print2"></p>
+        <script>
+            function extract_f () {
+                var p = 3.14159/180;
+                var data = document.getElementById('torque_f');
+                var f = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var torque = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var torque = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var r = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var r = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var angle = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var angle = 'n';
+                }
+                //Actual Calculation Begins
+                if (torque != 'n' && r != 'n' && angle != 'n') {
+                    f = torque / (r*Math.sin(p*angle));
+                    document.getElementById('print2').innerHTML = f.toString() + ' Nm';
+                    return;
+                }
+                document.getElementById('print2').innerHTML = f;
+            }
+        </script>
+        <h2>Solve For Radius</h2>
+        <form action="" id="torque_r">
+            <label for="t2">Torque (Nm)</label>
+            <input type="text" id="t2"><br>
+            <label for="f2">Force (N)</label>
+            <input type="text" id="f2"><br>
+            <label for="angle3">Angle (degrees)</label>
+            <input type="text" id="angle3"><br><br>
+        </form>
+        <button onclick="extract_r()">Calculate</button>
+        <p id="print3"></p>
+        <script>
+            function extract_r () {
+                var p = 3.14159/180;
+                var data = document.getElementById('torque_r');
+                var r = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var torque = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var torque = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var f = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var f = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var angle = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var angle = 'n';
+                }
+                //Actual Calculation Begins
+                if (torque != 'n' && f != 'n' && angle != 'n') {
+                    r = torque / (f*Math.sin(p*angle));
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                document.getElementById('print3').innerHTML = r;
+            }
+        </script>
+        <h2>Solve For Angle</h2>
+        <form action="" id="torque_a">
+            <label for="t3">Torque (Nm)</label>
+            <input type="text" id="t3"><br>
+            <label for="f3">Force (N)</label>
+            <input type="text" id="f3"><br>
+            <label for="r3">Radius (m)</label>
+            <input type="text" id="r3"><br><br>
+        </form>
+        <button onclick="extract_angle()">Calculate</button>
+        <p id="print4"></p>
+        <script>
+            function extract_angle () {
+                var p = 180/3.14159;
+                var data = document.getElementById('torque_a');
+                var angle = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var torque = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var torque = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var f = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var f = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var r = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var r = 'n';
+                }
+                //Actual Calculation Begins
+                if (torque != 'n' && f != 'n' && r != 'n') {
+                    angle = Math.asin(torque / (f*r));
+                    angle = p*angle;
+                    document.getElementById('print4').innerHTML = angle.toString() + ' degrees';
+                    return;
+                }
+                document.getElementById('print4').innerHTML = angle;
+            }
+        </script>
+    </body>
+</html>

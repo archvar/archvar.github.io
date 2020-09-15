@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rotational Motion Calculator</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <a href="./circ_grav_rot.html">Back to Circular Motion Main Page</a>
+        <h1>Rotational Motion Calculator</h1>
+        <p style="color: blue;">Basic Rotational Motion Calculator. Enter 'n' for unknown values.</p>
+        <h2>Solve for Angular Displacement</h2>
+        <form action="" id="rot_theta">
+            <label for="d">Distance (m)</label>
+            <input type="text" id="d"><br>
+            <label for="r">Radius (m)</label>
+            <input type="text" id="r"><br>
+            <label for="rev">Revolutions</label>
+            <input type="text" id="rev"><br>
+            <label for="t">Time (s)</label>
+            <input type="text" id="t"><br>
+            <label for="wi">Initial Angular Velocity (rad/s)</label>
+            <input type="text" id="wi"><br>
+            <label for="wf">Final Angular Velocity (rad/s)</label>
+            <input type="text" id="wf"><br>
+            <label for="vi">Initial Velocity (m/s)</label>
+            <input type="text" id="vi"><br>
+            <label for="vf">Final Velocity (m/s)</label>
+            <input type="text" id="vf"><br>
+            <label for="alpha">Angular Acceleration (rad/s^2)</label>
+            <input type="text" id="alpha"><br>
+            <label for="a">Acceleration (m/s^2)</label>
+            <input type="text" id="a"><br><br>
+        </form>
+        <button onclick="extract_theta()">Calculate</button>
+        <p id="print"></p>
+        <script>
+            function extract_theta () {
+                var pi = 3.14159;
+                var data = document.getElementById('rot_theta');
+                var theta = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var d = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var r = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var r = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var rev = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var rev = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var t = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var t = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var wi = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var wi = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var wf = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var wf = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var vi = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var vi = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var vf = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var vf = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var alpha = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var alpha = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var a = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var a = 'n';
+                }
+                //Actual Calculation Begins
+                if (r != 'n' && vi != 'n') {
+                    wi = vi/r;
+                }
+                if (r != 'n' && wi != 'n') {
+                    vi = r*wi;
+                }
+                if (vi != 'n' && wi != 'n') {
+                    r = vi/wi;
+                }
+                if (r != 'n' && vf != 'n') {
+                    wf = vf/r;
+                }
+                if (r != 'n' && wf != 'n') {
+                    vf = r*wf;
+                }
+                if (vf != 'n' && wf != 'n') {
+                    r = vf/wf;
+                }
+                if (r != 'n' && a != 'n') {
+                    alpha = a/r;
+                }
+                if (r != 'n' && alpha != 'n') {
+                    a = alpha*r;
+                }
+                if (a != 'n' && alpha != 'n') {
+                    r = a/alpha;
+                }
+                if (rev != 'n') {
+                    theta = 2*pi*rev;
+                    document.getElementById('print').innerHTML = theta.toString() + ' rad';
+                    return;
+                }
+                if (d != 'n' && r != 'n') {
+                    theta = d/r;
+                    document.getElementById('print').innerHTML = theta.toString() + ' rad';
+                    return;
+                }
+                if (wi != 'n' && wf != 'n' && t != 'n') {
+                    theta = 0.5*(wi + wf)*t;
+                    document.getElementById('print').innerHTML = theta.toString() + ' rad';
+                    return;
+                }
+                if (wi != 'n' && t != 'n' && alpha != 'n') {
+                    theta = wi*t + 0.5*alpha*t*t;
+                    document.getElementById('print').innerHTML = theta.toString() + ' rad';
+                    return;
+                }
+                if (wf != 'n' && t != 'n' && alpha != 'n') {
+                    theta = wf*t - 0.5*alpha*t*t;
+                    document.getElementById('print').innerHTML = theta.toString() + ' rad';
+                    return;
+                }
+                if (wf != 'n' && wi != 'n' && a != 'n') {
+                    theta = (wf*wf - wi*wi) / (2*alpha);
+                    document.getElementById('print').innerHTML = theta.toString() + ' rad';
+                    return;
+                }
+                document.getElementById('print').innerHTML = theta;
+            }
+        </script>
+        <h2>Solve for Distance</h2>
+        <form action="" id="rot_d">
+            <label for="theta">Angular Displacement (rad)</label>
+            <input type="text" id="theta"><br>
+            <label for="r2">Radius (m)</label>
+            <input type="text" id="r2"><br>
+            <label for="rev2">Revolutions</label>
+            <input type="text" id="rev2"><br>
+            <label for="t2">Time (s)</label>
+            <input type="text" id="t2"><br>
+            <label for="wi2">Initial Angular Velocity (rad/s)</label>
+            <input type="text" id="wi2"><br>
+            <label for="wf2">Final Angular Velocity (rad/s)</label>
+            <input type="text" id="wf2"><br>
+            <label for="vi2">Initial Velocity (m/s)</label>
+            <input type="text" id="vi2"><br>
+            <label for="vf2">Final Velocity (m/s)</label>
+            <input type="text" id="vf2"><br>
+            <label for="alpha2">Angular Acceleration (rad/s^2)</label>
+            <input type="text" id="alpha2"><br>
+            <label for="a2">Acceleration (m/s^2)</label>
+            <input type="text" id="a2"><br><br>
+        </form>
+        <button onclick="extract_d()">Calculate</button>
+        <p id="print2"></p>
+        <script>
+            function extract_d () {
+                var pi = 3.14159;
+                var data = document.getElementById('rot_d');
+                var d = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var theta = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var theta = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var r = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var r = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var rev = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var rev = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var t = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var t = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var wi = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var wi = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var wf = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var wf = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var vi = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var vi = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var vf = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var vf = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var alpha = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var alpha = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var a = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var a = 'n';
+                }
+                //Actual Calculation Begins
+                if (r != 'n' && vi != 'n') {
+                    wi = vi/r;
+                }
+                if (r != 'n' && wi != 'n') {
+                    vi = r*wi;
+                }
+                if (vi != 'n' && wi != 'n') {
+                    r = vi/wi;
+                }
+                if (r != 'n' && vf != 'n') {
+                    wf = vf/r;
+                }
+                if (r != 'n' && wf != 'n') {
+                    vf = r*wf;
+                }
+                if (vf != 'n' && wf != 'n') {
+                    r = vf/wf;
+                }
+                if (r != 'n' && a != 'n') {
+                    alpha = a/r;
+                }
+                if (r != 'n' && alpha != 'n') {
+                    a = alpha*r;
+                }
+                if (a != 'n' && alpha != 'n') {
+                    r = a/alpha;
+                }
+                if (rev != 'n') {
+                    theta = 2*pi*rev;
+                }
+                if (theta != 'n' && r != 'n') {
+                    d = theta*r;
+                    document.getElementById('print2').innerHTML = d.toString() + ' m';
+                    return;
+                }
+                if (wi != 'n' && wf != 'n' && t != 'n' && r != 'n') {
+                    theta = 0.5*(wi + wf)*t;
+                    d = theta*r;
+                    document.getElementById('print2').innerHTML = d.toString() + ' m';
+                    return;
+                }
+                if (wi != 'n' && t != 'n' && alpha != 'n' && r != 'n') {
+                    theta = wi*t + 0.5*alpha*t*t;
+                    d = theta * r;
+                    document.getElementById('print2').innerHTML = d.toString() + ' m';
+                    return;
+                }
+                if (wf != 'n' && t != 'n' && alpha != 'n' && r != 'n') {
+                    theta = wf*t - 0.5*alpha*t*t;
+                    d = theta * r;
+                    document.getElementById('print2').innerHTML = d.toString() + ' m';
+                    return;
+                }
+                if (wf != 'n' && wi != 'n' && a != 'n' && r != 'n') {
+                    theta = (wf*wf - wi*wi) / (2*alpha);
+                    d = theta * r;
+                    document.getElementById('print2').innerHTML = d.toString() + ' m';
+                    return;
+                }
+                document.getElementById('print2').innerHTML = d;
+            }
+        </script>
+        <h2>Solve for Radius</h2>
+        <form action="" id="rot_r">
+            <label for="theta2">Angular Displacement (rad)</label>
+            <input type="text" id="theta2"><br>
+            <label for="d2">Distance (m)</label>
+            <input type="text" id="d2"><br>
+            <label for="rev3">Revolutions</label>
+            <input type="text" id="rev3"><br>
+            <label for="t3">Time (s)</label>
+            <input type="text" id="t3"><br>
+            <label for="wi3">Initial Angular Velocity (rad/s)</label>
+            <input type="text" id="wi3"><br>
+            <label for="wf3">Final Angular Velocity (rad/s)</label>
+            <input type="text" id="wf3"><br>
+            <label for="vi3">Initial Velocity (m/s)</label>
+            <input type="text" id="vi3"><br>
+            <label for="vf3">Final Velocity (m/s)</label>
+            <input type="text" id="vf3"><br>
+            <label for="alpha3">Angular Acceleration (rad/s^2)</label>
+            <input type="text" id="alpha3"><br>
+            <label for="a3">Acceleration (m/s^2)</label>
+            <input type="text" id="a3"><br><br>
+        </form>
+        <button onclick="extract_r()">Calculate</button>
+        <p id="print3"></p>
+        <script>
+            function extract_r () {
+                var pi = 3.14159;
+                var data = document.getElementById('rot_r');
+                var r = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var theta = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var theta = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var d = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var rev = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var rev = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var t = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var t = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var wi = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var wi = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var wf = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var wf = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var vi = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var vi = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var vf = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var vf = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var alpha = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var alpha = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var a = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var a = 'n';
+                }
+                //Actual Calculation Begins
+                if (vi != 'n' && wi != 'n') {
+                    r = vi/wi;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (vf != 'n' && wf != 'n') {
+                    r = vf/wf;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (a != 'n' && alpha != 'n') {
+                    r = a/alpha;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (rev != 'n') {
+                    theta = 2*pi*rev;
+                }
+                if (d != 'n' && theta != 'n') {
+                    r = d / theta;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (wi != 'n' && wf != 'n' && t != 'n' && d != 'n') {
+                    theta = 0.5*(wi + wf)*t;
+                    r = d / theta;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (wi != 'n' && t != 'n' && alpha != 'n' && d != 'n') {
+                    theta = wi*t + 0.5*alpha*t*t;
+                    r = d / theta;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (wf != 'n' && t != 'n' && alpha != 'n' && d != 'n') {
+                    theta = wf*t - 0.5*alpha*t*t;
+                    r = d / theta;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (wf != 'n' && wi != 'n' && a != 'n' && d != 'n') {
+                    theta = (wf*wf - wi*wi) / (2*alpha);
+                    r = d / theta;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                document.getElementById('print3').innerHTML = r;
+            }
+        </script>
+        <h2>Solve for Time</h2>
+        <form action="" id="rot_t">
+            <label for="theta3">Angular Displacement (rad)</label>
+            <input type="text" id="theta3"><br>
+            <label for="d3">Distance (m)</label>
+            <input type="text" id="d3"><br>
+            <label for="rev4">Revolutions</label>
+            <input type="text" id="rev4"><br>
+            <label for="r3">Radius (m)</label>
+            <input type="text" id="r3"><br>
+            <label for="wi4">Initial Angular Velocity (rad/s)</label>
+            <input type="text" id="wi4"><br>
+            <label for="wf4">Final Angular Velocity (rad/s)</label>
+            <input type="text" id="wf4"><br>
+            <label for="vi4">Initial Velocity (m/s)</label>
+            <input type="text" id="vi4"><br>
+            <label for="vf4">Final Velocity (m/s)</label>
+            <input type="text" id="vf4"><br>
+            <label for="alpha4">Angular Acceleration (rad/s^2)</label>
+            <input type="text" id="alpha4"><br>
+            <label for="a4">Acceleration (m/s^2)</label>
+            <input type="text" id="a4"><br><br>
+        </form>
+        <button onclick="extract_t()">Calculate</button>
+        <p id="print4"></p>
+        <script>
+            function extract_t () {
+                var pi = 3.14159;
+                var data = document.getElementById('rot_t');
+                var t = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var theta = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var theta = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var d = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var rev = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var rev = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var r = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var r = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var wi = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var wi = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var wf = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var wf = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var vi = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var vi = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var vf = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var vf = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var alpha = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var alpha = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var a = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var a = 'n';
+                }
+                //Actual Calculation Begins
+                if (rev != 'n') {
+                    theta = 2*pi*rev;
+                }
+                if (d != 'n' && r != 'n') {
+                    theta = d/r;
+                }
+                if (theta != 'n' && d != 'n') {
+                    r = d/theta;
+                }
+                if (theta != 'n' && r != 'n') {
+                    d = r*theta;
+                }
+                if (r != 'n' && vi != 'n') {
+                    wi = vi/r;
+                }
+                if (r != 'n' && wi != 'n') {
+                    vi = r*wi;
+                }
+                if (vi != 'n' && wi != 'n') {
+                    r = vi/wi;
+                }
+                if (r != 'n' && vf != 'n') {
+                    wf = vf/r;
+                }
+                if (r != 'n' && wf != 'n') {
+                    vf = r*wf;
+                }
+                if (vf != 'n' && wf != 'n') {
+                    r = vf/wf;
+                }
+                if (r != 'n' && a != 'n') {
+                    alpha = a/r;
+                }
+                if (r != 'n' && alpha != 'n') {
+                    a = alpha*r;
+                }
+                if (a != 'n' && alpha != 'n') {
+                    r = a/alpha;
+                }
+                if (theta != 'n' && wi != 'n' && wf != 'n') {
+                    t = 2*theta / (wi + wf);
+                    document.getElementById('print4').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                if (wi != 'n' && wf != 'n' && alpha != 'n') {
+                    t = (wf - wi) / a;
+                    document.getElementById('print4').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                if (theta != 'n' && wi != 'n' && alpha != 'n') {
+                    t = (-wi + Math.sqrt(wi*wi + 2*alpha*theta))/a;
+                    if (t < 0) {
+                        t = (-wi - Math.sqrt(wi*wi + 2*alpha*theta))/a;
+                    }
+                    document.getElementById('print4').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                if (theta != 'n' && wf != 'n' && alpha != 'n') {
+                    t = (-wf + Math.sqrt(wi*wi - 2*alpha*theta))/a;
+                    if (t < 0) {
+                        t = (-wf - Math.sqrt(wi*wi - 2*alpha*theta))/a;
+                    }
+                    document.getElementById('print4').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                document.getElementById('print4').innerHTML = t;
+            }
+        </script>
+        <h2>Solve for Initial Angular Velocity</h2>
+        <form action="" id="rot_wi">
+            <label for="theta4">Angular Displacement (rad)</label>
+            <input type="text" id="theta4"><br>
+            <label for="d4">Distance (m)</label>
+            <input type="text" id="d4"><br>
+            <label for="rev5">Revolutions</label>
+            <input type="text" id="rev5"><br>
+            <label for="r4">Radius (m)</label>
+            <input type="text" id="r4"><br>
+            <label for="t4">Time (s)</label>
+            <input type="text" id="t4"><br>
+            <label for="wf5">Final Angular Velocity (rad/s)</label>
+            <input type="text" id="wf5"><br>
+            <label for="vi5">Initial Velocity (m/s)</label>
+            <input type="text" id="vi5"><br>
+            <label for="vf5">Final Velocity (m/s)</label>
+            <input type="text" id="vf5"><br>
+            <label for="alpha5">Angular Acceleration (rad/s^2)</label>
+            <input type="text" id="alpha5"><br>
+            <label for="a5">Acceleration (m/s^2)</label>
+            <input type="text" id="a5"><br><br>
+        </form>
+        <button onclick="extract_wi()">Calculate</button>
+        <p id="print5"></p>
+        <script>
+            function extract_wi () {
+                var pi = 3.14159;
+                var data = document.getElementById('rot_wi');
+                var wi = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var theta = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var theta = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var d = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var rev = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var rev = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var r = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var r = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var t = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var t = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var wf = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var wf = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var vi = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var vi = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var vf = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var vf = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var alpha = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var alpha = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var a = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var a = 'n';
+                }
+                //Actual Calculation Begins
+                if (rev != 'n') {
+                    theta = 2*pi*rev;
+                }
+                if (d != 'n' && r != 'n') {
+                    theta = d/r;
+                }
+                if (theta != 'n' && d != 'n') {
+                    r = d/theta;
+                }
+                if (theta != 'n' && r != 'n') {
+                    d = r*theta;
+                }
+                if (r != 'n' && vi != 'n') {
+                    wi = vi/r;
+                    document.getElementById('print5').innerHTML = wi.toString() + ' rad/s';
+                    return;
+                }
+                if (r != 'n' && vf != 'n') {
+                    wf = vf/r;
+                }
+                if (r != 'n' && wf != 'n') {
+                    vf = r*wf;
+                }
+                if (vf != 'n' && wf != 'n') {
+                    r = vf/wf;
+                }
+                if (r != 'n' && a != 'n') {
+                    alpha = a/r;
+                }
+                if (r != 'n' && alpha != 'n') {
+                    a = alpha*r;
+                }
+                if (a != 'n' && alpha != 'n') {
+                    r = a/alpha;
+                }
+                if (theta != 'n' && wf != 'n' && t != 'n') {
+                    wi = 2*theta/t - wf;
+                    document.getElementById('print5').innerHTML = wi.toString() + ' rad/s';
+                    return;
+                }
+                if (wf != 'n' && alpha != 'n' && t != 'n') {
+                    wi = wf - alpha*t;
+                    document.getElementById('print5').innerHTML = wi.toString() + ' rad/s';
+                    return;
+                }
+                if (theta != 'n' && t != 'n' && a != 'n') {
+                    wi = (theta - 0.5*alpha*t*t) / t;
+                    document.getElementById('print5').innerHTML = wi.toString() + ' rad/s';
+                    return;
+                }
+                if (wf != 'n' && alpha != 'n' && theta != 'n') {
+                    wi = Math.sqrt(wf*wf - 2*alpha*theta);
+                    document.getElementById('print5').innerHTML = wi.toString() + ' rad/s';
+                    return;
+                }
+                document.getElementById('print5').innerHTML = wi;
+            }
+        </script>
+        <h2>Solve for Final Angular Velocity</h2>
+        <form action="" id="rot_wf">
+            <label for="theta5">Angular Displacement (rad)</label>
+            <input type="text" id="theta5"><br>
+            <label for="d5">Distance (m)</label>
+            <input type="text" id="d5"><br>
+            <label for="rev6">Revolutions</label>
+            <input type="text" id="rev6"><br>
+            <label for="r5">Radius (m)</label>
+            <input type="text" id="r5"><br>
+            <label for="t5">Time (s)</label>
+            <input type="text" id="t5"><br>
+            <label for="wi5">Initial Angular Velocity (rad/s)</label>
+            <input type="text" id="wi5"><br>
+            <label for="vi6">Initial Velocity (m/s)</label>
+            <input type="text" id="vi6"><br>
+            <label for="vf6">Final Velocity (m/s)</label>
+            <input type="text" id="vf6"><br>
+            <label for="alpha6">Angular Acceleration (rad/s^2)</label>
+            <input type="text" id="alpha6"><br>
+            <label for="a6">Acceleration (m/s^2)</label>
+            <input type="text" id="a6"><br><br>
+        </form>
+        <button onclick="extract_wf()">Calculate</button>
+        <p id="print6"></p>
+        <script>
+            function extract_wf () {
+                var pi = 3.14159;
+                var data = document.getElementById('rot_wf');
+                var wf = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var theta = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var theta = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var d = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var rev = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var rev = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var r = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var r = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var t = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var t = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var wi = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var wi = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var vi = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var vi = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var vf = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var vf = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var alpha = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var alpha = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var a = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var a = 'n';
+                }
+                //Actual Calculation Begins
+                if (rev != 'n') {
+                    theta = 2*pi*rev;
+                }
+                if (d != 'n' && r != 'n') {
+                    theta = d/r;
+                }
+                if (theta != 'n' && d != 'n') {
+                    r = d/theta;
+                }
+                if (theta != 'n' && r != 'n') {
+                    d = r*theta;
+                }
+                if (r != 'n' && vf != 'n') {
+                    wf = vf/r;
+                    document.getElementById('print6').innerHTML = wf.toString() + ' rad/s';
+                    return;
+                }
+                if (r != 'n' && vi != 'n') {
+                    wi = vi/r;
+                }
+                if (r != 'n' && wi != 'n') {
+                    vi = r*wi;
+                }
+                if (vi != 'n' && wi != 'n') {
+                    r = vi/wi;
+                }
+                if (r != 'n' && a != 'n') {
+                    alpha = a/r;
+                }
+                if (r != 'n' && alpha != 'n') {
+                    a = alpha*r;
+                }
+                if (a != 'n' && alpha != 'n') {
+                    r = a/alpha;
+                }
+                if (theta != 'n' && wi != 'n' && t != 'n') {
+                    wf = 2*theta/t - wi;
+                    document.getElementById('print6').innerHTML = wf.toString() + ' rad/s';
+                    return;
+                }
+                if (wi != 'n' && alpha != 'n' && t != 'n') {
+                    wf = wi + a*t;
+                    document.getElementById('print6').innerHTML = wf.toString() + ' rad/s';
+                    return;
+                }
+                if (theta != 'n' && t != 'n' && alpha != 'n') {
+                    wf = (theta + 0.5*alpha*t*t) / t;
+                    document.getElementById('print6').innerHTML = wf.toString() + ' rad/s';
+                    return;
+                }
+                if (theta != 'n' && wi != 'n' && alpha != 'n') {
+                    wf = Math.sqrt(wi*wi + 2*alpha*theta);
+                    document.getElementById('print6').innerHTML = wf.toString() + ' rad/s';
+                    return;
+                }
+                document.getElementById('print6').innerHTML = wf
+            }
+        </script>
+        <h2>Solve for Initial Velocity</h2>
+        <form action="" id="rot_vi">
+            <label for="theta6">Angular Displacement (rad)</label>
+            <input type="text" id="theta6"><br>
+            <label for="d6">Distance (m)</label>
+            <input type="text" id="d6"><br>
+            <label for="rev7">Revolutions</label>
+            <input type="text" id="rev7"><br>
+            <label for="r6">Radius (m)</label>
+            <input type="text" id="r6"><br>
+            <label for="t6">Time (s)</label>
+            <input type="text" id="t6"><br>
+            <label for="wi6">Initial Angular Velocity (rad/s)</label>
+            <input type="text" id="wi6"><br>
+            <label for="wf6">Final Angular Velocity (rad/s)</label>
+            <input type="text" id="wf6"><br>
+            <label for="vf7">Final Velocity (m/s)</label>
+            <input type="text" id="vf7"><br>
+            <label for="alpha7">Angular Acceleration (rad/s^2)</label>
+            <input type="text" id="alpha7"><br>
+            <label for="a7">Acceleration (m/s^2)</label>
+            <input type="text" id="a7"><br><br>
+        </form>
+        <button onclick="extract_vi()">Calculate</button>
+        <p id="print7"></p>
+        <script>
+            function extract_vi () {
+                var pi = 3.14159;
+                var data = document.getElementById('rot_vi');
+                var vi = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var theta = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var theta = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var d = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var rev = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var rev = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var r = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var r = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var t = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var t = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var wi = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var wi = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var wf = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var wf = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var vf = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var vf = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var alpha = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var alpha = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var a = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var a = 'n';
+                }
+                //Actual Calculation Begins
+                if (rev != 'n') {
+                    theta = 2*pi*rev;
+                }
+                if (d != 'n' && r != 'n') {
+                    theta = d/r;
+                }
+                if (theta != 'n' && d != 'n') {
+                    r = d/theta;
+                }
+                if (theta != 'n' && r != 'n') {
+                    d = r*theta;
+                }
+                if (r != 'n' && wi != 'n') {
+                    vi = r*wi;
+                    document.getElementById('print7').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
+                if (r != 'n' && vf != 'n') {
+                    wf = vf/r;
+                }
+                if (r != 'n' && wf != 'n') {
+                    vf = r*wf;
+                }
+                if (vf != 'n' && wf != 'n') {
+                    r = vf/wf;
+                }
+                if (r != 'n' && a != 'n') {
+                    alpha = a/r;
+                }
+                if (r != 'n' && alpha != 'n') {
+                    a = alpha*r;
+                }
+                if (a != 'n' && alpha != 'n') {
+                    r = a/alpha;
+                }
+                if (theta != 'n' && wf != 'n' && t != 'n' && r != 'n') {
+                    wi = 2*theta/t - wf;
+                    vi = r*wi;
+                    document.getElementById('print7').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
+                if (wf != 'n' && alpha != 'n' && t != 'n' && r != 'n') {
+                    wi = wf - alpha*t;
+                    vi = r*wi;
+                    document.getElementById('print7').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
+                if (theta != 'n' && t != 'n' && a != 'n' && r != 'n') {
+                    wi = (theta - 0.5*alpha*t*t) / t;
+                    vi = r*wi;
+                    document.getElementById('print7').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
+                if (wf != 'n' && alpha != 'n' && theta != 'n' && r != 'n') {
+                    wi = Math.sqrt(wf*wf - 2*alpha*theta);
+                    vi = r*wi;
+                    document.getElementById('print7').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
+                document.getElementById('print7').innerHTML = vi;
+            }
+        </script>
+        <h2>Solve for Final Velocity</h2>
+        <form action="" id="rot_vf">
+            <label for="theta7">Angular Displacement (rad)</label>
+            <input type="text" id="theta7"><br>
+            <label for="d7">Distance (m)</label>
+            <input type="text" id="d7"><br>
+            <label for="rev8">Revolutions</label>
+            <input type="text" id="rev8"><br>
+            <label for="r7">Radius (m)</label>
+            <input type="text" id="r7"><br>
+            <label for="t7">Time (s)</label>
+            <input type="text" id="t7"><br>
+            <label for="wi7">Initial Angular Velocity (rad/s)</label>
+            <input type="text" id="wi7"><br>
+            <label for="wf7">Final Angular Velocity (rad/s)</label>
+            <input type="text" id="wf7"><br>
+            <label for="vi7">Initial Velocity (m/s)</label>
+            <input type="text" id="vi7"><br>
+            <label for="alpha8">Angular Acceleration (rad/s^2)</label>
+            <input type="text" id="alpha8"><br>
+            <label for="a8">Acceleration (m/s^2)</label>
+            <input type="text" id="a8"><br><br>
+        </form>
+        <button onclick="extract_vf()">Calculate</button>
+        <p id="print8"></p>
+        <script>
+            function extract_vf () {
+                var pi = 3.14159;
+                var data = document.getElementById('rot_vf');
+                var vf = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var theta = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var theta = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var d = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var rev = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var rev = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var r = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var r = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var t = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var t = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var wi = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var wi = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var wf = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var wf = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var vi = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var vi = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var alpha = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var alpha = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var a = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var a = 'n';
+                }
+                //Actual Calculation Begins
+                if (rev != 'n') {
+                    theta = 2*pi*rev;
+                }
+                if (d != 'n' && r != 'n') {
+                    theta = d/r;
+                }
+                if (theta != 'n' && d != 'n') {
+                    r = d/theta;
+                }
+                if (theta != 'n' && r != 'n') {
+                    d = r*theta;
+                }
+                if (r != 'n' && wf != 'n') {
+                    vf = r*wf;
+                    document.getElementById('print8').innerHTML = vf.toString() + ' m/s';
+                    return;
+                }
+                if (r != 'n' && vi != 'n') {
+                    wi = vi/r;
+                }
+                if (r != 'n' && wi != 'n') {
+                    vi = r*wi;
+                }
+                if (vi != 'n' && wi != 'n') {
+                    r = vi/wi;
+                }
+                if (r != 'n' && a != 'n') {
+                    alpha = a/r;
+                }
+                if (r != 'n' && alpha != 'n') {
+                    a = alpha*r;
+                }
+                if (a != 'n' && alpha != 'n') {
+                    r = a/alpha;
+                }
+                if (theta != 'n' && wi != 'n' && t != 'n' && r != 'n') {
+                    wf = 2*theta/t - wi;
+                    vf = r*wf;
+                    document.getElementById('print8').innerHTML = vf.toString() + ' m/s';
+                    return;
+                }
+                if (wi != 'n' && alpha != 'n' && t != 'n' && r != 'n') {
+                    wf = wi + a*t;
+                    vf = r*wf;
+                    document.getElementById('print8').innerHTML = vf.toString() + ' m/s';
+                    return;
+                }
+                if (theta != 'n' && t != 'n' && alpha != 'n' && r != 'n') {
+                    wf = (theta + 0.5*alpha*t*t) / t;
+                    vf = r*wf;
+                    document.getElementById('print8').innerHTML = vf.toString() + ' m/s';
+                    return;
+                }
+                if (theta != 'n' && wi != 'n' && alpha != 'n' && r != 'n') {
+                    wf = Math.sqrt(wi*wi + 2*alpha*theta);
+                    vf = r*wf;
+                    document.getElementById('print8').innerHTML = vf.toString() + ' m/s';
+                    return;
+                }
+                document.getElementById('print8').innerHTML = vf
+            }
+        </script>
+        <h2>Solve for Angular Acceleration</h2>
+        <form action="" id="rot_alpha">
+            <label for="theta8">Angular Displacement (rad)</label>
+            <input type="text" id="theta8"><br>
+            <label for="d8">Distance (m)</label>
+            <input type="text" id="d8"><br>
+            <label for="rev9">Revolutions</label>
+            <input type="text" id="rev9"><br>
+            <label for="r8">Radius (m)</label>
+            <input type="text" id="r8"><br>
+            <label for="t8">Time (s)</label>
+            <input type="text" id="t8"><br>
+            <label for="wi8">Initial Angular Velocity (rad/s)</label>
+            <input type="text" id="wi8"><br>
+            <label for="wf8">Final Angular Velocity (rad/s)</label>
+            <input type="text" id="wf8"><br>
+            <label for="vi8">Initial Velocity (m/s)</label>
+            <input type="text" id="vi8"><br>
+            <label for="vf8">Final Velocity (m/s)</label>
+            <input type="text" id="vf8"><br>
+            <label for="a9">Acceleration (m/s^2)</label>
+            <input type="text" id="a9"><br><br>
+        </form>
+        <button onclick="extract_alpha()">Calculate</button>
+        <p id="print9"></p>
+        <script>
+            function extract_alpha () {
+                var pi = 3.14159;
+                var data = document.getElementById('rot_alpha');
+                var alpha = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var theta = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var theta = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var d = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var rev = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var rev = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var r = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var r = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var t = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var t = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var wi = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var wi = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var wf = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var wf = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var vi = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var vi = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var vf = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var vf = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var a = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var a = 'n';
+                }
+                //Actual Calculation Begins
+                if (rev != 'n') {
+                    theta = 2*pi*rev;
+                }
+                if (d != 'n' && r != 'n') {
+                    theta = d/r;
+                }
+                if (theta != 'n' && d != 'n') {
+                    r = d/theta;
+                }
+                if (theta != 'n' && r != 'n') {
+                    d = r*theta;
+                }
+                if (r != 'n' && vi != 'n') {
+                    wi = vi/r;
+                }
+                if (r != 'n' && wi != 'n') {
+                    vi = r*wi;
+                }
+                if (vi != 'n' && wi != 'n') {
+                    r = vi/wi;
+                }
+                if (r != 'n' && vf != 'n') {
+                    wf = vf/r;
+                }
+                if (r != 'n' && wf != 'n') {
+                    vf = r*wf;
+                }
+                if (vf != 'n' && wf != 'n') {
+                    r = vf/wf;
+                }
+                if (r != 'n' && a != 'n') {
+                    alpha = a/r;
+                    document.getElementById('print9').innerHTML = alpha.toString() + ' rad/s^2';
+                    return;
+                }
+                if (wf != 'n' && wi != 'n' && t != 'n') {
+                    alpha = (wf - wi) / t;
+                    document.getElementById('print9').innerHTML = alpha.toString() + ' rad/s^2';
+                    return;
+                }
+                if (theta != 'n' && wi != 'n' && t != 'n') {
+                    alpha = 2*(theta - wi*t)/(t*t);
+                    document.getElementById('print9').innerHTML = alpha.toString() + ' rad/s^2';
+                    return;
+                }
+                if (theta != 'n' && wf != 'n' && t != 'n') {
+                    alpha = 2*(wf*t - theta)/(t*t);
+                    document.getElementById('print9').innerHTML = alpha.toString() + ' rad/s^2';
+                    return;
+                }
+                if (wf != 'n' && wi != 'n' && theta != 'n') {
+                    alpha = 0.5*((wf*wf - wi*wi) / theta);
+                    document.getElementById('print9').innerHTML = alpha.toString() + ' rad/s^2';
+                    return;
+                }
+                document.getElementById('print9').innerHTML = alpha;
+            }
+        </script>
+        <h2>Solve for Acceleration</h2>
+        <form action="" id="rot_a">
+            <label for="theta9">Angular Displacement (rad)</label>
+            <input type="text" id="theta9"><br>
+            <label for="d9">Distance (m)</label>
+            <input type="text" id="d9"><br>
+            <label for="rev10">Revolutions</label>
+            <input type="text" id="rev10"><br>
+            <label for="r9">Radius (m)</label>
+            <input type="text" id="r9"><br>
+            <label for="t9">Time (s)</label>
+            <input type="text" id="t9"><br>
+            <label for="wi9">Initial Angular Velocity (rad/s)</label>
+            <input type="text" id="wi9"><br>
+            <label for="wf9">Final Angular Velocity (rad/s)</label>
+            <input type="text" id="wf9"><br>
+            <label for="vi9">Initial Velocity (m/s)</label>
+            <input type="text" id="vi9"><br>
+            <label for="vf9">Final Velocity (m/s)</label>
+            <input type="text" id="vf9"><br>
+            <label for="alpha9">Angular Acceleration (rad/s^2)</label>
+            <input type="text" id="alpha9"><br><br>
+        </form>
+        <button onclick="extract_a()">Calculate</button>
+        <p id="print10"></p>
+        <script>
+            function extract_a () {
+                var pi = 3.14159;
+                var data = document.getElementById('rot_a');
+                var a = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var theta = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var theta = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var d = parseFloat(data.elements[1].value);
+                }
+                else {
+                    var d = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var rev = parseFloat(data.elements[2].value);
+                }
+                else {
+                    var rev = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var r = parseFloat(data.elements[3].value);
+                }
+                else {
+                    var r = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var t = parseFloat(data.elements[4].value);
+                }
+                else {
+                    var t = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var wi = parseFloat(data.elements[5].value);
+                }
+                else {
+                    var wi = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var wf = parseFloat(data.elements[6].value);
+                }
+                else {
+                    var wf = 'n';
+                }
+                if (data.elements[7].value != 'n') {
+                    var vi = parseFloat(data.elements[7].value);
+                }
+                else {
+                    var vi = 'n';
+                }
+                if (data.elements[8].value != 'n') {
+                    var vf = parseFloat(data.elements[8].value);
+                }
+                else {
+                    var vf = 'n';
+                }
+                if (data.elements[9].value != 'n') {
+                    var alpha = parseFloat(data.elements[9].value);
+                }
+                else {
+                    var alpha = 'n';
+                }
+                //Actual Calculation Begins
+                if (rev != 'n') {
+                    theta = 2*pi*rev;
+                }
+                if (d != 'n' && r != 'n') {
+                    theta = d/r;
+                }
+                if (theta != 'n' && d != 'n') {
+                    r = d/theta;
+                }
+                if (theta != 'n' && r != 'n') {
+                    d = r*theta;
+                }
+                if (r != 'n' && vi != 'n') {
+                    wi = vi/r;
+                }
+                if (r != 'n' && wi != 'n') {
+                    vi = r*wi;
+                }
+                if (vi != 'n' && wi != 'n') {
+                    r = vi/wi;
+                }
+                if (r != 'n' && vf != 'n') {
+                    wf = vf/r;
+                }
+                if (r != 'n' && wf != 'n') {
+                    vf = r*wf;
+                }
+                if (vf != 'n' && wf != 'n') {
+                    r = vf/wf;
+                }
+                if (r != 'n' && alpha != 'n') {
+                    a = r*alpha;
+                    document.getElementById('print10').innerHTML = a.toString() + ' m/s^2';
+                    return;
+                }
+                if (wf != 'n' && wi != 'n' && t != 'n' && r != 'n') {
+                    alpha = (wf - wi) / t;
+                    a = r*alpha;
+                    document.getElementById('print10').innerHTML = a.toString() + ' m/s^2';
+                    return;
+                }
+                if (theta != 'n' && wi != 'n' && t != 'n' && r != 'n') {
+                    alpha = 2*(theta - wi*t)/(t*t);
+                    a = r*alpha;
+                    document.getElementById('print10').innerHTML = a.toString() + ' m/s^2';
+                    return;
+                }
+                if (theta != 'n' && wf != 'n' && t != 'n' && r != 'n') {
+                    alpha = 2*(wf*t - theta)/(t*t);
+                    a = r*alpha;
+                    document.getElementById('print10').innerHTML = a.toString() + ' m/s^2';
+                    return;
+                }
+                if (wf != 'n' && wi != 'n' && theta != 'n' && r != 'n') {
+                    alpha = 0.5*((wf*wf - wi*wi) / theta);
+                    a = r*alpha;
+                    document.getElementById('print10').innerHTML = a.toString() + ' m/s^2';
+                    return;
+                }
+                document.getElementById('print10').innerHTML = a
+            }
+        </script>
+    </body>
+</html>

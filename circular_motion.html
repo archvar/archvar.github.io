@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Uniform Circular Motion Calculator</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <a href="./circ_grav_rot.html">Back to Circular Motion Main Page</a>
+        <h1>Uniform Circular Motion Calculator</h1>
+        <p style="color: blue;">Uniform circular motion calculator. Enter 'n' for unknown values.</p>
+        <h2>Solve for Centripetal Force</h2>
+        <form action="" id="centripetal_fc">
+            <label for="ac">Centripetal Acceleration (m/s^2)</label>
+            <input type="text" id="ac"><br>
+            <label for="m">Mass (kg)</label>
+            <input type="text" id="m"><br>
+            <label for="v">Velocity (m/s)</label>
+            <input type="text" id="v"><br>
+            <label for="r">Radius (m)</label>
+            <input type="text" id="r"><br>
+            <label for="t">Time (s)</label>
+            <input type="text" id="t"><br>
+            <label for="fg">Force of Gravity (N)</label>
+            <input type="text" id="fg"><br>
+            <label for="ft">Force of Tension/Normal Force (N)</label>
+            <input type="text" id="ft"><br><br>
+        </form>
+        <button onclick="extract_fc()">Calculate</button>
+        <p id="print"></p>
+        <script>
+            function extract_fc () {
+                var data = document.getElementById('centripetal_fc');
+                var fc = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var ac = parseFloat(data.elements[0].value);
+                } 
+                else {
+                    var ac = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m = parseFloat(data.elements[1].value);
+                } 
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var v = parseFloat(data.elements[2].value);
+                } 
+                else {
+                    var v = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var r = parseFloat(data.elements[3].value);
+                } 
+                else {
+                    var r = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var t = parseFloat(data.elements[4].value);
+                } 
+                else {
+                    var t = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var fg = parseFloat(data.elements[5].value);
+                } 
+                else {
+                    var fg = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var ft = parseFloat(data.elements[6].value);
+                } 
+                else {
+                    var ft = 'n';
+                }
+                //Actual Calculation Begins
+                if (ac != 'n' && m != 'n') {
+                    fc = m*ac;
+                    document.getElementById('print').innerHTML = fc.toString() + ' N';
+                    return;
+                }
+                if (m != 'n' && v != 'n' && r != 'n') {
+                    fc = m*v*v/r;
+                    document.getElementById('print').innerHTML = fc.toString() + ' N';
+                    return;
+                }
+                if (m != 'n' && t != 'n' && r != 'n') {
+                    v = 2*Math.PI*r / t;
+                    fc = m*v*v/r;
+                    document.getElementById('print').innerHTML = fc.toString() + ' N';
+                    return;
+                }
+                if (fg != 'n' && ft != 'n') {
+                    fc = ft + fg;
+                    document.getElementById('print').innerHTML = fc.toString() + ' N';
+                    return;
+                }
+                document.getElementById('print').innerHTML = fc;
+            }
+        </script>
+        <h2>Solve for Centripetal Acceleration</h2>
+        <form action="" id="centripetal_ac">
+            <label for="fc">Centripetal Force (N)</label>
+            <input type="text" id="fc"><br>
+            <label for="m2">Mass (kg)</label>
+            <input type="text" id="m2"><br>
+            <label for="v2">Velocity (m/s)</label>
+            <input type="text" id="v2"><br>
+            <label for="r2">Radius (m)</label>
+            <input type="text" id="r2"><br>
+            <label for="t2">Time (s)</label>
+            <input type="text" id="t2"><br>
+            <label for="fg2">Force of Gravity (N)</label>
+            <input type="text" id="fg2"><br>
+            <label for="ft2">Force of Tension/Normal Force (N)</label>
+            <input type="text" id="ft2"><br><br>
+        </form>
+        <button onclick="extract_ac()">Calculate</button>
+        <p id="print2"></p>
+        <script>
+            function extract_ac () {
+                var data = document.getElementById('centripetal_ac');
+                var ac = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var fc = parseFloat(data.elements[0].value);
+                } 
+                else {
+                    var fc = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var m = parseFloat(data.elements[1].value);
+                } 
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var v = parseFloat(data.elements[2].value);
+                } 
+                else {
+                    var v = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var r = parseFloat(data.elements[3].value);
+                } 
+                else {
+                    var r = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var t = parseFloat(data.elements[4].value);
+                } 
+                else {
+                    var t = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var fg = parseFloat(data.elements[5].value);
+                } 
+                else {
+                    var fg = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var ft = parseFloat(data.elements[6].value);
+                } 
+                else {
+                    var ft = 'n';
+                }
+                //Actual Calculation Begins
+                if (fc != 'n' && m != 'n') {
+                    ac = fc / m;
+                    document.getElementById('print2').innerHTML = ac.toString() + ' m/s^2';
+                    return;
+                }
+                if (v != 'n' && r != 'n') {
+                    ac = v*v / r;
+                    document.getElementById('print2').innerHTML = ac.toString() + ' m/s^2';
+                    return;
+                }
+                if (t != 'n' && r != 'n') {
+                    v = 2*Math.PI*r / t;
+                    ac = v*v / r;
+                    document.getElementById('print2').innerHTML = ac.toString() + ' m/s^2';
+                    return;
+                }
+                if (fg != 'n' && ft != 'n' && m != 'n') {
+                    fc = ft + fg;
+                    ac = fc / m;
+                    document.getElementById('print2').innerHTML = ac.toString() + ' m/s^2';
+                    return;
+                }
+                document.getElementById('print2').innerHTML = ac; 
+            }
+        </script>
+        <h2>Solve for Mass</h2>
+        <form action="" id="centripetal_m">
+            <label for="fc2">Centripetal Force (N)</label>
+            <input type="text" id="fc2"><br>
+            <label for="ac2">Centripetal Acceleration (m/s^2)</label>
+            <input type="text" id="ac2"><br>
+            <label for="v3">Velocity (m/s)</label>
+            <input type="text" id="v3"><br>
+            <label for="r3">Radius (m)</label>
+            <input type="text" id="r3"><br>
+            <label for="t3">Time (s)</label>
+            <input type="text" id="t3"><br>
+            <label for="fg3">Force of Gravity (N)</label>
+            <input type="text" id="fg3"><br>
+            <label for="ft3">Force of Tension/Normal Force (N)</label>
+            <input type="text" id="ft3"><br><br>
+        </form>
+        <button onclick="extract_m()">Calculate</button>
+        <p id="print3"></p>
+        <script>
+            function extract_m () {
+                var data = document.getElementById('centripetal_m');
+                var m = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var fc = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var fc = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var ac = parseFloat(data.elements[1].value);
+                } 
+                else {
+                    var ac = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var v = parseFloat(data.elements[2].value);
+                } 
+                else {
+                    var v = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var r = parseFloat(data.elements[3].value);
+                } 
+                else {
+                    var r = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var t = parseFloat(data.elements[4].value);
+                } 
+                else {
+                    var t = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var fg = parseFloat(data.elements[5].value);
+                } 
+                else {
+                    var fg = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var ft = parseFloat(data.elements[6].value);
+                } 
+                else {
+                    var ft = 'n';
+                }
+                //Actual Calculation Begins
+                if (fc != 'n' && ac != 'n') {
+                    m = fc / ac;
+                    document.getElementById('print3').innerHTML = m.toString() + ' kg';
+                    return;
+                }
+                if (fc != 'n' && v != 'n' && r != 'n') {
+                    m = fc*r/(v*v);
+                    document.getElementById('print3').innerHTML = m.toString() + ' kg';
+                    return;
+                }
+                if (fc != 'n' && t != 'n' && r != 'n') {
+                    v = 2*Math.PI*r / t;
+                    m = fc*r/(v*v);
+                    document.getElementById('print3').innerHTML = m.toString() + ' kg';
+                    return;
+                }
+                if (fg != 'n' && ft != 'n' && ac != 'n') {
+                    fc = ft + fg;
+                    m = fc / ac;
+                    document.getElementById('print3').innerHTML = m.toString() + ' kg';
+                    return;
+                }
+                if (fg != 'n' && ft != 'n' && v != 'n' && r != 'n') {
+                    fc = ft + fg;
+                    m = fc*r/(v*v);
+                    document.getElementById('print3').innerHTML = m.toString() + ' kg';
+                    return;
+                }
+                if (fg != 'n' && ft != 'n' && t != 'n' && r != 'n') {
+                    fc = ft + fg;
+                    v = 2*Math.PI*r / t;
+                    m = fc*r/(v*v);
+                    document.getElementById('print3').innerHTML = m.toString() + ' kg';
+                    return;
+                }
+                document.getElementById('print3').innerHTML = m;
+            }
+        </script>
+        <h2>Solve for Velocity</h2>
+        <form action="" id="centripetal_v">
+            <label for="fc3">Centripetal Force (N)</label>
+            <input type="text" id="fc3"><br>
+            <label for="ac3">Centripetal Acceleration (m/s^2)</label>
+            <input type="text" id="ac3"><br>
+            <label for="m3">Mass (kg)</label>
+            <input type="text" id="m3"><br>
+            <label for="r4">Radius (m)</label>
+            <input type="text" id="r4"><br>
+            <label for="t4">Time (s)</label>
+            <input type="text" id="t4"><br>
+            <label for="fg4">Force of Gravity (N)</label>
+            <input type="text" id="fg4"><br>
+            <label for="ft4">Force of Tension/Normal Force (N)</label>
+            <input type="text" id="ft4"><br><br>
+        </form>
+        <button onclick="extract_v()">Calculate</button>
+        <p id="print4"></p>
+        <script>
+            function extract_v() {
+                var data = document.getElementById('centripetal_v');
+                var v = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var fc = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var fc = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var ac = parseFloat(data.elements[1].value);
+                } 
+                else {
+                    var ac = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var m = parseFloat(data.elements[2].value);
+                } 
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var r = parseFloat(data.elements[3].value);
+                } 
+                else {
+                    var r = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var t = parseFloat(data.elements[4].value);
+                } 
+                else {
+                    var t = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var fg = parseFloat(data.elements[5].value);
+                } 
+                else {
+                    var fg = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var ft = parseFloat(data.elements[6].value);
+                } 
+                else {
+                    var ft = 'n';
+                }
+                //Actual Calculation Begins
+                if (ac != 'n' && r != 'n') {
+                    v = Math.sqrt(ac*r);
+                    document.getElementById('print4').innerHTML = v.toString() + ' m/s';
+                    return;
+                }
+                if (r != 'n' && t != 'n') {
+                    v = 2*Math.PI*r / t;
+                    document.getElementById('print4').innerHTML = v.toString() + ' m/s';
+                    return;
+                }
+                if (fc != 'n' && m != 'n' && r != 'n') {
+                    ac = fc / m;
+                    v = Math.sqrt(ac*r);
+                    document.getElementById('print4').innerHTML = v.toString() + ' m/s';
+                    return;
+                }
+                if (ft != 'n' && fg != 'n' && m != 'n' && r != 'n') {
+                    fc = ft + fg;
+                    ac = fc / m;
+                    v = Math.sqrt(ac*r);
+                    document.getElementById('print4').innerHTML = v.toString() + ' m/s';
+                    return;
+                }
+                if (t != 'n' && ac != 'n') {
+                    r = t*t*ac/(4*Math.PI*4*Math.PI);
+                    v = Math.sqrt(ac*r);
+                    document.getElementById('print4').innerHTML = v.toString() + ' m/s';
+                    return;
+                }
+                if (t != 'n' && fc != 'n' && m != 'n') {
+                    ac = fc / m;
+                    r = t*t*ac/(4*Math.PI*4*Math.PI);
+                    v = Math.sqrt(ac*r);
+                    document.getElementById('print4').innerHTML = v.toString() + ' m/s';
+                    return;
+                }
+                if (t != 'n' && ft != 'n' && fg != 'n' && m != 'n') {
+                    fc = ft + fg;
+                    ac = fc / m;
+                    r = t*t*ac/(4*Math.PI*4*Math.PI);
+                    v = Math.sqrt(ac*r);
+                    document.getElementById('print4').innerHTML = v.toString() + ' m/s';
+                    return;
+                }
+                document.getElementById('print4').innerHTML = v;
+            }
+        </script>
+        <h2>Solve for Radius</h2>
+        <form action="" id="centripetal_r">
+            <label for="fc4">Centripetal Force (N)</label>
+            <input type="text" id="fc4"><br>
+            <label for="ac4">Centripetal Acceleration (m/s^2)</label>
+            <input type="text" id="ac4"><br>
+            <label for="m4">Mass (kg)</label>
+            <input type="text" id="m4"><br>
+            <label for="v4">Velocity (m/s)</label>
+            <input type="text" id="v4"><br>
+            <label for="t5">Time (s)</label>
+            <input type="text" id="t5"><br>
+            <label for="fg5">Force of Gravity (N)</label>
+            <input type="text" id="fg5"><br>
+            <label for="ft5">Force of Tension/Normal Force (N)</label>
+            <input type="text" id="ft5"><br><br>
+        </form>
+        <button onclick="extract_r()">Calculate</button>
+        <p id="print5"></p>
+        <script>
+            function extract_r() {
+                var data = document.getElementById('centripetal_r');
+                var r = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var fc = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var fc = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var ac = parseFloat(data.elements[1].value);
+                } 
+                else {
+                    var ac = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var m = parseFloat(data.elements[2].value);
+                } 
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var v = parseFloat(data.elements[3].value);
+                } 
+                else {
+                    var v = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var t = parseFloat(data.elements[4].value);
+                } 
+                else {
+                    var t = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var fg = parseFloat(data.elements[5].value);
+                } 
+                else {
+                    var fg = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var ft = parseFloat(data.elements[6].value);
+                } 
+                else {
+                    var ft = 'n';
+                }
+                //Actual Calculation Begins
+                if (ac != 'n' && v != 'n') {
+                    r = (v*v)/ac;
+                    document.getElementById('print5').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (t != 'n' && v != 'n') {
+                    r = v*t/(2*Math.PI);
+                    document.getElementById('print5').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (fc != 'n' && m != 'n' && v != 'n') {
+                    ac = fc / m;
+                    r = (v*v)/ac;
+                    document.getElementById('print5').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (ft != 'n' && fg != 'n' && m != 'n' && v != 'n') {
+                    fc = ft + fg;
+                    ac = fc / m;
+                    r = (v*v)/ac;
+                    document.getElementById('print5').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (ac != 'n' && t != 'n') {
+                    r = t*t*ac/(4*Math.PI*4*Math.PI);
+                    document.getElementById('print5').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (fc != 'n' && m != 'n' && t != 'n') {
+                    ac = fc / m;
+                    r = t*t*ac/(4*Math.PI*4*Math.PI);
+                    document.getElementById('print5').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (ft != 'n' && fg != 'n' && m != 'n' && t != 'n') {
+                    fc = ft + fg;
+                    ac = fc / m;
+                    r = t*t*ac/(4*Math.PI*4*Math.PI);
+                    document.getElementById('print5').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                document.getElementById('print5').innerHTML = r;
+            }
+        </script>
+        <h2>Solve for Time</h2>
+        <form action="" id="centripetal_t">
+            <label for="fc5">Centripetal Force (N)</label>
+            <input type="text" id="fc5"><br>
+            <label for="ac5">Centripetal Acceleration (m/s^2)</label>
+            <input type="text" id="ac5"><br>
+            <label for="m5">Mass (kg)</label>
+            <input type="text" id="m5"><br>
+            <label for="v5">Velocity (m/s)</label>
+            <input type="text" id="v5"><br>
+            <label for="r5">Radius (m)</label>
+            <input type="text" id="r5"><br>
+            <label for="fg6">Force of Gravity (N)</label>
+            <input type="text" id="fg6"><br>
+            <label for="ft6">Force of Tension/Normal Force (N)</label>
+            <input type="text" id="ft6"><br><br>
+        </form>
+        <button onclick="extract_t()">Calculate</button>
+        <p id="print6"></p>
+        <script>
+            function extract_t() {
+                var data = document.getElementById('centripetal_t');
+                var t = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var fc = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var fc = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var ac = parseFloat(data.elements[1].value);
+                } 
+                else {
+                    var ac = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var m = parseFloat(data.elements[2].value);
+                } 
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var v = parseFloat(data.elements[3].value);
+                } 
+                else {
+                    var v = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var r = parseFloat(data.elements[4].value);
+                } 
+                else {
+                    var r = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var fg = parseFloat(data.elements[5].value);
+                } 
+                else {
+                    var fg = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var ft = parseFloat(data.elements[6].value);
+                } 
+                else {
+                    var ft = 'n';
+                }
+                //Actual Calculation Begins
+                if (v != 'n' && r != 'n') {
+                    t = 2*Math.PI*r / v;
+                    document.getElementById('print6').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                if (ac != 'n' && r != 'n') {
+                    t = 2*Math.PI*r/(Math.sqrt(ac*r));
+                    document.getElementById('print6').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                if (ac != 'n' && v != 'n') {
+                    r = (v*v)/ac;
+                    t = 2*Math.PI*r / v;
+                    document.getElementById('print6').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                if (fc != 'n' && m != 'n' && r != 'n') {
+                    ac = fc / m;
+                    v = Math.sqrt(ac*r);
+                    t = 2*Math.PI*r / v;
+                    document.getElementById('print6').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                if (fc != 'n' && m != 'n' && v != 'n') {
+                    ac = fc / m;
+                    r = (v*v)/ac;
+                    t = 2*Math.PI*r / v;
+                    document.getElementById('print6').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                if (ft != 'n' && fg != 'n' && m != 'n' && r != 'n') {
+                    fc = ft + fg;
+                    ac = fc / m;
+                    v = Math.sqrt(ac*r);
+                    t = 2*Math.PI*r / v;
+                    document.getElementById('print6').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                if (ft != 'n' && fg != 'n' && m != 'n' && v != 'n') {
+                    fc = ft + fg;
+                    ac = fc / m;
+                    r = (v*v)/ac;
+                    t = 2*Math.PI*r / v;
+                    document.getElementById('print6').innerHTML = t.toString() + ' s';
+                    return;
+                }
+                document.getElementById('print6').innerHTML = t;
+            }
+        </script>
+        <h2>Solve for Tension/Normal Force</h2>
+        <form action="" id="centripetal_ft">
+            <label for="fc6">Centripetal Force (N)</label>
+            <input type="text" id="fc6"><br>
+            <label for="ac6">Centripetal Acceleration (m/s^2)</label>
+            <input type="text" id="ac6"><br>
+            <label for="m6">Mass (kg)</label>
+            <input type="text" id="m6"><br>
+            <label for="v6">Velocity (m/s)</label>
+            <input type="text" id="v6"><br>
+            <label for="r6">Radius (m)</label>
+            <input type="text" id="r6"><br>
+            <label for="fg7">Force of Gravity (N)</label>
+            <input type="text" id="fg7"><br>
+            <label for="t6">Time (s)</label>
+            <input type="text" id="t6"><br><br>
+        </form>
+        <button onclick="extract_ft()">Calculate</button>
+        <p id="print7"></p>
+        <script>
+            function extract_ft() {
+                var data = document.getElementById('centripetal_ft');
+                var ft = 'Error: Not Enough Variables Defined';
+                if (data.elements[0].value != 'n') {
+                    var fc = parseFloat(data.elements[0].value);
+                }
+                else {
+                    var fc = 'n';
+                }
+                if (data.elements[1].value != 'n') {
+                    var ac = parseFloat(data.elements[1].value);
+                } 
+                else {
+                    var ac = 'n';
+                }
+                if (data.elements[2].value != 'n') {
+                    var m = parseFloat(data.elements[2].value);
+                } 
+                else {
+                    var m = 'n';
+                }
+                if (data.elements[3].value != 'n') {
+                    var v = parseFloat(data.elements[3].value);
+                } 
+                else {
+                    var v = 'n';
+                }
+                if (data.elements[4].value != 'n') {
+                    var r = parseFloat(data.elements[4].value);
+                } 
+                else {
+                    var r = 'n';
+                }
+                if (data.elements[5].value != 'n') {
+                    var fg = parseFloat(data.elements[5].value);
+                } 
+                else {
+                    var fg = 'n';
+                }
+                if (data.elements[6].value != 'n') {
+                    var t = parseFloat(data.elements[6].value);
+                } 
+                else {
+                    var t = 'n';
+                }
+                //Actual Calculation Begins
+                if (fc != 'n' && fg != 'n') {
+                    ft = fc - fg;
+                    document.getElementById('print7').innerHTML = ft.toString() + ' N';
+                    return;
+                }
+                if (ac != 'n' && m != 'n' && fg != 'n') {
+                    fc = ac*m;
+                    ft = fc - fg;
+                    document.getElementById('print7').innerHTML = ft.toString() + ' N';
+                    return;
+                }
+                if (m != 'n' && v != 'n' && r != 'n' && fg != 'n') {
+                    fc = m*v*v/r;
+                    ft = fc - fg;
+                    document.getElementById('print7').innerHTML = ft.toString() + ' N';
+                    return;
+                }
+                if (m != 'n' && t != 'n' && r != 'n' && fg != 'n') {
+                    v = 2*Math.PI*r / t;
+                    fc = m*v*v/r;
+                    ft = fc - fg;
+                    document.getElementById('print7').innerHTML = ft.toString() + ' N';
+                    return;
+                }
+                document.getElementById('print7').innerHTML = ft;
+            }
+        </script>
+    </body>
+</html>

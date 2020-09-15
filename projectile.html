@@ -730,6 +730,9 @@
                     var vfy = 'n';
                 }
                 //Actual Calculation Begins
+                if (theta == 0) {
+                    viy = 0;
+                }
                 if(theta != 'n' && vi != 'n') {
                     viy = vi*Math.sin(pi*theta);
                 }
@@ -740,7 +743,7 @@
                 }
                 if (hf != 'n' && hi != 'n' && viy == 0) {
                     hf = hf - hi;
-                    tv = Math.sqrt(2*hf/g);
+                    tv = Math.sqrt(2*hf/-g);
                     document.getElementById('printv6').innerHTML = tv.toString() + ' s';
                     return;
 
