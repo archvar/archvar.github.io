@@ -126,6 +126,7 @@
         <p id="printh5"></p>
         <script>
             function extract_vix() {
+                pi = 3.1415 / 180;
                 var data = document.getElementById('proj_h_vix');
                 var vix = 'Error: Not Enough Variables Defined';
                 if (data.elements[0].value != 'n') {
@@ -149,6 +150,11 @@
                     var t = 'n';
                 }
                 //Actual Calculation begins
+                if (theta != 'n' && vi != 'n') {
+                    vix = vi*Math.cos(pi*theta);
+                    document.getElementById('printh5').innerHTML = vix.toString() + ' m/s';
+                    return;
+                }
                 if (dx != 'n' && t != 'n') {
                     vix = dx / t;
                     document.getElementById('printh5').innerHTML = vix.toString() + ' m/s';
@@ -337,6 +343,12 @@
                     var t = 'n';
                 }
                 //Actual Calculation Begins
+                if (theta != 'n' && vi != 'n') {
+                    viy = vi*Math.sin(pi*theta)
+                }
+                if (vfy != 'n' && viy != 'n' && g != 'n') {
+                    t = vfy - viy / g;
+                }
                 if (g != 'n' && hi != 'n' && theta != 'n' && vi != 'n' && t != 'n') {
                     hf = hi + vi*Math.sin(pi*theta)*t - 0.5*g*t*t;
                     document.getElementById('printv').innerHTML = hf.toString() + ' m';
@@ -416,6 +428,12 @@
                     var t = 'n';
                 }
                 //Actual Calculation Begins
+                if (theta != 'n' && vi != 'n') {
+                    viy = vi*Math.sin(pi*theta)
+                }
+                if (vfy != 'n' && viy != 'n' && g != 'n') {
+                    t = vfy - viy / g;
+                }
                 if (g != 'n' && hf != 'n' && theta != 'n' && vi != 'n' && t != 'n') {
                     hi = hf - vi*Math.sin(pi*theta)*t + 0.5*g*t*t;
                     document.getElementById('printv2').innerHTML = hi.toString() + ' m';
