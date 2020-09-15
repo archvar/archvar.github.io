@@ -422,14 +422,14 @@
                 } else {
                     var g = 'n';
                 }
-                if (data.elements[5].value != 'n') {
-                    var t = parseFloat(data.elements[5].value);
+                if (data.elements[6].value != 'n') {
+                    var t = parseFloat(data.elements[6].value);
                 } else {
                     var t = 'n';
                 }
                 //Actual Calculation Begins
                 if (theta != 'n' && vi != 'n') {
-                    viy = vi*Math.sin(pi*theta)
+                    viy = vi*Math.sin(pi*theta);
                 }
                 if (vfy != 'n' && viy != 'n' && g != 'n') {
                     t = vfy - viy / g;
