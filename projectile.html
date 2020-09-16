@@ -304,7 +304,7 @@
         <p id ='printv'></p>
         <script>
             function extract_hf() {
-                var pi = 180/3.14159;
+                var pi = 3.14159/180;
                 var data = document.getElementById('proj_v_h');
                 var hf = 'Error: Not Enough Variables Defined'
                 if (data.elements[0].value != 'n') {
@@ -389,7 +389,7 @@
         <p id ='printv2'></p>
         <script>
             function extract_hi() {
-                var pi = 180/3.14159;
+                var pi = 3.14159/180;
                 var data = document.getElementById('proj_v_hi');
                 var hi = 'Error: Not Enough Variables Defined';
                 if (data.elements[0].value != 'n') {
@@ -474,7 +474,7 @@
         <p id ='printv3'></p>
         <script>
             function extract_vi() {
-                var pi = 180/3.14159;
+                var pi = 3.14159/180;
                 var data = document.getElementById('proj_v_vi');
                 var vi = 'Error: Not Enough Variables Defined';
                 if (data.elements[0].value != 'n') {
@@ -552,7 +552,7 @@
         <p id ='printv4'></p>
         <script>
             function extract_viy() {
-                var pi = 180/3.14159;
+                var pi = 3.14159/180;
                 var data = document.getElementById('proj_v_viy');
                 var viy = 'Error: Not Enough Variables Defined';
                 if (data.elements[0].value != 'n') {
@@ -630,7 +630,7 @@
         <p id ='printv5'></p>
         <script>
             function extract_vfy() {
-                var pi = 180/3.14159;
+                var pi = 3.14159/180;
                 var data = document.getElementById('proj_v_vfy');
                 var vfy = 'Error: Not Enough Variables Defined';
                 if (data.elements[0].value != 'n') {
@@ -709,7 +709,7 @@
         <p id ='printv6'></p>
         <script>
             function extract_tv() {
-                var pi = 180/3.14159;
+                var pi = 3.14159/180;
                 var data = document.getElementById('proj_v_t');
                 var tv = 'Error: Not Enough Variables Defined';
                 if (data.elements[0].value != 'n') {
@@ -765,6 +765,14 @@
                     document.getElementById('printv6').innerHTML = tv.toString() + ' s';
                     return;
 
+                }
+                if (hf != 'n' && hi != 'n' && viy != 'n') {
+                    tv = (-viy - Math.sqrt(viy*viy + 2*g*(hi-hf))) / g;
+                    if (tv < 0) {
+                        tv = (-viy + Math.sqrt(viy*viy + 2*g*(hi-hf))) / g;
+                    }
+                    document.getElementById('printv6').innerHTML = tv.toString() + ' s';
+                    return;
                 }
                 document.getElementById('printv6').innerHTML = tv;
             }
