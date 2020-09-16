@@ -767,9 +767,9 @@
 
                 }
                 if (hf != 'n' && hi != 'n' && viy != 'n') {
-                    tv = (-viy - Math.sqrt(viy*viy + 2*g*(hi-hf))) / g;
+                    tv = (-viy - Math.sqrt(viy*viy + 2*g*(hi-hf))) / -g;
                     if (tv < 0) {
-                        tv = (-viy + Math.sqrt(viy*viy + 2*g*(hi-hf))) / g;
+                        tv = (-viy + Math.sqrt(viy*viy + 2*g*(hi-hf))) / -g;
                     }
                     document.getElementById('printv6').innerHTML = tv.toString() + ' s';
                     return;
