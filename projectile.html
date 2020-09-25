@@ -47,6 +47,9 @@
                     var t = 'n';
                 }
                 //Actual Calculation Begins
+                if (vi != 'n' && theta != 'n') {
+                    t = 2*vi*Math.sin(theta*(3.14159/180)) / 9.81;
+                }
                 if (theta != 'n' && vi != 'n' && t != 'n') {
                     dx = vi*t*Math.cos(theta*(3.14159/180));
                     document.getElementById('printh').innerHTML = dx.toString() + ' m';
@@ -98,6 +101,11 @@
                     var t = 'n';
                 }
                 //Actual Calculation Begins
+                if (dx != 'n' && theta != 'n') {
+                    vi = Math.sqrt(dx*9.81/Math.sin(theta*(3.14159/90)));
+                    document.getElementById('printh2').innerHTML = vi.toString() + ' m/s';
+                    return;
+                }
                 if (theta != 'n' && dx != 'n' && t != 'n') {
                     vi = dx / (t*Math.cos(theta*(3.14159/180)));
                     document.getElementById('printh2').innerHTML = vi.toString() + ' m/s';
@@ -160,6 +168,12 @@
                     document.getElementById('printh5').innerHTML = vix.toString() + ' m/s';
                     return;
                 }
+                if (dx != 'n' && theta != 'n') {
+                    vi = Math.sqrt(dx*9.81/Math.sin(theta*(3.14159/90)));
+                    vix = vi * Math.cos(theta*(3.14159/180));
+                    document.getElementById('printh5').innerHTML = vix.toString() + ' m/s';
+                    return;
+                }
                 if (vi != 'n' && theta != 'n') {
                     vix = vi * Math.cos(theta*(3.14159/180));
                     document.getElementById('printh5').innerHTML = vix.toString() + ' m/s';
@@ -206,6 +220,11 @@
                     var vi = 'n';
                 }
                 //Actual Calculation Begins
+                if (vi != 'n' && theta != 'n') {
+                    t = 2*vi*Math.sin(theta*(3.14159/180)) / 9.81;
+                    document.getElementById('printh3').innerHTML = t.toString() + ' s';
+                    return;
+                }
                 if (theta != 'n' && dx != 'n' && vi != 'n') {
                     t = dx / (vi*Math.cos(theta*(3.14159/180)));
                     document.getElementById('printh3').innerHTML = t.toString() + ' s';
