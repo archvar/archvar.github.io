@@ -298,6 +298,11 @@
                     document.getElementById('print4').innerHTML = r.toString() + ' m';
                     return;
                 }
+                if (big_m != 'n' && t != 'n') {
+                    r = Math.cbrt((big_g*big_m*t*t)/(4*Math.PI*4*Math.PI));
+                    document.getElementById('print4').innerHTML = r.toString() + ' m';
+                    return;
+                }
                 document.getElementById('print4').innerHTML = r;
             }
         </script>
@@ -362,6 +367,12 @@
                     document.getElementById('print5').innerHTML = v.toString() + ' m/s';
                     return;
                 }
+                if (fg != 'n' && big_m != 'n' && m != 'n') {
+                    r = Math.sqrt(big_g*big_m*m/fg);
+                    v = Math.sqrt(fg*r/m);
+                    document.getElementById('print5').innerHTML = v.toString() + ' m/s';
+                    return;
+                }
                 if (fg != 'n' && m != 'n' && t != 'n') {
                     r = fg*t*t/(m*4*Math.Pi*4*Math.PI);
                     v = Math.sqrt(fg*r/m);
@@ -370,6 +381,12 @@
                 }
                 if (big_m != 'n' && r != 'n') {
                     v = Math.sqrt(big_g*big_m/r);
+                    document.getElementById('print5').innerHTML = v.toString() + ' m/s';
+                    return;
+                }
+                if (big_m != 'n' && t != 'n') {
+                    r = Math.cbrt((big_g*big_m*t*t)/(4*Math.PI*4*Math.PI));
+                    v = 2*Math.Pi*r / t;
                     document.getElementById('print5').innerHTML = v.toString() + ' m/s';
                     return;
                 }
