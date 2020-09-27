@@ -99,31 +99,31 @@
                     var a = 'n';
                 }
                 //Actual Calculation Begins
-                if (r != 'n' && vi != 'n') {
+                if (r != 'n' && vi != 'n' && wi == 'n') {
                     wi = vi/r;
                 }
-                if (r != 'n' && wi != 'n') {
+                if (r != 'n' && wi != 'n' && vi == 'n') {
                     vi = r*wi;
                 }
-                if (vi != 'n' && wi != 'n') {
+                if (vi != 'n' && wi != 'n' && r == 'n') {
                     r = vi/wi;
                 }
-                if (r != 'n' && vf != 'n') {
+                if (r != 'n' && vf != 'n' && wf == 'n') {
                     wf = vf/r;
                 }
-                if (r != 'n' && wf != 'n') {
+                if (r != 'n' && wf != 'n' && vf == 'n') {
                     vf = r*wf;
                 }
-                if (vf != 'n' && wf != 'n') {
+                if (vf != 'n' && wf != 'n' && r == 'n') {
                     r = vf/wf;
                 }
-                if (r != 'n' && a != 'n') {
+                if (r != 'n' && a != 'n' && alpha == 'n') {
                     alpha = a/r;
                 }
-                if (r != 'n' && alpha != 'n') {
+                if (r != 'n' && alpha != 'n' && a == 'n') {
                     a = alpha*r;
                 }
-                if (a != 'n' && alpha != 'n') {
+                if (a != 'n' && alpha != 'n' && r == 'n') {
                     r = a/alpha;
                 }
                 if (rev != 'n') {
@@ -151,7 +151,7 @@
                     document.getElementById('print').innerHTML = theta.toString() + ' rad';
                     return;
                 }
-                if (wf != 'n' && wi != 'n' && a != 'n') {
+                if (wf != 'n' && wi != 'n' && alpha != 'n') {
                     theta = (wf*wf - wi*wi) / (2*alpha);
                     document.getElementById('print').innerHTML = theta.toString() + ' rad';
                     return;
@@ -250,35 +250,35 @@
                     var a = 'n';
                 }
                 //Actual Calculation Begins
-                if (r != 'n' && vi != 'n') {
-                    wi = vi/r;
-                }
-                if (r != 'n' && wi != 'n') {
-                    vi = r*wi;
-                }
-                if (vi != 'n' && wi != 'n') {
-                    r = vi/wi;
-                }
-                if (r != 'n' && vf != 'n') {
-                    wf = vf/r;
-                }
-                if (r != 'n' && wf != 'n') {
-                    vf = r*wf;
-                }
-                if (vf != 'n' && wf != 'n') {
-                    r = vf/wf;
-                }
-                if (r != 'n' && a != 'n') {
-                    alpha = a/r;
-                }
-                if (r != 'n' && alpha != 'n') {
-                    a = alpha*r;
-                }
-                if (a != 'n' && alpha != 'n') {
-                    r = a/alpha;
-                }
                 if (rev != 'n') {
                     theta = 2*pi*rev;
+                }
+                if (r != 'n' && vi != 'n' && wi == 'n') {
+                    wi = vi/r;
+                }
+                if (r != 'n' && wi != 'n' && vi == 'n') {
+                    vi = r*wi;
+                }
+                if (vi != 'n' && wi != 'n' && r == 'n') {
+                    r = vi/wi;
+                }
+                if (r != 'n' && vf != 'n' && wf == 'n') {
+                    wf = vf/r;
+                }
+                if (r != 'n' && wf != 'n' && vf == 'n') {
+                    vf = r*wf;
+                }
+                if (vf != 'n' && wf != 'n' && r == 'n') {
+                    r = vf/wf;
+                }
+                if (r != 'n' && a != 'n' && alpha == 'n') {
+                    alpha = a/r;
+                }
+                if (r != 'n' && alpha != 'n' && a == 'n') {
+                    a = alpha*r;
+                }
+                if (a != 'n' && alpha != 'n' && r == 'n') {
+                    r = a/alpha;
                 }
                 if (theta != 'n' && r != 'n') {
                     d = theta*r;
@@ -303,7 +303,7 @@
                     document.getElementById('print2').innerHTML = d.toString() + ' m';
                     return;
                 }
-                if (wf != 'n' && wi != 'n' && a != 'n' && r != 'n') {
+                if (wf != 'n' && wi != 'n' && alpha != 'n' && r != 'n') {
                     theta = (wf*wf - wi*wi) / (2*alpha);
                     d = theta * r;
                     document.getElementById('print2').innerHTML = d.toString() + ' m';
@@ -444,9 +444,81 @@
                     document.getElementById('print3').innerHTML = r.toString() + ' m';
                     return;
                 }
-                if (wf != 'n' && wi != 'n' && a != 'n' && d != 'n') {
+                if (wf != 'n' && wi != 'n' && alpha != 'n' && d != 'n') {
                     theta = (wf*wf - wi*wi) / (2*alpha);
                     r = d / theta;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (vi != 'n' && theta != 'n' && wf != 'n' && t != 'n') {
+                    wi = 2*theta/t - wf;
+                    r = vi/wi;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (vi != 'n' && wf != 'n' && alpha != 'n' && t != 'n') {
+                    wi = wf - alpha*t;
+                    r = vi/wi;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (vi != 'n' && theta != 'n' && t != 'n' && alpha != 'n') {
+                    wi = (theta - 0.5*alpha*t*t) / t;
+                    r = vi/wi;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (vi != 'n' && wf != 'n' && alpha != 'n' && theta != 'n') {
+                    wi = Math.sqrt(wf*wf - 2*alpha*theta);
+                    r = vi/wi;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (vf != 'n' && theta != 'n' && wi != 'n' && t != 'n') {
+                    wf = 2*theta/t - wi;
+                    r = vf/wf;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (vf != 'n' && wi != 'n' && alpha != 'n' && t != 'n') {
+                    wf = wi + alpha*t;
+                    r = vf/wf;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (vf != 'n' && theta != 'n' && t != 'n' && alpha != 'n') {
+                    wf = (theta + 0.5*alpha*t*t) / t;
+                    r = vf/wf;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (vf != 'n' && theta != 'n' && wi != 'n' && alpha != 'n') {
+                    wf = Math.sqrt(wi*wi + 2*alpha*theta);
+                    r = vf/wf;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (a != 'n' && wf != 'n' && wi != 'n' && t != 'n') {
+                    alpha = (wf - wi) / t;
+                    r = a/alpha;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (a != 'n' && theta != 'n' && wi != 'n' && t != 'n') {
+                    alpha = 2*(theta - wi*t)/(t*t);
+                    r = a/alpha;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (a != 'n' && theta != 'n' && wf != 'n' && t != 'n') {
+                    alpha = 2*(wf*t - theta)/(t*t);
+                    r = a/alpha;
+                    document.getElementById('print3').innerHTML = r.toString() + ' m';
+                    return;
+                }
+                if (a != 'n' && wf != 'n' && wi != 'n' && theta != 'n') {
+                    alpha = 0.5*((wf*wf - wi*wi) / theta);
+                    r = a/alpha;
                     document.getElementById('print3').innerHTML = r.toString() + ' m';
                     return;
                 }
@@ -547,40 +619,40 @@
                 if (rev != 'n') {
                     theta = 2*pi*rev;
                 }
-                if (d != 'n' && r != 'n') {
+                if (d != 'n' && r != 'n' && theta == 'n') {
                     theta = d/r;
                 }
-                if (theta != 'n' && d != 'n') {
+                if (theta != 'n' && d != 'n' && r == 'n') {
                     r = d/theta;
                 }
-                if (theta != 'n' && r != 'n') {
+                if (theta != 'n' && r != 'n' && d == 'n') {
                     d = r*theta;
                 }
-                if (r != 'n' && vi != 'n') {
+                if (r != 'n' && vi != 'n' && wi == 'n') {
                     wi = vi/r;
                 }
-                if (r != 'n' && wi != 'n') {
+                if (r != 'n' && wi != 'n' && vi == n) {
                     vi = r*wi;
                 }
-                if (vi != 'n' && wi != 'n') {
+                if (vi != 'n' && wi != 'n' && r == 'n') {
                     r = vi/wi;
                 }
-                if (r != 'n' && vf != 'n') {
+                if (r != 'n' && vf != 'n' && wf == 'n') {
                     wf = vf/r;
                 }
-                if (r != 'n' && wf != 'n') {
+                if (r != 'n' && wf != 'n' && vf == 'n') {
                     vf = r*wf;
                 }
-                if (vf != 'n' && wf != 'n') {
+                if (vf != 'n' && wf != 'n' && r == 'n') {
                     r = vf/wf;
                 }
-                if (r != 'n' && a != 'n') {
+                if (r != 'n' && a != 'n' && alpha == 'n') {
                     alpha = a/r;
                 }
-                if (r != 'n' && alpha != 'n') {
+                if (r != 'n' && alpha != 'n' && a == 'n') {
                     a = alpha*r;
                 }
-                if (a != 'n' && alpha != 'n') {
+                if (a != 'n' && alpha != 'n' && r == 'n') {
                     r = a/alpha;
                 }
                 if (theta != 'n' && wi != 'n' && wf != 'n') {
@@ -589,22 +661,22 @@
                     return;
                 }
                 if (wi != 'n' && wf != 'n' && alpha != 'n') {
-                    t = (wf - wi) / a;
+                    t = (wf - wi) / alpha;
                     document.getElementById('print4').innerHTML = t.toString() + ' s';
                     return;
                 }
                 if (theta != 'n' && wi != 'n' && alpha != 'n') {
-                    t = (-wi + Math.sqrt(wi*wi + 2*alpha*theta))/a;
+                    t = (-wi + Math.sqrt(wi*wi - 2*alpha*theta))/a;
                     if (t < 0) {
-                        t = (-wi - Math.sqrt(wi*wi + 2*alpha*theta))/a;
+                        t = (-wi - Math.sqrt(wi*wi - 2*alpha*theta))/a;
                     }
                     document.getElementById('print4').innerHTML = t.toString() + ' s';
                     return;
                 }
                 if (theta != 'n' && wf != 'n' && alpha != 'n') {
-                    t = (-wf + Math.sqrt(wi*wi - 2*alpha*theta))/a;
+                    t = (-wf + Math.sqrt(wf*wf + 2*alpha*theta))/a;
                     if (t < 0) {
-                        t = (-wf - Math.sqrt(wi*wi - 2*alpha*theta))/a;
+                        t = (-wf - Math.sqrt(wf*wf + 2*alpha*theta))/a;
                     }
                     document.getElementById('print4').innerHTML = t.toString() + ' s';
                     return;
@@ -706,13 +778,13 @@
                 if (rev != 'n') {
                     theta = 2*pi*rev;
                 }
-                if (d != 'n' && r != 'n') {
+                if (d != 'n' && r != 'n' && theta == 'n') {
                     theta = d/r;
                 }
-                if (theta != 'n' && d != 'n') {
+                if (theta != 'n' && d != 'n' && r == 'n') {
                     r = d/theta;
                 }
-                if (theta != 'n' && r != 'n') {
+                if (theta != 'n' && r != 'n' && d == 'n') {
                     d = r*theta;
                 }
                 if (r != 'n' && vi != 'n') {
@@ -720,22 +792,22 @@
                     document.getElementById('print5').innerHTML = wi.toString() + ' rad/s';
                     return;
                 }
-                if (r != 'n' && vf != 'n') {
+                if (r != 'n' && vf != 'n' && wf == 'n') {
                     wf = vf/r;
                 }
-                if (r != 'n' && wf != 'n') {
+                if (r != 'n' && wf != 'n' && vf == 'n') {
                     vf = r*wf;
                 }
-                if (vf != 'n' && wf != 'n') {
+                if (vf != 'n' && wf != 'n' && r == 'n') {
                     r = vf/wf;
                 }
-                if (r != 'n' && a != 'n') {
+                if (r != 'n' && a != 'n' && alpha == 'n') {
                     alpha = a/r;
                 }
-                if (r != 'n' && alpha != 'n') {
+                if (r != 'n' && alpha != 'n' && a == 'n') {
                     a = alpha*r;
                 }
-                if (a != 'n' && alpha != 'n') {
+                if (a != 'n' && alpha != 'n' && r == 'n') {
                     r = a/alpha;
                 }
                 if (theta != 'n' && wf != 'n' && t != 'n') {
@@ -748,7 +820,7 @@
                     document.getElementById('print5').innerHTML = wi.toString() + ' rad/s';
                     return;
                 }
-                if (theta != 'n' && t != 'n' && a != 'n') {
+                if (theta != 'n' && t != 'n' && alpha != 'n') {
                     wi = (theta - 0.5*alpha*t*t) / t;
                     document.getElementById('print5').innerHTML = wi.toString() + ' rad/s';
                     return;
@@ -855,13 +927,13 @@
                 if (rev != 'n') {
                     theta = 2*pi*rev;
                 }
-                if (d != 'n' && r != 'n') {
+                if (d != 'n' && r != 'n' && theta == 'n') {
                     theta = d/r;
                 }
-                if (theta != 'n' && d != 'n') {
+                if (theta != 'n' && d != 'n' && r == 'n') {
                     r = d/theta;
                 }
-                if (theta != 'n' && r != 'n') {
+                if (theta != 'n' && r != 'n' && d == 'n') {
                     d = r*theta;
                 }
                 if (r != 'n' && vf != 'n') {
@@ -869,22 +941,22 @@
                     document.getElementById('print6').innerHTML = wf.toString() + ' rad/s';
                     return;
                 }
-                if (r != 'n' && vi != 'n') {
+                if (r != 'n' && vi != 'n' && wi == 'n') {
                     wi = vi/r;
                 }
-                if (r != 'n' && wi != 'n') {
+                if (r != 'n' && wi != 'n' && vi == 'n') {
                     vi = r*wi;
                 }
-                if (vi != 'n' && wi != 'n') {
+                if (vi != 'n' && wi != 'n' && r == 'n') {
                     r = vi/wi;
                 }
-                if (r != 'n' && a != 'n') {
+                if (r != 'n' && a != 'n' && alpha == 'n') {
                     alpha = a/r;
                 }
-                if (r != 'n' && alpha != 'n') {
+                if (r != 'n' && alpha != 'n' && a == 'n') {
                     a = alpha*r;
                 }
-                if (a != 'n' && alpha != 'n') {
+                if (a != 'n' && alpha != 'n' && r == 'n') {
                     r = a/alpha;
                 }
                 if (theta != 'n' && wi != 'n' && t != 'n') {
@@ -893,7 +965,7 @@
                     return;
                 }
                 if (wi != 'n' && alpha != 'n' && t != 'n') {
-                    wf = wi + a*t;
+                    wf = wi + alpha*t;
                     document.getElementById('print6').innerHTML = wf.toString() + ' rad/s';
                     return;
                 }
@@ -1004,13 +1076,13 @@
                 if (rev != 'n') {
                     theta = 2*pi*rev;
                 }
-                if (d != 'n' && r != 'n') {
+                if (d != 'n' && r != 'n' && theta == 'n') {
                     theta = d/r;
                 }
-                if (theta != 'n' && d != 'n') {
+                if (theta != 'n' && d != 'n' && r == 'n') {
                     r = d/theta;
                 }
-                if (theta != 'n' && r != 'n') {
+                if (theta != 'n' && r != 'n' && d == 'n') {
                     d = r*theta;
                 }
                 if (r != 'n' && wi != 'n') {
@@ -1018,22 +1090,22 @@
                     document.getElementById('print7').innerHTML = vi.toString() + ' m/s';
                     return;
                 }
-                if (r != 'n' && vf != 'n') {
+                if (r != 'n' && vf != 'n' && wf == 'n') {
                     wf = vf/r;
                 }
-                if (r != 'n' && wf != 'n') {
+                if (r != 'n' && wf != 'n' && vf == 'n') {
                     vf = r*wf;
                 }
-                if (vf != 'n' && wf != 'n') {
+                if (vf != 'n' && wf != 'n' && r == 'n') {
                     r = vf/wf;
                 }
-                if (r != 'n' && a != 'n') {
+                if (r != 'n' && a != 'n' && alpha == 'n') {
                     alpha = a/r;
                 }
-                if (r != 'n' && alpha != 'n') {
+                if (r != 'n' && alpha != 'n' && a == 'n') {
                     a = alpha*r;
                 }
-                if (a != 'n' && alpha != 'n') {
+                if (a != 'n' && alpha != 'n' && r == 'n') {
                     r = a/alpha;
                 }
                 if (theta != 'n' && wf != 'n' && t != 'n' && r != 'n') {
@@ -1048,7 +1120,7 @@
                     document.getElementById('print7').innerHTML = vi.toString() + ' m/s';
                     return;
                 }
-                if (theta != 'n' && t != 'n' && a != 'n' && r != 'n') {
+                if (theta != 'n' && t != 'n' && alpha != 'n' && r != 'n') {
                     wi = (theta - 0.5*alpha*t*t) / t;
                     vi = r*wi;
                     document.getElementById('print7').innerHTML = vi.toString() + ' m/s';
@@ -1157,13 +1229,13 @@
                 if (rev != 'n') {
                     theta = 2*pi*rev;
                 }
-                if (d != 'n' && r != 'n') {
+                if (d != 'n' && r != 'n' && theta == 'n') {
                     theta = d/r;
                 }
-                if (theta != 'n' && d != 'n') {
+                if (theta != 'n' && d != 'n' && r == 'n') {
                     r = d/theta;
                 }
-                if (theta != 'n' && r != 'n') {
+                if (theta != 'n' && r != 'n' && d == 'n') {
                     d = r*theta;
                 }
                 if (r != 'n' && wf != 'n') {
@@ -1171,22 +1243,22 @@
                     document.getElementById('print8').innerHTML = vf.toString() + ' m/s';
                     return;
                 }
-                if (r != 'n' && vi != 'n') {
+                if (r != 'n' && vi != 'n' && wi == 'n') {
                     wi = vi/r;
                 }
-                if (r != 'n' && wi != 'n') {
+                if (r != 'n' && wi != 'n' && vi == 'n') {
                     vi = r*wi;
                 }
-                if (vi != 'n' && wi != 'n') {
+                if (vi != 'n' && wi != 'n' && r == 'n') {
                     r = vi/wi;
                 }
-                if (r != 'n' && a != 'n') {
+                if (r != 'n' && a != 'n' && alpha == 'n') {
                     alpha = a/r;
                 }
-                if (r != 'n' && alpha != 'n') {
+                if (r != 'n' && alpha != 'n' && a == 'n') {
                     a = alpha*r;
                 }
-                if (a != 'n' && alpha != 'n') {
+                if (a != 'n' && alpha != 'n' && r == 'n') {
                     r = a/alpha;
                 }
                 if (theta != 'n' && wi != 'n' && t != 'n' && r != 'n') {
@@ -1196,7 +1268,7 @@
                     return;
                 }
                 if (wi != 'n' && alpha != 'n' && t != 'n' && r != 'n') {
-                    wf = wi + a*t;
+                    wf = wi + alpha*t;
                     vf = r*wf;
                     document.getElementById('print8').innerHTML = vf.toString() + ' m/s';
                     return;
@@ -1310,31 +1382,31 @@
                 if (rev != 'n') {
                     theta = 2*pi*rev;
                 }
-                if (d != 'n' && r != 'n') {
+                if (d != 'n' && r != 'n' && theta == 'n') {
                     theta = d/r;
                 }
-                if (theta != 'n' && d != 'n') {
+                if (theta != 'n' && d != 'n' && r == 'n') {
                     r = d/theta;
                 }
-                if (theta != 'n' && r != 'n') {
+                if (theta != 'n' && r != 'n' && d == 'n') {
                     d = r*theta;
                 }
-                if (r != 'n' && vi != 'n') {
+                if (r != 'n' && vi != 'n' && wi == 'n') {
                     wi = vi/r;
                 }
-                if (r != 'n' && wi != 'n') {
+                if (r != 'n' && wi != 'n' && vi == 'n') {
                     vi = r*wi;
                 }
-                if (vi != 'n' && wi != 'n') {
+                if (vi != 'n' && wi != 'n' && r == 'n') {
                     r = vi/wi;
                 }
-                if (r != 'n' && vf != 'n') {
+                if (r != 'n' && vf != 'n' && wf == 'n') {
                     wf = vf/r;
                 }
-                if (r != 'n' && wf != 'n') {
+                if (r != 'n' && wf != 'n' && vf == 'n') {
                     vf = r*wf;
                 }
-                if (vf != 'n' && wf != 'n') {
+                if (vf != 'n' && wf != 'n' && r == 'n') {
                     r = vf/wf;
                 }
                 if (r != 'n' && a != 'n') {
@@ -1459,31 +1531,31 @@
                 if (rev != 'n') {
                     theta = 2*pi*rev;
                 }
-                if (d != 'n' && r != 'n') {
+                if (d != 'n' && r != 'n' && theta == 'n') {
                     theta = d/r;
                 }
-                if (theta != 'n' && d != 'n') {
+                if (theta != 'n' && d != 'n' && r == 'n') {
                     r = d/theta;
                 }
-                if (theta != 'n' && r != 'n') {
+                if (theta != 'n' && r != 'n' && d == 'n') {
                     d = r*theta;
                 }
-                if (r != 'n' && vi != 'n') {
+                if (r != 'n' && vi != 'n' && wi == 'n') {
                     wi = vi/r;
                 }
-                if (r != 'n' && wi != 'n') {
+                if (r != 'n' && wi != 'n' && vi == 'n') {
                     vi = r*wi;
                 }
-                if (vi != 'n' && wi != 'n') {
+                if (vi != 'n' && wi != 'n' && r == 'n') {
                     r = vi/wi;
                 }
-                if (r != 'n' && vf != 'n') {
+                if (r != 'n' && vf != 'n' && wf == 'n') {
                     wf = vf/r;
                 }
-                if (r != 'n' && wf != 'n') {
+                if (r != 'n' && wf != 'n' && vf == 'n') {
                     vf = r*wf;
                 }
-                if (vf != 'n' && wf != 'n') {
+                if (vf != 'n' && wf != 'n' && r == 'n') {
                     r = vf/wf;
                 }
                 if (r != 'n' && alpha != 'n') {
@@ -1515,7 +1587,7 @@
                     document.getElementById('print10').innerHTML = a.toString() + ' m/s^2';
                     return;
                 }
-                document.getElementById('print10').innerHTML = a
+                document.getElementById('print10').innerHTML = a;
             }
         </script>
     </body>
